@@ -1,0 +1,50 @@
+\subsection[CMSIS-Packs]{\gls{CMSIS}-Packs}
+\label{sec:cmsis-packs}
+
+Libraries und Beispielprojekte für die \uVision{} 5 werden in sogenannten \gls{CMSIS}-Packs verwaltet. \gls{CMSIS}-Packs sind \gls{ZIP}-Dateien, welche eine Beschreibungs-Datei im \texttt{.pdsc}-Format enthält. Dies ist intern eine \gls{XML}-Datei, welche den Inhalt und die Abhängigkeiten eines \gls{CMSIS}-Packs beschreibt.
+
+Im Zuge dieser Diplomarbeit entstand ein \gls{CMSIS}-Pack für die HTL \gls{STDLib} und einige Assembler Helper-Dateien, welche für das alte \gls{Minimalsystem} verwendet werden. Dies macht das Arbeiten mit der alten Platform in Verbindung mit \uVision{} 5 einfacher als dies mit der Version 4 war. Des weiteren bietet diese Pack-Strukturierung eine einfache Möglichkeit des Updatens von Libraries, was mit der \uVision{} 4 in dieser Form überhaupt nicht möglich war.
+
+\subsubsection{Die Erstellung}
+\label{sec:cmsis-erstellung}
+
+Die Erstellung eines minimalen \gls{CMSIS}-Packs ist nicht allzu schwer und in einigen Minuten erledigt. Die Erstellung von komplexeren Packs mit Abhängigkeiten, Beispielprojekten und so weiter kann unter \cite{arm:CMSISPack} eingesehen werden. Im folgenden Beispiel wird das \gls{STDLib}-Pack erstellt.
+
+\begin{warning}
+    Hinweis: Hier wird nur auf die Erstellung des Packs an sich, nicht aber auf die Erstellung der im Pack inkludierten Libraries eingegangen.
+\end{warning}
+
+\subsubsubsection{Inhalt}
+\label{sec:cmsis-inhalt}
+
+Der Inhalt des \gls{STDLib} \gls{CMSIS}-Packs kann in \fref{fig:cmsis-inhalt} gesehen werden.
+
+% \dirtree{%
+% .1 /.
+% .2 Header.
+% .3 armv10_serbus.h.
+% .3 armv10_std.h.
+% .3 STD_STM32_F103RB_ASM.INC.
+% .3 STM32_F103RB_MEM_MAP.INC.
+% .2 Library.
+% .3 armv10_serbus.lib.
+% .3 ARMV10_STD.lib.
+% .2 HTBL_Hollabrunn.STD-Pack.pdsc.
+% }
+
+\begin{forest}
+    for tree={font=\sffamily, grow'=0,
+    folder indent=0.2em, folder icons,
+    edge=densely dotted}
+    [/
+      [Header
+          [armv10\_serbus.h, is file]
+          [armv10\_std.h, is file]
+          [STD\_STM32\_F103RB\_ASM.INC, is file]
+          [STM32\_F103RB\_MEM\_MAP.INC, is file]]
+      [Library
+          [armv10\_serbus.lib, is file]
+          [ARMV10\_STD.lib, is file]]
+      [HTBL Hollabrunn.STD-Pack.pdsc, is file]
+    ]
+  \end{forest}
