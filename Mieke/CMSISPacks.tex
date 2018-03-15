@@ -19,32 +19,56 @@ Die Erstellung eines minimalen \gls{CMSIS}-Packs ist nicht allzu schwer und in e
 
 Der Inhalt des \gls{STDLib} \gls{CMSIS}-Packs kann in \fref{fig:cmsis-inhalt} gesehen werden.
 
-% \dirtree{%
-% .1 /.
-% .2 Header.
-% .3 armv10_serbus.h.
-% .3 armv10_std.h.
-% .3 STD_STM32_F103RB_ASM.INC.
-% .3 STM32_F103RB_MEM_MAP.INC.
-% .2 Library.
-% .3 armv10_serbus.lib.
-% .3 ARMV10_STD.lib.
-% .2 HTBL_Hollabrunn.STD-Pack.pdsc.
-% }
+\figraw{cmsis-inhalt}{CMSIS-Pack: Inhalt}{Inhalt des \gls{STDLib} \gls{CMSIS}-Packs}{
+    \begin{forest}
+        for tree={font=\sffamily, grow'=0,
+        folder indent=0.2em, folder icons,
+        edge=densely dotted}
+        [/
+        [Header
+            [armv10\_serbus.h, is file]
+            [armv10\_std.h, is file]
+            [STD\_STM32\_F103RB\_ASM.INC, is file]
+            [STM32\_F103RB\_MEM\_MAP.INC, is file]]
+        [Library
+            [armv10\_serbus.lib, is file]
+            [ARMV10\_STD.lib, is file]]
+        [HTBL Hollabrunn.STD-Pack.pdsc, is file]
+        ]
+    \end{forest}
+}
 
-\begin{forest}
-    for tree={font=\sffamily, grow'=0,
-    folder indent=0.2em, folder icons,
-    edge=densely dotted}
-    [/
-      [Header
-          [armv10\_serbus.h, is file]
-          [armv10\_std.h, is file]
-          [STD\_STM32\_F103RB\_ASM.INC, is file]
-          [STM32\_F103RB\_MEM\_MAP.INC, is file]]
-      [Library
-          [armv10\_serbus.lib, is file]
-          [ARMV10\_STD.lib, is file]]
-      [HTBL Hollabrunn.STD-Pack.pdsc, is file]
-    ]
-  \end{forest}
+Das Pack beinhaltet somit Header-Files, genauer das für die \gls{STDLib} und für eine serielle Bus Library, im Unterordner \texttt{Header}. Des weiteren wurden in diesem Ordner auch Include-Files für die Assembler-Programmierung abgelegt. Dies ist zwar laut offizieller Dokumentation (siehe: \cite[arm:CMSISPack]) nicht der passende Ort für solche Dateien, wurde aber zur Einfachkeit trotzdem so gewählt. Daneben gibt es noch das Verzeichnis \texttt{Library}, in welchem die kompilierten Bibliotheken gespiechert werden. Alle Versionen und Abhängigkeiten werden zentral im \texttt{.pdsc}-File im Wurzelverzeichnis verwaltet, der Inhalt dieses Files kann in \fref{lst:pdsc} eingesehen werden.
+
+\FloatBarrier
+\lstinputlisting[language={XML}, caption=Inhalt des PDSC-Files der \gls{STDLib}, label=lst:pdsc]{Mieke/Pack/Files/HTBL-Hollabrunn.STD-Pack.pdsc}
+
+Die Attribute der einzelnen Komponenten werden in der offiziellen Dokumentation genauer erläutert, die \fref{fig:pack-attrs} stellt nur eine kurze Übersicht dar. Neben dem Namen und der Beschreibung gibt die \texttt{PDSC}-Datei auch an welche Datei zu welchem Software Pack gehört, welche Version eines Packs zur Verfügung gestellt wird und welche Abhängigkeiten bestehen (zum Beispiel hängt die Serbus Library von der \gls{STDLib} ab).
+
+\fig{pack-attrs}{CMSIS Pack: Attribute}{Attribute von \gls{CMSIS}-Packs mit dem Namen aus der \texttt{PDSC}-Datei. Nach: \cite{arm:CMSISPack}}{0.75\textwidth}{Mieke/Pack/Screenshots/ComponentDisplay}
+
+\begin{warning}
+    Hinweis: Bei der Versionierung sollte auf \gls{Semantic Versioning} zurückgegriffen werden, da sich dieses Verfahren im Bereich von Software und dessen Abhängigkeiten am besten bewährt hat.
+\end{warning}
+
+\subsubsubsection{Erstellung}
+\label{sec:cmsis-erstellung}
+
+Wenn dann der Inhalt fertig ist, also alle Files am richtigen Ort liegen und richtig im \texttt{PDSC}-File eingetragen sind, kann das eigentlich Pack erstellt werden. Hierzu wurde ein kurzes Shellskript (\fref{lst:pack}) erstellt, welches nichts anderes macht als 7-Zip aufzurufen und damit ein \gls{ZIP}-File mit der Endung \texttt{.pack} erzeugt. Das Skript liest die Werte für den Packnamen nicht aus dem \texttt{PDSC}-File aus, sondern vergibt diesen immer fest. Dies sollte also angepasst werden, wenn das Skript produktiv eingesetzt wird.
+
+\lstinputlisting[language={bash}, caption=7-Zip Aufruf, label=lst:pack]{Mieke/Pack/gen_pack.sh}
+
+\subsubsubsection{Installation}
+\label{sec:cmsis-installation}
+
+Nachdem das Pack erfolgreich erstellt wurde, sollte es Testweise im Pack-Manager, siehe \fref{sec:tut-firstproject2.1}, installiert werden um zu überprüfen, ob alles richtig erstellt wurde. Ist die Installation erfolgreich, sollte sich ein Bild wie in \fref{fig:pack-inst} ergeben.
+
+\fig{pack-inst}{CMSIS-Pack: Installiert}{Das HTL \gls{CMSIS}-Pack nach erfolgreicher Installation}{0.75\textwidth}{Mieke/Pack/Screenshots/inst}
+
+Nach erfolgreicher Installation kann man wie gewünscht die Teile des Packs aktivieren, welche man für sein Projekt braucht, siehe \fref{fig:pack-sel}.
+
+\fig{pack-sel}{CMSIS-Pack: Selektiert}{Das HTL \gls{CMSIS}-Pack mit selektierten Paketteilen}{0.75\textwidth}{Mieke/Pack/Screenshots/sel}
+
+Wenn man nun mit dieser Auswahl ein neues \uVision{} 5 Projekt erstellt, sieht das Paket im Projektbaum aus, wie in \fref{fig:pack-proj} zu sehen ist.
+
+\fig{pack-proj}{CMSIS-Pack: Projekt}{Das HTL \gls{CMSIS}-Pack mit selektierten Paketteilen in einem \uVision{} 5 Projekt}{0.3\textwidth}{Mieke/Pack/Screenshots/proj}

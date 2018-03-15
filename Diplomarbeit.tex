@@ -38,6 +38,22 @@
     breakatwhitespace=false,
 }
 
+\lstset{
+    language=XML,
+    basicstyle=\ttfamily,
+    keywordstyle=\color{blue}\ttfamily,
+    stringstyle=\color{red}\ttfamily,
+    commentstyle=\color{green}\ttfamily,
+    morecomment=[l][\color{magenta}]{\#},
+    basicstyle=\footnotesize,
+    numbers=left,
+    stepnumber=1,
+    showstringspaces=false,
+    tabsize=1,
+    breaklines=true,
+    breakatwhitespace=false,
+}
+
 \usepackage{hyperref}
 \usepackage[ngerman]{babel}
 \usepackage[german]{fancyref}
@@ -51,8 +67,38 @@
 \student{Kevin Schuh}{Hardware ARM Cortex-M3 Minimalsystem}{5BHEL}{Dipl.-Ing. Josef Reisinger}
 \termyear{2017/18}
 \class{5xHEL}
-\keywords{ARM\\Cortex\\Training System\\Digital Education}
-\sthanks{Besonderer Dank geht an verschiedene Leute!}
+\keywords{ST-Link V2\\ULINK/ME\\Cortex-M3\\STM32F107RBT6\\Nextion NX4832T035\_011\\JTAG\\SPI\\UART\\I$^2$C\\\gls{Core-Modul}\\\gls{Basisplatine}\\USB to UART\\Altium\\$\mu$Vision 5\\ARM}
+\sthanks{
+    Im Vorhinein möchten wir uns herzlichst bei unserem Diplomarbeitsbetreuer Herrn Dipl.-Ing. Josef Reisinger bedanken, der uns stets kompetent beraten hat und uns sein Wissen zur Verfügung stellte.
+
+    Des Weiterem möchten wir uns bei Herrn Dipl.-Ing. Erwin Dobart bedanken, der uns bei technischen Fragen unterstützte. 
+    
+    Weiters möchten wir uns bei Herrn FOL StR Ing. Manfred Resel bedanken, der uns, solange er noch im Dienst war, bei Softwareproblemen und Hardwarefragen aller Art zur Seite stand. 
+    
+    Darüber hinaus möchten wir uns bei Herrn Wolfgang Kauer und Herrn Ferdinand Klampfer bedanken, ohne deren Hilfe wir unsere Leiterkarten nicht hätten bestücken können.
+    
+    Ebenfalls möchten wir Herrn Dipl.-Ing. Wilfried Trollmann bedanken, welcher uns immer an unsere Fristen und Termine erinnerte und uns jederzeit über aktuelle Wettbewerbe informierte.
+    
+    Außerdem möchten wir uns bei Thomas Fehringer, unseren Laboranten, bedanken, welcher uns mit Bauteilen für unsere Diplomarbeit versorgte.
+}
+
+\aufgabenstellung{Aufgabe soll es sein, eine neue Version für das HTL eigene ARM Minimalsystem zu realisieren. Zunächst soll ein Touchscreen-Display zur Ein- und Ausgabe unterstützt werden. Des Weiteren soll eine Arduino-UNO kompatible Schnittstelle zur Verfügung gestellt werden, um Arduino Shields von verschiedenen Herstellern einsetzen zu können. Darüber hinaus soll das neue System verschiedene Funkmodule unterstützen, um damit eine Kommunikation mit anderer Peripherie zu erleichtern. Ein Audiomodul, welches bereits bei einer Diplomarbeit aus dem Jahre 2015/16 entwickelt wurde, soll ebenso unterstützt werden. Zusätzlich soll noch ein Z80 Minimalsystem, welches im Rahmen mehrerer Diplomarbeiten entstanden ist, für den Einsatz im Laborunterricht vervollständigt werden.}
+
+\realisierung{Zuerst sollen die einzelnen Arbeitsaufträge entwickelt und überprüft werden. Anschließend sollen die einzelnen Systemkomponenten zum fertigen System zusammengefügt und in Betrieb genommen werden. Die Funktion und die einzelnen Entwicklungsschritte zum fertigen Prototypen sollen anschließend durch eine umfangreiche Dokumentation und eine Bedienungsanleitung vervollständigt werden.}
+
+\ergebnisse{Es wurden funktionsfähige Prototypen aller Leiterkarten gefertigt. Darüber hinaus wurde eine Testsoftware zur Überprüfung der Prototypen geschrieben.}
+
+\wettbewerbe{Jugend Innovativ\\Technik fürs Leben-Preis}
+
+
+
+\tasks{The task should be to realize a new version for the HTL (secondary technical college) own ARM minimal system. At first, a touchscreen display for input and output should be supported. Furthermore, an Arduino-UNO compatible interface should make it possible to use Arduino shields from different manufacturers.  In addition, the new system should support various wireless modules to facilitate communication with other peripherals. An audio module, which was already developed in a diploma thesis from the year 2015/16, should also be supported. In addition, a Z80 minimal system, which was created in the context of several diploma theses, should be finalised for the use in laboratory lessons.}
+
+\realisation{At first, the individual work orders should be developed and checked. Subsequently, the individual system components were to be assembled into the finished system and put into operation. The function and the individual development steps for the finished prototype should be completed with a documentation and a user manual.}
+
+\results{Working prototypes of all printed circuit boards have been developed. Moreover, a test software to prove the functionality of the prototype has been written.}
+
+\competitions{Jugend Innovativ\\Technik fürs Leben-Preis}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Bibliography
 \usepackage[backend=bibtex, style=ieee, citestyle=ieee, hyperref=true]{biblatex}
@@ -84,7 +130,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% First real page
 \input{Allgemein/Allgemein}
 
-\input{Mieke/Mieke}
+%\input{Mieke/Mieke}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Appendix
 \cleardoublepage

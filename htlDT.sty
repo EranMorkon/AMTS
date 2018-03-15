@@ -106,6 +106,17 @@
     folder icons/.default={12pt},
 }
 
+% \figraw{ref}{descshort}{desclong}{content}
+\newcommand*{\figraw}[4]{
+  \begin{figure}[!ht]
+      \centering
+      #4
+      \caption[#2]{#3}
+      \label{fig:#1}
+  \end{figure}
+}
+
+
 % \fig{ref}{descshort}{desclong}{width}{path}
 \newcommand*{\fig}[5]{
   \begin{figure}[!ht]
@@ -274,8 +285,8 @@
 \newcommand*{\keywords}[1]{\gdef\@keywords{#1}}%
 \newcommand*{\@keywords}{\texttt{\string\keywords} not set}%
 
-\newcommand*{\sthanks}[1]{\gdef\@sthanks{#1}}%
-\newcommand*{\@sthanks}{\texttt{\string\sthanks} not set}%
+\newcommand{\sthanks}[1]{\gdef\@sthanks{#1}}%
+\newcommand{\@sthanks}{\texttt{\string\sthanks} not set}%
 
 \newcommand*{\aufgabenstellung}[1]{\gdef\@aufgabenstellung{#1}}%
 \newcommand*{\@aufgabenstellung}{\texttt{\string\aufgabenstellung} not set}%
@@ -432,16 +443,14 @@
   \par%
   \textsf{Die Diplomarbeit erfüllt die \enquote{Standards für Ingenieur- und Technikerprojekte} entsprechend dem Rundschreiben Nr. 60 aus 1999 des BMBWK (GZ.17.600/101-II/2b/99). [\url{https://www.bmb.gv.at/ministerium/rs/1999_60.html}]}%
   \par%
-  \vfill%
   \textsf{\large \textbf{SCHLÜSSELBEGRIFFE}}%
   \par%
-  \textsf{\@keywords}%
-  \par%
-  \vfill%
+  \textsf{\@keywords{}}%
+  \newpage%
+  \pagestyle{empty}%
   \textsf{\large \textbf{DANKSAGUNGEN}}%
   \par%
-  \textsf{\@sthanks}%
-  \vfill%
+  \textsf{\@sthanks{}}%
 
   % Page 4
   \newpage%
@@ -493,11 +502,11 @@
   \vfill%
   \begin{tabularx}{\textwidth}{| p{5cm} | X |}%
   \hline%
-  \begin{minipage}[c][4.5cm]{5cm}%
+  \begin{minipage}[c][6.5cm]{5cm}%
     \textsf{Aufgabenstellung}%
   \end{minipage}%
   &%
-  \begin{minipage}[c][4.5cm]{\textwidth - 5.8cm}%
+  \begin{minipage}[c][6.5cm]{\textwidth - 5.8cm}%
     \textsf{\@aufgabenstellung{}}%
   \end{minipage}\\%
   \hline%
@@ -505,11 +514,11 @@
   \vfill%
   \begin{tabularx}{\textwidth}{| p{5cm} | X |}%
   \hline%
-  \begin{minipage}[c][4.5cm]{5cm}%
+  \begin{minipage}[c][3.5cm]{5cm}%
     \textsf{Realisierung}%
   \end{minipage}%
   &%
-  \begin{minipage}[c][4.5cm]{\textwidth - 5.8cm}%
+  \begin{minipage}[c][3.5cm]{\textwidth - 5.8cm}%
     \textsf{\@realisierung{}}%
   \end{minipage}\\%
   \hline%
@@ -517,11 +526,11 @@
   \vfill%
   \begin{tabularx}{\textwidth}{| p{5cm} | X |}%
   \hline%
-  \begin{minipage}[c][4.5cm]{5cm}%
+  \begin{minipage}[c][2cm]{5cm}%
     \textsf{Ergebnisse}%
   \end{minipage}%
   &%
-  \begin{minipage}[c][4.5cm]{\textwidth - 5.8cm}%
+  \begin{minipage}[c][2cm]{\textwidth - 5.8cm}%
     \textsf{\@ergebnisse{}}%
   \end{minipage}\\%
   \hline%
@@ -636,11 +645,11 @@
   \vfill%
   \begin{tabularx}{\textwidth}{| p{5cm} | X |}%
   \hline%
-  \begin{minipage}[c][4.5cm]{5cm}%
+  \begin{minipage}[c][6.5cm]{5cm}%
     \textsf{Asignment of tasks}%
   \end{minipage}%
   &%
-  \begin{minipage}[c][4.5cm]{\textwidth - 5.8cm}%
+  \begin{minipage}[c][6.5cm]{\textwidth - 5.8cm}%
     \textsf{\@tasks{}}%
   \end{minipage}\\%
   \hline%
@@ -648,11 +657,11 @@
   \vfill%
   \begin{tabularx}{\textwidth}{| p{5cm} | X |}%
   \hline%
-  \begin{minipage}[c][4.5cm]{5cm}%
+  \begin{minipage}[c][3.5cm]{5cm}%
     \textsf{Realisation}%
   \end{minipage}%
   &%
-  \begin{minipage}[c][4.5cm]{\textwidth - 5.8cm}%
+  \begin{minipage}[c][3.5cm]{\textwidth - 5.8cm}%
     \textsf{\@realisation{}}%
   \end{minipage}\\%
   \hline%
@@ -660,11 +669,11 @@
   \vfill%
   \begin{tabularx}{\textwidth}{| p{5cm} | X |}%
   \hline%
-  \begin{minipage}[c][4.5cm]{5cm}%
+  \begin{minipage}[c][2cm]{5cm}%
     \textsf{Results}%
   \end{minipage}%
   &%
-  \begin{minipage}[c][4.5cm]{\textwidth - 5.8cm}%
+  \begin{minipage}[c][2cm]{\textwidth - 5.8cm}%
     \textsf{\@results{}}%
   \end{minipage}\\%
   \hline%
