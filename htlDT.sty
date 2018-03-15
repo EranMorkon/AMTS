@@ -1,0 +1,684 @@
+% This package defines the style for diploma thesis at the HTBL Hollabrunn
+
+\ProvidesPackage{htlDT}[2018/03/13 v.01 by Andreas Mieke, Marvin Scholz]
+
+\RequirePackage{iftex}
+\ifPDFTeX
+   \RequirePackage[utf8]{inputenc}
+   \RequirePackage[T1]{fontenc}
+   \RequirePackage{lmodern}
+\else
+   \ifXeTeX
+     \RequirePackage{fontspec}
+   \else 
+     \RequirePackage{luatextra}
+   \fi
+   \defaultfontfeatures{Ligatures=TeX}
+\fi
+
+\RequirePackage{scrpage2}
+\RequirePackage{hyperref}
+\RequirePackage{etoolbox}
+\RequirePackage{csquotes}
+\RequirePackage{tabularx}
+\RequirePackage{multirow}
+\RequirePackage{lipsum}
+\RequirePackage{calc}
+\RequirePackage{pdfpages}
+\RequirePackage{float}
+\RequirePackage{mdframed}
+\RequirePackage{pifont}
+\RequirePackage[section]{placeins}
+
+%\RequirePackage[
+%  inner=2cm,
+%  textwidth=18cm,
+%]{geometry}
+\RequirePackage{geometry}
+
+\pagestyle{scrheadings}
+\setheadsepline{0.5pt}
+\setfootsepline{0.5pt}
+
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+
+\DeclareNewSectionCommand[
+  style=section,
+  counterwithin=subsubsection,
+  font=\normalsize,
+  afterskip=1.5ex plus .2ex,
+  beforeskip=-3.25ex plus -1ex minus -.2ex,
+  indent=0pt,
+  level=4,
+  tocstyle=subsection,
+  toclevel=4,
+  tocindent=7em,
+  tocnumwidth=4em
+]{subsubsubsection}
+\setcounter{secnumdepth}{\subsubsubsectionnumdepth}
+\setcounter{tocdepth}{\subsubsubsectiontocdepth}
+
+\let\Oldsection\section
+\renewcommand{\section}{\FloatBarrier\Oldsection}
+
+\let\Oldsubsection\subsection
+\renewcommand{\subsection}{\FloatBarrier\Oldsubsection}
+
+\let\Oldsubsubsection\subsubsection
+\renewcommand{\subsubsection}{\FloatBarrier\Oldsubsubsection}
+
+\let\Oldsubsubsubsection\subsubsubsection
+\renewcommand{\subsubsubsection}{\FloatBarrier\Oldsubsubsubsection}
+
+\RedeclareSectionCommand[
+  level=5,
+  counterwithin=subsubsubsection,
+  toclevel=5,
+  tocindent=12em,
+  tocnumwidth=6em
+]{paragraph}
+\RedeclareSectionCommand[
+  level=6,
+  toclevel=6,
+  tocindent=14em,
+  tocnumwidth=7em
+]{subparagraph}
+
+% \fig{ref}{descshort}{desclong}{width}{path}
+\newcommand*{\fig}[5]{
+  \begin{figure}[!ht]
+      \centering
+      \includegraphics[width=#4]{#5}
+      \caption[#2]{#3}
+      \label{fig:#1}
+  \end{figure}
+}
+
+% \tab{ref}{descshort}{desclong}{constructor}{content}
+\newcommand*{\tab}[5]{
+  \begin{table}[!ht]
+    \centering
+    \begin{tabular}{#4} 
+      #5
+    \end{tabular}
+    \caption[#2]{#3}
+    \label{tab:#1}
+  \end{table}
+}
+
+% \eq{ref}{equation}
+\newcommand*{\eq}[2]{
+  \begin{equation}
+    #2
+    \label{eq:#1}
+  \end{equation}
+}
+
+% \student{Name Name}{Teilbereich}{Klasse}{Betreuer}
+\newcommand*{\students}{}%
+\newcommand*{\studentslist}{}%
+\newcommand*{\studentslistsmall}{}%
+\newcommand*{\student}[4]{%
+  % Studentstable
+  \ifdefempty{\students}
+  {\appto\students{
+    \textsf{\textbf{#2}}\\%
+    \textsf{#1} & \textsf{#3} & \textsf{Betreuer/in:} & \textsf{#4}\\
+  }}
+  {\appto\students{\\
+    \textsf{\textbf{#2}}\\%
+    \textsf{#1} & \textsf{#3} & \textsf{Betreuer/in:} & \textsf{#4}\\
+  }}%
+  % Studentslist
+  \ifdefempty{\studentslist}%
+  {\appto\studentslist{%
+    \textsf{\LARGE \textbf{#1}}\\%
+    \makebox[\linewidth]{\rule{\textwidth}{0.4pt}}%
+    \par%
+    \vspace{2\parskip}%
+  }}%
+  {\appto\studentslist{%
+    \textsf{\LARGE \textbf{#1}}\\%
+    \makebox[\linewidth]{\rule{\textwidth}{0.4pt}}%
+    \par%
+    \vspace{2\parskip}%
+  }}%
+  % Studentslist Small
+  \ifdefempty{\studentslistsmall}%
+  {\appto\studentslistsmall{%
+    #1%
+  }}%
+  {\appto\studentslistsmall{%
+    , #1%
+  }}%
+}%
+
+\newcommand*{\htlheader}[1]{%
+  \begin{tabularx}{\textwidth}{| c | Y |}
+    \hline
+    \multirow{2}{*}{
+      \begin{minipage}{0.2\textwidth}
+        \vspace{1mm}
+        \includegraphics[width=\textwidth]{logos/htl-2}
+        \vspace{1mm}
+      \end{minipage}
+    } & \Large Blubber\\[2ex]
+    & Bla\\[1.5ex]
+    \hline
+  \end{tabularx}
+  % \centering%
+  % \fbox{%
+  %   \begin{minipage}{0.2\textwidth}%
+  %     \raggedright%
+  %     \includegraphics[width=\textwidth]{logos/htl-2}%
+	%   \end{minipage}%
+  %   \hfill\hspace{0.3cm}\vline\hfill%
+  %   \begin{minipage}{0.8\textwidth}%
+  %     \centering%
+  %     \begin{tabular}{c}
+  %       Foo\\
+  %       \hline
+  %       bar\\
+  %     \end{tabular}
+	%   \end{minipage}%
+  % }%
+}%
+
+% Listing extension for fancyref using the prefix "lst".
+\newcommand*{\fancyreflstlabelprefix}{lst}
+
+% Main format
+\frefformat{main}{\fancyreflstlabelprefix}{%
+\MakeUppercase{\freflstname}\fancyrefdefaultspacing#1#2%
+}%
+\Frefformat{main}{\fancyreflstlabelprefix}{%
+\MakeUppercase{\Freflstname}\fancyrefdefaultspacing#1#2%
+}%
+\Frefformat{main}{\fancyreflstlabelprefix}{Listing~#1}
+\frefformat{main}{\fancyreflstlabelprefix}{Listing~#1}
+
+% Vario format
+\frefformat{vario}{\fancyreflstlabelprefix}{%
+\MakeUppercase{\freflstname}\fancyrefdefaultspacing#1#2%
+}%
+\Frefformat{vario}{\fancyreflstlabelprefix}{%
+\MakeUppercase{\Freflstname}\fancyrefdefaultspacing#1#2%
+}%
+\Frefformat{vario}{\fancyreflstlabelprefix}{Listing~#1 auf Seite #2}
+\frefformat{vario}{\fancyreflstlabelprefix}{Listing~#1 auf Seite #2}
+
+% Warnings
+\newenvironment{warning}
+  {\FloatBarrier\par\begin{mdframed}[linewidth=2pt,linecolor=red]%
+    \begin{list}{}{\leftmargin=1cm
+                   \labelwidth=\leftmargin}\item[\Large\ding{43}]}
+  {\end{list}\end{mdframed}\par}
+
+\newcommand*{\termyear}[1]{\gdef\@termyear{#1}}%
+\newcommand*{\@termyear}{\texttt{\string\termyear} not set}%
+
+\newcommand*{\company}[1]{\gdef\@company{#1}}%
+\newcommand*{\@company}{}%
+
+\newcommand*{\keywords}[1]{\gdef\@keywords{#1}}%
+\newcommand*{\@keywords}{\texttt{\string\keywords} not set}%
+
+\newcommand*{\sthanks}[1]{\gdef\@sthanks{#1}}%
+\newcommand*{\@sthanks}{\texttt{\string\sthanks} not set}%
+
+\newcommand*{\aufgabenstellung}[1]{\gdef\@aufgabenstellung{#1}}%
+\newcommand*{\@aufgabenstellung}{\texttt{\string\aufgabenstellung} not set}%
+
+\newcommand*{\realisierung}[1]{\gdef\@realisierung{#1}}%
+\newcommand*{\@realisierung}{\texttt{\string\realisierung} not set}%
+
+\newcommand*{\ergebnisse}[1]{\gdef\@ergebnisse{#1}}%
+\newcommand*{\@ergebnisse}{\texttt{\string\ergebnisse} not set}%
+
+\newcommand*{\grafikname}[1]{\gdef\@grafikname{#1}}%
+\newcommand*{\@grafikname}{\texttt{\string\grafikname} not set}%
+
+\newcommand*{\grafikinhalt}[1]{\gdef\@grafikinhalt{#1}}%
+\newcommand*{\@grafikinhalt}{\texttt{\string\grafikinhalt} not set}%
+
+\newcommand*{\wettbewerbe}[1]{\gdef\@wettbewerbe{#1}}%
+\newcommand*{\@wettbewerbe}{\texttt{\string\wettbewerbe} not set}%
+
+\newcommand*{\tasks}[1]{\gdef\@tasks{#1}}%
+\newcommand*{\@tasks}{\texttt{\string\tasks} not set}%
+
+\newcommand*{\realisation}[1]{\gdef\@realisation{#1}}%
+\newcommand*{\@realisation}{\texttt{\string\realisation} not set}%
+
+\newcommand*{\results}[1]{\gdef\@results{#1}}%
+\newcommand*{\@results}{\texttt{\string\results} not set}%
+
+\newcommand*{\graphname}[1]{\gdef\@graphname{#1}}%
+\newcommand*{\@graphname}{\texttt{\string\graphname} not set}%
+
+\newcommand*{\graphcontent}[1]{\gdef\@graphcontent{#1}}%
+\newcommand*{\@graphcontent}{\texttt{\string\graphcontent} not set}%
+
+\newcommand*{\competitions}[1]{\gdef\@competitions{#1}}%
+\newcommand*{\@competitions}{\texttt{\string\competitions} not set}%
+
+\newcommand*{\class}[1]{\gdef\@class{#1}}%
+\newcommand*{\@class}{\texttt{\string\class} not set}%
+
+\newcommand*{\pageauthor}[1]{%
+  \cfoot{#1}%
+}%
+
+\newcommand*{\maketoc}{%
+  \cleardoublepage
+  \pagestyle{empty}
+  \centering
+  \textbf{\Huge \@title}
+  \raggedright
+  \cleardoublepage
+  \tableofcontents
+  \cleardoublepage
+  \pagestyle{scrheadings}
+  \ohead{\@title}
+  \ifoot{HTBL Hollabrunn}
+  \ofoot{Seite \thepage}
+}%
+
+\newcommand*{\makedadb}[2]{%
+  \newpage%
+  \pagestyle{empty}%
+  \includepdf[pages=-,scale=0.9,pagecommand={}]{#1}%
+  \includepdf[pages=-,scale=0.9,pagecommand={}]{#2}%
+}%
+
+\renewcommand*{\maketitle}{%
+\begin{titlepage}%
+  % Page 1
+  \newgeometry{left=1.5cm,top=1.5cm,right=1.5cm,bottom=1.5cm}%
+  \centering
+  \begin{minipage}{0.2\textwidth}%
+    \raggedright%
+    \includegraphics[width=\textwidth]{logos/htl-2}%
+	\end{minipage}%
+	\hfill%
+	\begin{minipage}{0.5\textwidth}%
+    \centering%
+	  \textsf{\huge\textbf{HTBL Hollabrunn}}%
+    \par%
+    \vspace{0.5cm}%
+    \textsf{\large Höhere Lehranstalt für Elektronik und Technische Informatik}%
+	\end{minipage}%
+	\hfill%
+	\begin{minipage}{0.2\textwidth}%
+    \raggedleft%
+	  \includegraphics[width=\textwidth]{logos/htl-1}%
+	\end{minipage}%
+  \par%
+  \makebox[\linewidth]{\rule{\textwidth}{0.4pt}}%
+  \par%
+  \vspace{3cm}%
+  \textsf{\Huge \textbf{DIPLOMARBEIT}}%
+  \par%
+  \textsf{Gesamtprojekt}%
+  \par%
+  \vspace{-0.3\parskip}%
+  \textsf{\LARGE \textbf{\@title}}%
+  \par%
+  \vspace{5\parskip}%
+  \raggedright%
+  \begin{tabular}{l l l l}%
+    \students%
+  \end{tabular}%
+  \par%
+  \vfill%
+  \textsf{Schuljahr \@termyear}%
+  \par%
+  \makebox[\linewidth]{\rule{\textwidth}{0.4pt}}%
+  \par%
+  \textsf{Abgabevermerk:}%
+  \par%
+  \textsf{Datum:}\hspace{0.4\textwidth}\textsf{Übernommen von:}%
+
+  % Page 2
+  \newpage%
+  \pagestyle{empty}%
+  \raggedleft%
+  \includegraphics[width=0.25\textwidth]{logos/htl-1}%
+  \par%
+  \centering%
+  \vspace{0.75\parskip}%
+  \textsf{\LARGE \textbf{Höhere Technische Bundeslehranstalt Hollabrunn}}%
+  \par%
+  \vspace{-0.75\parskip}%
+  \textsf{\large \textbf{Höhere Lehranstalt für Elektronik und Technische Informatik}}%
+  \par%
+  \raggedright%
+  \vspace{3\parskip}%
+  \textsf{\textbf{EIDESSTATTLICHE ERKLÄRUNG}}%
+  \par%
+  \textsf{\textbf{Ich erkläre an Eides statt, dass ich die vorliegende Abschlussarbeit selbständig und ohne fremde Hilfe verfasst, andere als die angegebenen Quellen und Hilfsmittel nicht benutzt und die den benutzten Quellen wörtlich und inhaltlich entnommenen Stellen als solche erkenntlich gemacht habe.}}%
+  \par%
+  \vspace{3\parskip}%
+  \studentslist%
+  \par%
+  \vfill%
+  \textsf{Hollabrunn, am 4. April 2018}%
+
+  % Page 3
+  \newpage%
+  \pagestyle{empty}%
+  \textsf{\large \textbf{HINWEISE}}%
+  \par%
+  \ifdefempty{\@company}{%
+    \textsf{Die vorliegende Diplomarbeit wurde für die Abteilung Elektronik und Technische Informatik der HTL Hollabrunn ausgeführt.}%
+  }{%
+    \textsf{Die vorliegende Diplomarbeit wurde in Zusammenarbeit mit der Firma \@company{} ausgeführt.}%
+  }%
+  \par%
+  \textsf{Die in dieser Diplomarbeit entwickelten Prototypen und Software-Produkte dürfen ganz oder auch in Teilen von Privatpersonen oder Firmen nur dann in Verkehr gebracht werden, wenn sie diese selbst geprüft und für den vorgesehenen Verwendungszweck für geeignet befunden haben. Es wird keinerlei Haftung übernommen für irgendwelche Schäden, die aus der Nutzung der hier entwickelten oder beschriebenen Bestandteile des Projekts resultieren.}%
+  \par%
+  \textsf{Für alle Entwicklungen gilt die GNU General Public License [\url{http://www.gnu.org/licenses/gpl.html}] der Free Software Foundation, Boston, USA in der Version 3.}%
+  \par%
+  \textsf{Die Diplomarbeit erfüllt die \enquote{Standards für Ingenieur- und Technikerprojekte} entsprechend dem Rundschreiben Nr. 60 aus 1999 des BMBWK (GZ.17.600/101-II/2b/99). [\url{https://www.bmb.gv.at/ministerium/rs/1999_60.html}]}%
+  \par%
+  \vfill%
+  \textsf{\large \textbf{SCHLÜSSELBEGRIFFE}}%
+  \par%
+  \textsf{\@keywords}%
+  \par%
+  \vfill%
+  \textsf{\large \textbf{DANKSAGUNGEN}}%
+  \par%
+  \textsf{\@sthanks}%
+  \vfill%
+
+  % Page 4
+  \newpage%
+  \pagestyle{empty}%
+  \htlheader{german}%
+  \centering%
+  \par%
+  \textsf{\huge \textbf{DIPLOMARBEIT}}%
+  \par%
+  \vspace{-0.7\parskip}%
+  \textsf{\large \textbf{Dokumentation}}%
+  \par%
+  \vfill%
+  \begin{tabularx}{\textwidth}{| p{5cm} | X |}%
+  \hline%
+  \begin{minipage}[c][1.5cm]{5cm}%
+    \textsf{Name der Verfasser/innen}%
+  \end{minipage}%
+  &%
+  \begin{minipage}[c][1.5cm]{\textwidth - 5.8cm}%
+    \textsf{\studentslistsmall}%
+  \end{minipage}\\%
+  \hline%
+  \begin{minipage}[c][1.5cm]{5cm}%
+    \textsf{Jahrgang\\Schuljahr}%
+  \end{minipage}%
+  &%
+  \begin{minipage}[c][1.5cm]{\textwidth - 5.8cm}%
+    \textsf{\@class{} \@termyear{}}%
+  \end{minipage}\\%
+  \hline%
+  \begin{minipage}[c][1.5cm]{5cm}%
+    \textsf{Thema der Diplomarbeit}%
+  \end{minipage}%
+  &%
+  \begin{minipage}[c][1.5cm]{\textwidth - 5.8cm}%
+    \textsf{\@title{}}%
+  \end{minipage}\\%
+  \hline%
+  \begin{minipage}[c][1.5cm]{5cm}%
+    \textsf{Kooperationspartner}%
+  \end{minipage}%
+  &%
+  \begin{minipage}[c][1.5cm]{\textwidth - 5.8cm}%
+    \textsf{\@company{}}%
+  \end{minipage}\\%
+  \hline%
+  \end{tabularx}%
+  \vfill%
+  \begin{tabularx}{\textwidth}{| p{5cm} | X |}%
+  \hline%
+  \begin{minipage}[c][4.5cm]{5cm}%
+    \textsf{Aufgabenstellung}%
+  \end{minipage}%
+  &%
+  \begin{minipage}[c][4.5cm]{\textwidth - 5.8cm}%
+    \textsf{\@aufgabenstellung{}}%
+  \end{minipage}\\%
+  \hline%
+  \end{tabularx}%
+  \vfill%
+  \begin{tabularx}{\textwidth}{| p{5cm} | X |}%
+  \hline%
+  \begin{minipage}[c][4.5cm]{5cm}%
+    \textsf{Realisierung}%
+  \end{minipage}%
+  &%
+  \begin{minipage}[c][4.5cm]{\textwidth - 5.8cm}%
+    \textsf{\@realisierung{}}%
+  \end{minipage}\\%
+  \hline%
+  \end{tabularx}%
+  \vfill%
+  \begin{tabularx}{\textwidth}{| p{5cm} | X |}%
+  \hline%
+  \begin{minipage}[c][4.5cm]{5cm}%
+    \textsf{Ergebnisse}%
+  \end{minipage}%
+  &%
+  \begin{minipage}[c][4.5cm]{\textwidth - 5.8cm}%
+    \textsf{\@ergebnisse{}}%
+  \end{minipage}\\%
+  \hline%
+  \end{tabularx}%
+  \vfill%
+
+  % Page 5
+  \newpage%
+  \pagestyle{empty}%
+  \htlheader{german}%
+  \centering%
+  \par%
+  \vfill%
+  \begin{tabularx}{\textwidth}{| p{5cm} | X |}%
+  \hline%
+  \begin{minipage}[c][15cm]{5cm}%
+    \textsf{\@grafikname{}}%
+  \end{minipage}%
+  &%
+  \begin{minipage}[c][15cm]{\textwidth - 5.8cm}%
+    \textsf{\@grafikinhalt{}}%
+  \end{minipage}\\%
+  \hline%
+  \end{tabularx}%
+  \vfill%
+  \begin{tabularx}{\textwidth}{| p{5cm} | X |}%
+  \hline%
+  \begin{minipage}[c][3cm]{5cm}%
+    \textsf{Teilnahme an Wettbewerben, Auszeichnungen}%
+  \end{minipage}%
+  &%
+  \begin{minipage}[c][3cm]{\textwidth - 5.8cm}%
+    \textsf{\@wettbewerbe{}}%
+  \end{minipage}\\%
+  \hline%
+  \end{tabularx}%
+  \vfill%
+  \begin{tabularx}{\textwidth}{| p{5cm} | X | X |}%
+    \hline%
+    \begin{minipage}[c][2cm]{5cm}%
+      \textsf{Möglichkeiten der Einsichtnahme in die Arbeit}%
+    \end{minipage}%
+    &%
+    \multicolumn{2}{X|}{%
+      \begin{minipage}[c][2cm]{\textwidth - 5.8cm}%
+        \textsf{HTL Hollabrunn\\Anton Ehrenfriedstraße 10\\2020 Hollabrunn}%
+      \end{minipage}%
+    }\\%
+    \hline%
+    \begin{minipage}[t][3cm]{5cm}%
+      \textsf{Aprobation\\(Datum/Unterschrift)}%
+    \end{minipage}%
+    &%
+    \begin{minipage}[t][3cm]{5cm}%
+      \textsf{\scriptsize Prüfer/Prüferin}%
+    \end{minipage}%
+    &%
+    \begin{minipage}[t][3cm]{5cm}%
+      \textsf{\scriptsize Direktor/Direktorin\\Abteilungsvorstand/Abteilungsvorständin}%
+    \end{minipage}\\%
+    \hline%
+  \end{tabularx}%
+  \vfill%
+
+  % Page 6
+  \newpage%
+  \pagestyle{empty}%
+  \htlheader{english}%
+  \centering%
+  \par%
+  \textsf{\huge \textbf{DIPLOMA THESIS}}%
+  \par%
+  \vspace{-0.7\parskip}%
+  \textsf{\large \textbf{Documentation}}%
+  \par%
+  \vfill%
+  \begin{tabularx}{\textwidth}{| p{5cm} | X |}%
+  \hline%
+  \begin{minipage}[c][1.5cm]{5cm}%
+    \textsf{Author(s)}%
+  \end{minipage}%
+  &%
+  \begin{minipage}[c][1.5cm]{\textwidth - 5.8cm}%
+    \textsf{\studentslistsmall}%
+  \end{minipage}\\%
+  \hline%
+  \begin{minipage}[c][1.5cm]{5cm}%
+    \textsf{Form\\Academic year}%
+  \end{minipage}%
+  &%
+  \begin{minipage}[c][1.5cm]{\textwidth - 5.8cm}%
+    \textsf{\@class{} \@termyear{}}%
+  \end{minipage}\\%
+  \hline%
+  \begin{minipage}[c][1.5cm]{5cm}%
+    \textsf{Topic}%
+  \end{minipage}%
+  &%
+  \begin{minipage}[c][1.5cm]{\textwidth - 5.8cm}%
+    \textsf{\@title{}}%
+  \end{minipage}\\%
+  \hline%
+  \begin{minipage}[c][1.5cm]{5cm}%
+    \textsf{Co-operation partners}%
+  \end{minipage}%
+  &%
+  \begin{minipage}[c][1.5cm]{\textwidth - 5.8cm}%
+    \textsf{\@company{}}%
+  \end{minipage}\\%
+  \hline%
+  \end{tabularx}%
+  \vfill%
+  \begin{tabularx}{\textwidth}{| p{5cm} | X |}%
+  \hline%
+  \begin{minipage}[c][4.5cm]{5cm}%
+    \textsf{Asignment of tasks}%
+  \end{minipage}%
+  &%
+  \begin{minipage}[c][4.5cm]{\textwidth - 5.8cm}%
+    \textsf{\@tasks{}}%
+  \end{minipage}\\%
+  \hline%
+  \end{tabularx}%
+  \vfill%
+  \begin{tabularx}{\textwidth}{| p{5cm} | X |}%
+  \hline%
+  \begin{minipage}[c][4.5cm]{5cm}%
+    \textsf{Realisation}%
+  \end{minipage}%
+  &%
+  \begin{minipage}[c][4.5cm]{\textwidth - 5.8cm}%
+    \textsf{\@realisation{}}%
+  \end{minipage}\\%
+  \hline%
+  \end{tabularx}%
+  \vfill%
+  \begin{tabularx}{\textwidth}{| p{5cm} | X |}%
+  \hline%
+  \begin{minipage}[c][4.5cm]{5cm}%
+    \textsf{Results}%
+  \end{minipage}%
+  &%
+  \begin{minipage}[c][4.5cm]{\textwidth - 5.8cm}%
+    \textsf{\@results{}}%
+  \end{minipage}\\%
+  \hline%
+  \end{tabularx}%
+  \vfill%
+
+  % Page 6
+  \newpage%
+  \pagestyle{empty}%
+  \htlheader{english}%
+  \centering%
+  \par%
+  \vfill%
+  \begin{tabularx}{\textwidth}{| p{5cm} | X |}%
+  \hline%
+  \begin{minipage}[c][15cm]{5cm}%
+    \textsf{\@graphname{}}%
+  \end{minipage}%
+  &%
+  \begin{minipage}[c][15cm]{\textwidth - 5.8cm}%
+    \textsf{\@graphcontent{}}%
+  \end{minipage}\\%
+  \hline%
+  \end{tabularx}%
+  \vfill%
+  \begin{tabularx}{\textwidth}{| p{5cm} | X |}%
+  \hline%
+  \begin{minipage}[c][3cm]{5cm}%
+    \textsf{Participation in competitions, Awards}%
+  \end{minipage}%
+  &%
+  \begin{minipage}[c][3cm]{\textwidth - 5.8cm}%
+    \textsf{\@competitions}%
+  \end{minipage}\\%
+  \hline%
+  \end{tabularx}%
+  \vfill%
+  \begin{tabularx}{\textwidth}{| p{5cm} | X | X |}%
+    \hline%
+    \begin{minipage}[c][2cm]{5cm}%
+      \textsf{Accessibility of final project thesis}%
+    \end{minipage}%
+    &%
+    \multicolumn{2}{X|}{%
+      \begin{minipage}[c][2cm]{\textwidth - 5.8cm}%
+        \textsf{HTL Hollabrunn\\Anton Ehrenfriedstraße 10\\2020 Hollabrunn}%
+      \end{minipage}%
+    }\\%
+    \hline%
+    \begin{minipage}[t][3cm]{5cm}%
+      \textsf{Approval\\(Date/Signature)}%
+    \end{minipage}%
+    &%
+    \begin{minipage}[t][3cm]{5cm}%
+      \textsf{\scriptsize Examiner/s}%
+    \end{minipage}%
+    &%
+    \begin{minipage}[t][3cm]{5cm}%
+      \textsf{\scriptsize Head of Department/College}%
+    \end{minipage}\\%
+    \hline%
+  \end{tabularx}%
+  \vfill%
+  \restoregeometry%
+\end{titlepage}%
+}%
+
+\endinput

@@ -1,0 +1,98 @@
+%% Vorlage HTBL Hollabrunn Diplomarbeit
+%% KOMA Script
+\documentclass[12pt,ngerman,a4paper,parskip,twoside,listof=totoc]{scrartcl}
+
+\usepackage{hhline}     % Tutorial Table border
+\usepackage{listings}   % Code Listings
+\usepackage{lstlangarm} % ARM ASM
+
+\lstset{
+    language=C,
+    basicstyle=\ttfamily,
+    keywordstyle=\color{blue}\ttfamily,
+    stringstyle=\color{red}\ttfamily,
+    commentstyle=\color{green}\ttfamily,
+    morecomment=[l][\color{magenta}]{\#},
+    basicstyle=\footnotesize,
+    numbers=left,
+    stepnumber=1,
+    showstringspaces=false,
+    tabsize=1,
+    breaklines=true,
+    breakatwhitespace=false,
+}
+
+\lstset{
+    language=[ARM]Assembler,
+    basicstyle=\ttfamily,
+    keywordstyle=\color{blue}\ttfamily,
+    stringstyle=\color{red}\ttfamily,
+    commentstyle=\color{green}\ttfamily,
+    morecomment=[l][\color{magenta}]{\#},
+    basicstyle=\footnotesize,
+    numbers=left,
+    stepnumber=1,
+    showstringspaces=false,
+    tabsize=1,
+    breaklines=true,
+    breakatwhitespace=false,
+}
+
+\usepackage{hyperref}
+\usepackage[ngerman]{babel}
+\usepackage[german]{fancyref}
+
+\usepackage{htlDT}    % HTBL Diplomarbeitsstyle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% General Settings, like Title, Students and supporters
+\title{Advanced Microcontroller Training System}
+\student{Andreas Mieke}{Software ARM Cortex-M3 Minimalsystem}{5BHEL}{Dipl.-Ing. Josef Reisinger}
+\student{Andreas Reischl}{Z80 Minimalsystem}{5AHEL}{Dipl.-Ing. Josef Reisinger}
+\student{Kevin Schuh}{Hardware ARM Cortex-M3 Minimalsystem}{5BHEL}{Dipl.-Ing. Josef Reisinger}
+\termyear{2017/18}
+\class{5xHEL}
+\keywords{ARM\\Cortex\\Training System\\Digital Education}
+\sthanks{Besonderer Dank geht an verschiedene Leute!}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Bibliography
+\usepackage[backend=bibtex, style=ieee, citestyle=ieee, hyperref=true]{biblatex}
+\makeatletter
+\def\blx@maxline{77}
+\makeatother
+
+\usepackage{xpatch}
+\makeatletter 
+\xpatchcmd\blx@head@bibliography{\markboth}{\@mkboth}{}{\undefined} 
+\makeatother
+
+\addbibresource{literatur.bib}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Gloassaries
+\usepackage[nomain,acronym,toc,section]{glossaries}
+\makeglossaries
+\makeindex
+
+\input{glossary}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Begin Document
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Titlepage, DA database and TOC
+\maketitle{}
+\makedadb{pdfs/DADB}{pdfs/DADBErklärung}
+\maketoc
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% First real page
+\input{Allgemein/Allgemein}
+
+\input{Mieke/Mieke}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Appendix
+\cleardoublepage
+\appendix
+\printbibliography[heading=bibintoc,title={Literaturverzeichnis}]
+\listoffigures
+\listoftables
+\printglossary[title=Begriffsverzeichnis,toctitle=Begriffsverzeichnis]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% End Document
+\end{document}

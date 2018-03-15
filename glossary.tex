@@ -1,0 +1,55 @@
+\usepackage{xparse}
+\DeclareDocumentCommand{\newdualentry}{ O{} O{} m m m m } {
+  \newglossaryentry{gls-#3}{name={#5},text={#5\glsadd{#3}},
+    description={#6},#1
+  }
+  \makeglossaries
+  \newacronym[see={[Siehe:]{gls-#3}},#2]{#3}{#4}{#5\glsadd{gls-#3}}
+}
+% Usage: \newdualentry{ref}{short}{long}{description}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Acronyms
+\newdualentry{IDE}{IDE}{integrierte Entwicklungsumgebung}{ist Deutsch für \enquote{Integrated Development Environment} und beschreibt eine Sammlung von Programmen (Editor, Compiler, Linker, Loader, Debugger), welche zum programmieren verwendet wird \cite{wiki:IDE}}
+
+\newdualentry{ARM}{ARM}{ARM Limited}{früher: Advanced RISC Machines Ltd. ist ein zur japanischen Firma Softbank gehörender Hersteller von IP (Intellectual property) Software im Bereich Mikroprozessoren. Die gleichnamige Mikroprozessorarchitektur, ARM, ist zur Zeit weltweit am weitesten verbreitet \cite{wiki:ARM} \cite{techradar:ARM}}
+
+\newdualentry{CMSIS}{CMSIS}{Cortex Microcontroller Software Interface Standard}{ist ein von \gls{ARM} erstellter Standard, welcher das Verwenden von Software zwischen verschiedenen Cortex-Prozessoren verschiedener Chip-Hersteller ohne große Anpassungen ermöglichen soll. Hierfür stellt \gls{ARM} einige Definitionen -- wie zum Beispiel CORE, RTOS, DSP, \dots{} -- zur Verfügung, welche von den Chip-Herstellern implementiert werden, diese stellen dann CMSIS-Packs zur Verfügung, welche in Softwareprojekte eingebunden werden können. Siehe: \cite{arm:CMSIS}}
+
+\newdualentry{SWD}{SWD}{Single Wire Debug}{ist ein Subset von \gls{JTAG}, welches mit weniger Portleitungen auskommt}
+
+\newdualentry{JTAG}{JTAG}{Joint Test Action Group}{ist ein Synonym für den IEEE Standard 1149.1, welcher eine Methodik zum \gls{Debugging} von Hardware auf Leiterplatten beschreibt. Siehe: \cite{ieee:1149-1}}
+
+\newdualentry{STDLib}{STDLib}{HTL Standard Library}{ist eine Library für den Cortex-M3, welche HTL-spezifische Funktionen, vor allem im Bereich I/O enthält}
+
+\newdualentry{Keil}{Keil}{Keil Elektronik GmbH}{war eine deutsche Firma (Anfangs: GbR), gegründet 1982 von Günther und Reinhard Keil. Das Hauptaufgabengebiet lag bei der Entwicklung von Evaluation Boards und der $\mu$Vision \gls{IDE}. Keil wurde 2005 von \gls{ARM} aufgekauft. Siehe: \cite{wiki:Keil} \cite{techdesignforums:ARM}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Glossary
+\newglossaryentry{Debugging}{
+  name={Debugging},
+  description={oder \enquote{Debuggen} beschreibt das finden und entfernen von Bugs (engl. für Käfer, hier: Programmfehler) mit Hilfe eines Debuggers. Siehe: \cite{wiki:Debugger}}
+}
+
+\newglossaryentry{Minimalsystem}{
+  name={Minimalsystem},
+  description={beschreibt das im Unterricht üblicherweise verwendete -- aber auch erweiterbare -- Microcontroller System}
+}
+
+\newglossaryentry{Core-Modul}{
+  name={Core-Modul},
+  description={ist die Baugruppe, auf welcher der Cortex-M3 Prozessor sitzt und Teil des neuen \gls{Minimalsystem}s}
+}
+
+\newglossaryentry{Basisplatine}{
+  name={Basisplatine},
+  description={ist die Baugruppe, auf welche das \gls{Core-Modul} gesteckt wird. Sie bietet Schalter, LEDs, Sensoren und ein Arduino Shield Interface. Zusammen mit dem \gls{Core-Modul} komplettiert sie das \gls{Minimalsystem}}
+}
+
+\newglossaryentry{C}{
+  name={C},
+  description={ist eine Programmiersprache, welche sowohl zur System- als auch zur Anwendungsprogrammierung eingesetzt wird. C ist eine der am weitesten verbreiteten Programmiersprachen weltweit und wurde in den 1970er-Jahren von Dennis Ritchie erfunden. Siehe: \cite{wiki:C}}
+}
+
+\newglossaryentry{C++}{
+  name={C++},
+  description={ist eine objektorientierte Erweiterung zu \gls{C}. C++ wurde 1979 von Bjarne Stroustrup entwickelt. Siehe: \cite{wiki:C++}}
+}
