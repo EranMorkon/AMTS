@@ -27,6 +27,14 @@
 
 \newdualentry{MMI}{MMI}{Mensch-Maschine-Interface}{ist ein Interface (z.B.: Display, Tastatur) um die Kommunikation von einem Menschen mit einer Maschine zu ermöglichen}
 
+\newdualentry{DSV}{DSV}{Digitale Signalverarbeitung}{ist eine Methodik um ursprünglich analoge Bauelemente wie Filter oder Oszillatoren digital zu realisieren}
+
+\newdualentry{GUI}{GUI}{Graphical User Interface}{englisch für \enquote{grafische Benutzeroberfläche}. Teil des \gls{MMI}}
+
+\newdualentry{STM}{STM}{STMicroelectronics N.V.}{ist ein europäischer Halbleiterhersteller mit Sitz in den Niederlanden. Siehe: \cite{wiki:STM}}
+
+\newdualentry{RTC}{RTC}{Real Time Clock}{zu deutsch: Echtzeituhr, ist eine Uhr, welche durch die hohe Präzision dafür ausgelegt ist Zeitnahmeaufgaben zu erledigen\todo{Stimmt das so??}}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Glossary
 \newglossaryentry{Debugging}{
   name={Debugging},
@@ -48,6 +56,11 @@
   description={ist die Baugruppe, auf welche das \gls{Core-Modul} gesteckt wird. Sie bietet Schalter, LEDs, Sensoren und ein Arduino Shield Interface. Zusammen mit dem \gls{Core-Modul} komplettiert sie das \gls{Minimalsystem}}
 }
 
+\newglossaryentry{USB-to-UART}{
+  name={USB-to-UART},
+  description={ist die Baugruppe, welche ein UART Gerät über USB emuliert. Es verwendet hierfür einen FTDI-Chip und ist Teil des neuen \gls{Minimalsystem}s}
+}
+
 \newglossaryentry{C}{
   name={C},
   description={ist eine Programmiersprache, welche sowohl zur System- als auch zur Anwendungsprogrammierung eingesetzt wird. C ist eine der am weitesten verbreiteten Programmiersprachen weltweit und wurde in den 1970er-Jahren von Dennis Ritchie erfunden. Siehe: \cite{wiki:C}}
@@ -66,4 +79,9 @@
 \newglossaryentry{Semantic Versioning}{
   name={Semantic Versioning},
   description={beschreibt eine Art der Versionierung von Software, welche aus 3 einzelnen Versionsnummern im Format A.B.C besteht, C steht hierbei für Patches (Bugfixes, keine neue Funktionalität), B für Minor Versions (neue Funktionalität, aber weiterhin kompatibel zur Vorgängerversion) und A, was Major Versions (inkompatibel zu älteren Versionen) darstellt}
+}
+
+\newglossaryentry{cpu}{
+  name={STM32F107RCT(6)},
+  description={ist der in dieser Diplomarbeit verwendete Microcontroller}
 }

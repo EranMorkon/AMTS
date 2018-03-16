@@ -30,6 +30,8 @@
 \RequirePackage{pifont}
 \RequirePackage[section]{placeins}
 \RequirePackage[edges]{forest}
+\RequirePackage{subfig}
+\RequirePackage{SIunits}
 
 %\RequirePackage[
 %  inner=2cm,
@@ -108,7 +110,7 @@
 
 % \figraw{ref}{descshort}{desclong}{content}
 \newcommand*{\figraw}[4]{
-  \begin{figure}[!ht]
+  \begin{figure}[htb]
       \centering
       #4
       \caption[#2]{#3}
@@ -119,7 +121,7 @@
 
 % \fig{ref}{descshort}{desclong}{width}{path}
 \newcommand*{\fig}[5]{
-  \begin{figure}[!ht]
+  \begin{figure}[htb]
       \centering
       \includegraphics[width=#4]{#5}
       \caption[#2]{#3}
@@ -127,9 +129,19 @@
   \end{figure}
 }
 
+% \tabpdf{ref}{descshort}{desclong}{width}{path}
+\newcommand*{\tabpdf}[5]{
+  \begin{table}[htb]
+      \centering
+      \includegraphics[width=#4]{#5}
+      \caption[#2]{#3}
+      \label{tab:#1}
+  \end{table}
+}
+
 % \tab{ref}{descshort}{desclong}{constructor}{content}
 \newcommand*{\tab}[5]{
-  \begin{table}[!ht]
+  \begin{table}[htb]
     \centering
     \begin{tabular}{#4} 
       #5

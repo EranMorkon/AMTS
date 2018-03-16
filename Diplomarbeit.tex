@@ -1,6 +1,6 @@
 %% Vorlage HTBL Hollabrunn Diplomarbeit
 %% KOMA Script
-\documentclass[12pt,ngerman,a4paper,parskip,twoside,listof=totoc,tikz,border=5mm]{scrartcl}
+\documentclass[12pt,ngerman,a4paper,parskip,twoside,listof=totoc,tikz]{scrartcl}
 
 \usepackage{hhline}     % Tutorial Table border
 \usepackage{listings}   % Code Listings
@@ -60,6 +60,8 @@
 
 \usepackage{htlDT}    % HTBL Diplomarbeitsstyle
 
+\usepackage{todonotes}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% General Settings, like Title, Students and supporters
 \title{Advanced Microcontroller Training System}
 \student{Andreas Mieke}{Software ARM Cortex-M3 Minimalsystem}{5BHEL}{Dipl.-Ing. Josef Reisinger}
@@ -67,7 +69,7 @@
 \student{Kevin Schuh}{Hardware ARM Cortex-M3 Minimalsystem}{5BHEL}{Dipl.-Ing. Josef Reisinger}
 \termyear{2017/18}
 \class{5xHEL}
-\keywords{ST-Link V2\\ULINK/ME\\Cortex-M3\\STM32F107RBT6\\Nextion NX4832T035\_011\\JTAG\\SPI\\UART\\I$^2$C\\\gls{Core-Modul}\\\gls{Basisplatine}\\USB to UART\\Altium\\$\mu$Vision 5\\ARM}
+\keywords{ST-Link V2\\ULINK/ME\\Cortex-M3\\\gls{cpu}\\Nextion NX4832T035\_011\\JTAG\\SPI\\UART\\I$^2$C\\\gls{Core-Modul}\\\gls{Basisplatine}\\\gls{USB-to-UART}\\Altium\\$\mu$Vision 5\\ARM}
 \sthanks{
     Im Vorhinein möchten wir uns herzlichst bei unserem Diplomarbeitsbetreuer Herrn Dipl.-Ing. Josef Reisinger bedanken, der uns stets kompetent beraten hat und uns sein Wissen zur Verfügung stellte.
 
@@ -124,21 +126,25 @@
 \begin{document}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Titlepage, DA database and TOC
 \maketitle{}
-\makedadb{pdfs/DADB}{pdfs/DADBErklärung}
+\makedadb{pdfs/DADB}{pdfs/DADBErklarung}
 \maketoc
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% First real page
 \input{Allgemein/Allgemein}
+\input{Schuh/Core-Modul}
+\input{Schuh/Basisplatine}
 
-%\input{Mieke/Mieke}
+\input{Mieke/Mieke}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Appendix
 \cleardoublepage
+\pageauthor{Mieke}
 \appendix
 \printbibliography[heading=bibintoc,title={Literaturverzeichnis}]
 \listoffigures
 \listoftables
 \printglossary[title=Begriffsverzeichnis,toctitle=Begriffsverzeichnis]
+\listoftodos[To-Dos]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% End Document
 \end{document}
