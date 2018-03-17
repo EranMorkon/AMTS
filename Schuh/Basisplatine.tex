@@ -3,7 +3,7 @@
 
 \todo[inline]{Bild einfügen}
 
-\subsection{Allgemeines zur Basisplatine}
+\subsection{Allgemeines}
 \label{sec:basisplatine-allgemeines}
 Die \gls{Basisplatine} dient dazu dem \gls{Core-Modul} eine umfangreiche, moderne und jederzeit erneuerbare Peripherie bereit zu stellen, um verschiedene Anwendungskonzepte schnell und einfach evaluieren zu können. Darüber hinaus soll mit Hilfe der \gls{Basisplatine} eine Versorgung und Programmierung des \gls{Core-Modul}s möglich sein. Durch Verwendung des Arduino-Shield-Konnektors können alle am Markt verfügbaren Arduino-Shields verwendet werden, daher kann man jederzeit Hardwarekomponenten tauschen oder selbst entwickeln.
 
@@ -174,7 +174,7 @@ Auf der \gls{Basisplatine} wurde ein aus zwölf RGB-LEDs bestehender Ring aufgeb
 \fig{basisplatine-ledring-timing}{RGB-LED Ring Timing Diagram}{RGB-LED Ring Timing Diagram}{\textwidth}{Schuh/Pictures/Basis-ledring-timing}
 
 \subsubsection{Sensor-Selektion}
-Da der verbaute Prozessor zu wenig Portleitungen besitzt um alle Sensoren und Module mit einer eigenen Portleitung zu versorgen, werden einige Portleitungen mehrmals verwendet. Um nun einzelne Module oder Sensoren verwenden zu können, müssen diese einsprechend gejumpert werden. Eine dieser Stiftleisten ist der Header (\fref{fig:basisplatine-ssel}, X9), welches es ermöglicht zwischen einem Potentiometer (ADC), Piezo-Summer, einem LFU, einem Infrarotempfänger, einem Temperaturfühler und einem NE555 auszuwählen.
+Da der verbaute Prozessor zu wenig Portleitungen besitzt um alle Sensoren und Module mit einer eigenen Portleitung zu versorgen, werden einige Portleitungen mehrmals verwendet. Um nun einzelne Module oder Sensoren verwenden zu können, müssen diese einsprechend gejumpert werden. Eine dieser Stiftleisten ist der Header (\fref{fig:basisplatine-ssel}, X9), welches es ermöglicht zwischen einem Potentiometer (\gls{ADC}), Piezo-Summer, einem LFU, einem Infrarotempfänger, einem Temperaturfühler und einem NE555 auszuwählen.
 
 Eine weitere dieser Stiftleisten ist der Header (\fref{fig:basisplatine-ssel2}, X11), welche es ermöglicht zwischen dem Beschleunigungssensor und dem EEPROM auszuwählen.
 
@@ -187,7 +187,7 @@ Auf der \gls{Basisplatine} wurde ein Piezo-Summer (\fref{fig:basisplatine-piezo}
 \fig{basisplatine-piezo}{Piezo-Summer der Basisplatine}{Piezo-Summer der \gls{Basisplatine}}{0.5\textwidth}{Schuh/Pictures/Basis-piezo}
 
 \subsubsection{Potentiometer}
-Es wurden zwei Potentiometer R9 und R4 hardwaremäßig auf der \gls{Basisplatine} vorgesehen. Diese sind direkt mit einem ADC-Eingang des Prozessors verbunden. Der Unterschied zwischen den Potentiometern R9 und R4 besteht darin, dass das Potentiometer R4 über einen Jumper auf der Stiftleiste (\fref{fig:basisplatine-poti2}, X40) aktiviert werden muss und dieses an einem anderen Port-Pin angeschlossen ist. Dieser Aufbau wurde deswegen gewählt da damit, damit an den ADC-Eingang auch optional ein anderes Signal angelegt werden kann. 
+Es wurden zwei Potentiometer R9 und R4 hardwaremäßig auf der \gls{Basisplatine} vorgesehen. Diese sind direkt mit einem \gls{ADC}-Eingang des Prozessors verbunden. Der Unterschied zwischen den Potentiometern R9 und R4 besteht darin, dass das Potentiometer R4 über einen Jumper auf der Stiftleiste (\fref{fig:basisplatine-poti2}, X40) aktiviert werden muss und dieses an einem anderen Port-Pin angeschlossen ist. Dieser Aufbau wurde deswegen gewählt da damit, damit an den \gls{ADC}-Eingang auch optional ein anderes Signal angelegt werden kann. 
 
 \fig{basisplatine-poti1}{Potentiometer 1 der Basisplatine}{Potentiometer 1 der \gls{Basisplatine}}{0.5\textwidth}{Schuh/Pictures/Basis-poti1}
 \fig{basisplatine-poti2}{Potentiometer 2 der Basisplatine}{Potentiometer 2 der \gls{Basisplatine}}{0.5\textwidth}{Schuh/Pictures/Basis-poti2}

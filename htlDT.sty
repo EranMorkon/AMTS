@@ -32,6 +32,7 @@
 \RequirePackage[edges]{forest}
 \RequirePackage{subfig}
 \RequirePackage{SIunits}
+\RequirePackage{longtable}
 
 %\RequirePackage[
 %  inner=2cm,
@@ -137,6 +138,18 @@
       \caption[#2]{#3}
       \label{tab:#1}
   \end{table}
+}
+
+% \ltab{ref}{descshort}{desclong}{constructor}{content}
+\newcommand*{\ltab}[5]{
+  {
+    \centering
+    \begin{longtable}[htb]{#4} 
+      #5
+      \caption[#2]{#3}
+      \label{tab:#1}
+    \end{longtable}
+  }
 }
 
 % \tab{ref}{descshort}{desclong}{constructor}{content}

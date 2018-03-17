@@ -57,6 +57,7 @@
 \usepackage{hyperref}
 \usepackage[ngerman]{babel}
 \usepackage[german]{fancyref}
+\usepackage{subfig}         % Subfigures
 
 \usepackage{htlDT}    % HTBL Diplomarbeitsstyle
 
@@ -124,6 +125,8 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Begin Document
 \begin{document}
+\newcommand*{\IIC}{I$^2$C}
+\newcommand*{\IIS}{I$^2$S}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Titlepage, DA database and TOC
 \maketitle{}
 \makedadb{pdfs/DADB}{pdfs/DADBErklarung}
@@ -133,6 +136,9 @@
 \input{Allgemein/Allgemein}
 \input{Schuh/Core-Modul}
 \input{Schuh/Basisplatine}
+\input{Schuh/USB-to-UART}
+\input{Schuh/Audio}
+\input{Schuh/Kosten}
 
 \input{Mieke/Mieke}
 

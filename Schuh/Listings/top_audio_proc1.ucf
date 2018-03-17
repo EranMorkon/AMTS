@@ -1,0 +1,9 @@
+NET "d_from_codec" LOC = "B2"; # Bank = 1, Signal name = JA1
+NET "BCLK" LOC = "A3"  ; # Bank = 1, Signal name = JA2 
+NET "lrc_from_codec" LOC = "J3" ; # Bank = 1, Signal name = JA3
+NET "d_to_codec" LOC = "B5" | DRIVE = 2 ; # Bank = 1, Signal name = JA4
+
+NET "PIO<76>" LOC = "C6"  | DRIVE = 2  | PULLUP ; # Bank = 1, Signal name = JB1
+NET "SCL" LOC = "B6"  | DRIVE = 2 ;# | PULLUP ; # Bank = 1, Signal name = JB2
+NET "SDA" LOC = "C5"  | DRIVE = 2 ; # Bank = 1, Signal name = JB3
+NET "lrc_to_codec" LOC = "B7"  | DRIVE = 2  ; # Bank = 1, Signal name = JB4

@@ -1,0 +1,90 @@
+\section{USB-to-UART}
+\label{sec:usbtouart}
+
+\todo[inline]{Bild einfügen}
+
+\subsection{Allgemeines}
+\label{sec:usbtouart-allgemeines}
+Der \gls{USB-to-UART}-Adapter soll dazu dienen einen bidirektionalen Datentransfer mit eine UART-Schnittstelle des \gls{Core-Modul}s oder der \gls{Basisplatine} zu ermöglichen, um diese Daten anschließend weiter zu verarbeiten zu können. Darüber hinaus soll dieses Modul eine einfache Programmierung und Kommunikation mit einem NEXTION-Display ermöglichen. Die Kommunikation zwischen den beiden Endgeräten wird durch den FTDI-Chip FT232RL ermöglicht. Dieser Chip ermöglicht eine Emulation einer seriellen Schnittstelle über den USB.
+
+\subsection{Schnittstellen}
+\label{sec:usbtouart-schnittstellen}
+
+Der \gls{USB-to-UART}-Adapter verfügt über die in \fref{tab:usbtouart-schnittstellen} angegebenen Schnittstellen, welche wie in \fref{fig:usbtouart-plan} zu sehen platziert sind.
+
+\tab{usbtouart-schnittstellen}{Schnittstellen des USB-to-UART-Adapter}{Schnittstellen des \gls{USB-to-UART}-Adapter}{|c|p{10cm}|}{
+    \hline
+    \textbf{Schnittstelle} & \textbf{Funktion}\\
+    \hline
+    UART & Senden und Empfangen von Daten vom Terminal oder Controller\\
+    \hline
+    USB-B & Weiterleitung der Daten zum PC\\
+    \hline
+}
+
+\fig{usbtouart-plan}{Übersichtsplan des USB-to-UART-Adapter}{Übersichtsplan des \gls{USB-to-UART}-Adapter}{0.75\textwidth}{Schuh/Pictures/usbtouart}
+
+\subsection{Gesamtschaltung}
+\label{sec:usbtouart-schaltung}
+\fig{usbtouart-schaltung}{Gesamtschaltung des USB-to-UART-Adapter}{Gesamtschaltung des \gls{USB-to-UART}-Adapter}{0.8\textwidth}{Schuh/Pictures/usbtouart-schaltung}
+
+\subsubsection{UART}
+Die UART-Schnittstelle wurde hardwaretechnisch zweimal ausgeführt, einmal zu der Stiftleiste (\fref{fig:usbtouart-uart1}, X2) und einmal zum Header (\fref{fig:usbtouart-uart2}, X3). Die Stiftleiste (\fref{fig:usbtouart-uart1}, X2) dient zur Kommunikation mit den diversen UART-Interfaces auf der \gls{Basisplatine}, als auch zu Kommunikation mit der UART-Schnittstelle auf dem \gls{Core-Modul}. Der Header (\fref{fig:usbtouart-uart2}, X3) dient zur Programmierung und Kommunikation mit einem NEXTION-Display.
+
+\fig{usbtouart-uart1}{UART des USB-to-UART-Adapter}{UART des \gls{USB-to-UART}-Adapter}{0.5\textwidth}{Schuh/Pictures/usbtouart-uart1}
+\fig{usbtouart-uart2}{UART des USB-to-UART-Adapter für NEXTION-Display}{UART des \gls{USB-to-UART}-Adapter für NEXTION-Display}{0.5\textwidth}{Schuh/Pictures/usbtouart-uart2}
+
+\subsubsection{Spannungsversorgung}
+Die Betriebsspannungsversorgung von \unit{+5}{\volt} sollte prinzipiell nur über die USB-B Buchse (\fref{fig:usbtouart-spannung1}, X1) zur Verfügung gestellt werden. Diese Spannungsversorgung wird auch zur Programmierung und Kommunikation mit einem NEXTION-Display oder mit anderen \unit{5}{\volt} Interfaces benötigt. Zur Überprüfung ob das Modul mit Spannung versorgt wird, wurde die LED (\fref{fig:usbtouart-spannung2}, V4) zur optischen Kontrolle eingebaut. Wenn das Modul mit Spannung über die USB-B Buchse versorgt wird, beginnt diese zu leuchten.
+
+Es gibt zusätzlich zur Betriebsspannung noch eine vom FTDI-Chip generierte \unit{+3,3}{\volt} Spannungsversorgung, welche zur Kommunikation mit den verwendeten UART-Interfaces auf der \gls{Basisplatine} und dem \gls{Core-Modul} benötigt wird. Der Hardwareaufbau erlaubt es je nach verwendeten Interface, durch Setzen von einem Jumper auf der Stiftleiste (\fref{fig:usbtouart-spannung3}, X4) die Betriebsspannungen für das entsprechende Interface selbst zu wählen. Durch Verbinden des Pin1 mit dem Pin2, wird am Ausgang eine Spannung von \unit{+5}{\volt} ausgegeben. Durch Verbinden des Pin2 mit dem Pin3, wird am Ausgang eine Spannung von \unit{+3,3}{\volt} ausgegeben.
+
+\fig{usbtouart-spannung1}{Spannungsversorgung des USB-to-UART-Adapter}{Spannungsversorgung des \gls{USB-to-UART}-Adapter}{0.5\textwidth}{Schuh/Pictures/usbtouart-spannung1}
+\fig{usbtouart-spannung2}{Spannungsversorgungs-LED des USB-to-UART-Adapter}{Spannungsversorgungs-LED des \gls{USB-to-UART}-Adapter}{0.25\textwidth}{Schuh/Pictures/usbtouart-spannung2}
+\fig{usbtouart-spannung3}{Spannungsversorgungs-Jumper des USB-to-UART-Adapter}{Spannungsversorgungs-Jumper des \gls{USB-to-UART}-Adapter}{0.5\textwidth}{Schuh/Pictures/usbtouart-spannung3}
+
+\subsubsection{Status-LEDs}
+Die Status-LEDs (\fref{fig:usbtouart-leds}, V1 und V2) dienen zu optischen Kontrolle, ob Daten zwischen den Sender den Empfänger ausgetauscht werden. Die LED V1 leuchtet, sobald Daten über das Modul gesendet werden. Die LED V2 hingegen zeigt an ob Daten zum Modul gelangen.
+
+\fig{usbtouart-leds}{Status-LEDs des USB-to-UART-Adapter}{Status-LEDs des \gls{USB-to-UART}-Adapter}{0.5\textwidth}{Schuh/Pictures/usbtouart-leds}
+
+\subsubsection{FTDI-Chip}
+Durch den FTDI-Chip FT232RL wird die eine Verwendung einer seriellen Schnittstelle über USB-Geräte ermöglicht.
+
+\fig{usbtouart-ftdi}{FTDI-Chip des USB-to-UART-Adapter}{FTDI-Chip des \gls{USB-to-UART}-Adapter}{0.5\textwidth}{Schuh/Pictures/usbtouart-ftdi}
+
+\subsubsubsection{Blockschaltbild}
+Wie anhand des Blockschaltbildes ersichtlich ist, ist bereits ein \unit{3,3}{\volt} LDO-Regulator im FTDI-Chip verbaut, daher kann dieser die Ausgangsspannung von \unit{+3,3}{\volt} selbstständig generieren.
+
+\fig{usbtouart-ftdi-bsb}{Blockschaltbild des FTDI-Chips}{Blockschaltbild des FTDI-Chips \cite{ftdi:ft232r}}{\textwidth}{Schuh/Pictures/usbtouart-ftdi-bsb}
+
+\subsubsection{Pinbelegung}
+\begin{table}[htb]
+    \centering
+    \includegraphics[width=\textwidth]{Schuh/Pictures/usbtouart-ftdi-pin1}
+    \caption[Pinbelegung des FTDI]{Pinbelegung des FTDI \cite{ftdi:ft232r}}
+    \label{tab:usbtouart-ftdi-pin}
+\end{table}
+\begin{table}[htb]\ContinuedFloat
+    \centering
+    \includegraphics[width=\textwidth]{Schuh/Pictures/usbtouart-ftdi-pin2}
+    \caption[Pinbelegung des FTDI]{Pinbelegung des FTDI \cite{ftdi:ft232r}}
+\end{table}
+\begin{table}[htb]\ContinuedFloat
+    \centering
+    \includegraphics[width=\textwidth]{Schuh/Pictures/usbtouart-ftdi-pin3}
+    \caption[Pinbelegung des FTDI]{Pinbelegung des FTDI \cite{ftdi:ft232r}}
+\end{table}
+
+\subsection{Leiterplattenlayout}
+\label{sec:usbtouart-leiterplattenlayout}
+\subsubsection{Bauteilseite}
+\fig{usbtouart-lbauteilseite}{Layout Bauteilseite des USB-to-UART-Adapters}{Layout Bauteilseite des \gls{USB-to-UART}-Adapters}{0.75\textwidth}{Schuh/Pictures/usbtouart-lbauteilseite}
+
+\subsubsection{Lötseite}
+\fig{usbtouart-llötseite}{Layout Lötseite des USB-to-UART-Adapters}{Layout Lötseite des \gls{USB-to-UART}-Adapters}{0.75\textwidth}{Schuh/Pictures/usbtouart-llotseite}
+
+\subsection{Bestückungspläne}
+\label{sec:usbtouart-bestückungspläne}
+\subsubsection{Bauteilseite}
+\fig{usbtouart-bbauteilseite}{Bestückungsplan Bauteilseite des USB-to-UART-Adapters}{Bestückungsplan Bauteilseite des \gls{USB-to-UART}-Adapters}{0.75\textwidth}{Schuh/Pictures/usbtouart-bbauteilseite}
