@@ -1,7 +1,7 @@
 \section{Core-Modul}
 \label{sec:coremodul}
 
-\todo[inline]{Bild einfügen}
+\fig{core-modul}{Core-Modul}{\gls{Core-Modul}}{\textwidth}{Schuh/Pictures/coremodul}
 
 \subsection{Allgemeines}
 \label{sec:coremodul-allgemeines}
@@ -89,18 +89,38 @@ Zur Programmierung und zum \gls{Debugging} des neuen \gls{ARM}-\gls{Minimalsyste
 Um den ST-Link V2 Mini und den Microcontroller im Falle eines Kurzschlusses zwischen der Versorgungsspannung und Masse zu schützen wurde eine Schottky-Diode (\fref{fig:coremodul-swd}, V1), mit einem maximalen Durchflussstrom von \unit{1}{\ampere}, vorgesehen. Um die Verpolungssicherheit des ST-Link V2 Mini zu gewährleisten, wurde eine zweireihige Buchsenleiste mit Nase (\fref{fig:coremodul-swd}, X1; \fref{fig:coremodul-stlinkbuchse}) verbaut, welche eine Verpolung des ST-Links unmöglich macht.
 
 \fig{coremodul-stlink}{ST-Link V2 Mini}{ST-Link V2 Mini}{0.5\textwidth}{Schuh/Pictures/STLink}
-\fig{coremodul-swd}{ST-Link Schaltung des Core-Moduls}{ST-Link Schaltung des \gls{Core-Modul}s}{0.6\textwidth}{Schuh/Pictures/SchaltungSWD}
+
+\begin{figure}[htb]
+    \centering
+    \subfloat[Schematic\label{fig:coremodul-swd-schem}]{\includegraphics[width=.4\linewidth]{Schuh/Pictures/SchaltungSWD}}\qquad
+\subfloat[Hardware\label{fig:coremodul-swd-hard}]{\includegraphics[width=.4\linewidth,angle=270]{Schuh/Pictures/core-stlink}}\qquad
+    \caption[ST-Link Schaltung des Core-Moduls]{ST-Link Schaltung des \gls{Core-Modul}s}
+    \label{fig:coremodul-swd}
+\end{figure}
+
 \fig{coremodul-stlinkbuchse}{Buchse mit Nase}{Buchse mit Nase}{0.5\textwidth}{Schuh/Pictures/STLinkBuchse}
 
 \subsubsection{SWD-Adapter}
 Der als Buchsenleiste ausgeführte SWD-Adapter (\fref{fig:coremodul-swd2}, X4), erfüllt vom Prinzip her die gleiche Funktion wie der bereits in \fref{sec:coremodul-stlink} beschriebene Stecker für den ST-Link V2 Mini. Dieser ermöglicht lediglich Kompatibilität zu anderen SWD-Programmern und Debuggern, welche diesen Stecker nicht besitzen.
 
-\fig{coremodul-swd2}{SWD-Schaltung des Core-Moduls}{\gls{SWD}-Schaltung des \gls{Core-Modul}s}{0.5\textwidth}{Schuh/Pictures/SchaltungSWD2}
+\begin{figure}[htb]
+    \centering
+    \subfloat[Schematic\label{fig:coremodul-swd2-schem}]{\includegraphics[width=.4\linewidth]{Schuh/Pictures/SchaltungSWD2}}\qquad
+    \subfloat[Hardware\label{fig:coremodul-swd2-hard}]{\includegraphics[width=.4\linewidth]{Schuh/Pictures/core-swd}}\qquad
+    \caption[SWD-Schaltung des Core-Moduls]{SWD-Schaltung des \gls{Core-Modul}s}
+    \label{fig:coremodul-swd2}
+\end{figure}
 
 \subsubsection{USART 1}
 Die Buchsenleiste (\fref{fig:coremodul-uart}, X3) dient hauptsächlich zur seriellen Kommunikation. Die Pinanordnung wurde so gewählt, dass die Kommunikation entweder kabelgebunden, über den \gls{USB-to-UART} Adapter, oder alternativ über ein HC-06 Bluetooth Modul erfolgen kann.
 
-\fig{coremodul-uart}{USART-Schaltung des Core-Moduls}{USART-Schaltung des \gls{Core-Modul}s}{0.5\textwidth}{Schuh/Pictures/SchaltungUART}
+\begin{figure}[htb]
+    \centering
+    \subfloat[Schematic\label{fig:coremodul-uart-schem}]{\includegraphics[width=.4\linewidth]{Schuh/Pictures/SchaltungUART}}\qquad
+    \subfloat[Hardware\label{fig:coremodul-uart-hard}]{\includegraphics[angle=90,width=.4\linewidth]{Schuh/Pictures/core-uart}}\qquad
+    \caption[UART-Schaltung des Core-Moduls]{UART-Schaltung des \gls{Core-Modul}s}
+    \label{fig:coremodul-uart}
+\end{figure}
 
 \subsubsection{Bootkonfiguration}
 Mit Hilfe des zweireihigen Bootjumpers (\fref{fig:coremodul-boot}, X5) kann der Benutzter entscheiden von welchem Speichermedium der Cortex booten soll.
@@ -123,7 +143,13 @@ Die Standardkonfiguration sieht vor, dass man vom Flash-Speicher bootet. Daher m
 \subsubsection{Reset}
 Der Kurzhubtaster (\fref{fig:coremodul-reset}, S2) dient zum Reset des \gls{Core-Modul}s. Mit Hilfe dieses ist ein erneuter Programmstart möglich, da er den Pin des low-aktiven Reset gegen Masse zieht. Gegebenenfalls angeschlossene Arduino-Shields werden mit diesem Taster ebenfalls zurückgesetzt.
 
-\fig{coremodul-reset}{Reset-Schaltung des Core-Moduls}{Reset-Schaltung des \gls{Core-Modul}s}{0.5\textwidth}{Schuh/Pictures/schaltung-reset}
+\begin{figure}[htb]
+    \centering
+    \subfloat[Schematic\label{fig:coremodul-reset-schem}]{\includegraphics[width=.4\linewidth]{Schuh/Pictures/schaltung-reset}}\qquad
+    \subfloat[Hardware\label{fig:coremodul-reset-hard}]{\includegraphics[width=.4\linewidth]{Schuh/Pictures/core-reset}}\qquad
+    \caption[Reset-Schaltung des Core-Moduls]{Reset-Schaltung des \gls{Core-Modul}s}
+    \label{fig:coremodul-reset}
+\end{figure}
 
 \subsubsection{\unit{5}{\volt} Spannungsversorgung}
 Die \unit{+5}{\volt} Spannungsversorgung für das \gls{Core-Modul} kann auf zwei verschiedenen Wegen bezogen werden. Entweder man verwendet den ST-Link V2 Mini als \unit{5}{\volt} Spannungsversorgung (\fref{fig:coremodul-swd}, X1), wie bereits in \fref{sec:coremodul-stlink} beschrieben, oder man speist die \unit{+5}{\volt} Versorgung über den \unit{5}{\volt}-Pin am DIL-Adapter (\fref{fig:coremodul-spannung}, X2) ein.
@@ -138,12 +164,25 @@ An VB kann eine \unit{3,3}{\volt}-Batterie angeschlossen werden, damit die \gls{
 \subsubsection{\unit{3,3}{\volt} Fixspannungsregler}
 Zur Generierung der für den Prozessor erforderlichen Betriebsspannung wurde ein \unit{3,3}{\volt}-Linearregler (\fref{fig:coremodul-fix}, U2) verwendet, welcher die Eingangsspannung von \unit{+5}{\volt} auf \unit{+3,3}{\volt} herabsetzt. Bei Verwendung eines Linearreglers ist zu beachten, dass dieser die Spannungsdifferenz zwischen Ausgangsspannung und Eingangsspannung in Wärme umwandelt. Daher sollten keine temperaturempfindlichen Bauteile in dessen Nähe platziert werden. Zur Überprüfung ob das Modul mit der Betriebsspannung von \unit{+5}{\volt} versorgt wird, wurde die LED (\fref{fig:coremodul-fix}, V4) zur optischen Kontrolle eingebaut. Wenn das Modul mit Spannung versorgt wird, leuchtet diese. Zur Überprüfung ob der Prozessor mit seiner Betriebsspannung von \unit{3,3}{\volt} versorgt wird, wurde die LED (\fref{fig:coremodul-fix}, V6) zur optischen Kontrolle eingebaut. Wenn der Prozessor mit Spannung versorgt wird, leuchtet sie. Um den Stromverbrauch des \gls{Core-Modul}s im Low-Power Modus weiter zu senken, können die LEDs mit Hilfe von Jumpern außer Betrieb gesetzt werden.
 
-\fig{coremodul-fix}{Fixspannungsregler des Core-Moduls}{Fixspannungsregler des \gls{Core-Modul}s}{0.75\textwidth}{Schuh/Pictures/schaltung-fix}
+\begin{figure}[htb]
+    \centering
+    \subfloat[Schematic\label{fig:coremodul-fix-schem}]{\includegraphics[width=.75\linewidth]{Schuh/Pictures/schaltung-fix}}\qquad
+    \subfloat[Hardware\label{fig:coremodul-fix-hard}]{\includegraphics[width=.4\linewidth]{Schuh/Pictures/core-fix}}\qquad
+    \caption[Fixspannungsregler des Core-Moduls]{Fixspannungsregler des \gls{Core-Modul}s}
+    \label{fig:coremodul-fix}
+\end{figure}
+
 
 \subsubsection{Prozessor}
 Das Schaltplansymbol für den Prozessor (\fref{fig:coremodul-prozessor}, U1) zeigt den im Schematic verwendeten Bauteil. Alle wichtigen Detailinformationen über den Prozessor wurden bereits in \fref{sec:coremodul-prozessor} behandelt.
 
-\fig{coremodul-prozessor}{Prozessor des Core-Moduls}{Prozessor des \gls{Core-Modul}s}{0.75\textwidth}{Schuh/Pictures/schaltung-prozessor}
+\begin{figure}[htb]
+    \centering
+    \subfloat[Schematic\label{fig:coremodul-prozessor-schem}]{\includegraphics[width=.75\linewidth]{Schuh/Pictures/schaltung-prozessor}}\qquad
+    \subfloat[Hardware\label{fig:coremodul-prozessor-hard}]{\includegraphics[width=.4\linewidth]{Schuh/Pictures/core-prozessor}}\qquad
+    \caption[Prozessor des Core-Moduls]{Prozessor des \gls{Core-Modul}s}
+    \label{fig:coremodul-prozessor}
+\end{figure}
 
 \subsubsection{Stützkondensatoren}
 Während des laufenden Betriebs eines Microcontrollers benötigt dieser unterschiedlich viel Strom. Um auf diese Stromspitzen reagieren zu können, wurden Stützkondensatoren vorgesehen, damit es nicht zu Absturz des Programmes oder zu anderen Problemen durch Spannungseinbrüche kommt. Die Stützkondensatoren (\fref{fig:coremodul-kond}: C5, C6, C7 und C8) können daher die in ihnen gespeicherte Ladung bei stark wechselnden Stromaufnahmen abgeben und dadurch eine ordnungsmäßige Versorgung des Prozessors gewährleisten.
@@ -163,17 +202,35 @@ Das \gls{Core-Modul} besitzt standardmäßig zwei verschiedene Taktquellen. Dies
 \subsubsection{Taster}
 Auf dem \gls{Core-Modul} wurde ein Kurzhubtaster (\fref{fig:coremodul-taster}, S1) vorgesehen, dessen Funktion nach belieben ausprogrammiert werden kann.
 
-\fig{coremodul-taster}{Taster des Core-Moduls}{Taster des \gls{Core-Modul}s}{0.25\textwidth}{Schuh/Pictures/schaltung-taster}
+\begin{figure}[htb]
+    \centering
+    \subfloat[Schematic\label{fig:coremodul-taster-schem}]{\includegraphics[width=.25\linewidth]{Schuh/Pictures/schaltung-taster}}\qquad
+    \subfloat[Hardware\label{fig:coremodul-taster-hard}]{\includegraphics[width=.25\linewidth]{Schuh/Pictures/core-taster}}\qquad
+    \caption[Taster des Core-Moduls]{Taster des \gls{Core-Modul}s}
+    \label{fig:coremodul-taster}
+\end{figure}
 
 \subsubsection{LED}
 Auf dem \gls{Core-Modul} wurde eine LED (\fref{fig:coremodul-led}, V2) vorgesehen, deren Funktion nach belieben ausprogrammiert werden kann.
 
-\fig{coremodul-led}{LED des Core-Moduls}{LED des \gls{Core-Modul}s}{0.5\textwidth}{Schuh/Pictures/schaltung-led}
+\begin{figure}[htb]
+    \centering
+    \subfloat[Schematic\label{fig:coremodul-led-schem}]{\includegraphics[width=.4\linewidth]{Schuh/Pictures/schaltung-led}}\qquad
+    \subfloat[Hardware\label{fig:coremodul-led-hard}]{\includegraphics[width=.25\linewidth]{Schuh/Pictures/core-led}}\qquad
+    \caption[LED des Core-Moduls]{LED des \gls{Core-Modul}s}
+    \label{fig:coremodul-led}
+\end{figure}
 
 \subsubsection{Masseschleife}
 Um das Messen mit einem Oszilloskop oder anderen Messgeräten zu vereinfachen wurde eine Masseschleife (\fref{fig:coremodul-masse}, X6) auf dem \gls{Core-Modul} realisiert.
 
-\fig{coremodul-masse}{Masseschleife des Core-Moduls}{Masseschleife des \gls{Core-Modul}s}{0.25\textwidth}{Schuh/Pictures/schaltung-masse}
+\begin{figure}[htb]
+    \centering
+    \subfloat[Schematic\label{fig:coremodul-masse-schem}]{\includegraphics[width=.25\linewidth]{Schuh/Pictures/schaltung-masse}}\qquad
+    \subfloat[Hardware\label{fig:coremodul-masse-hard}]{\includegraphics[width=.25\linewidth]{Schuh/Pictures/core-masse}}\qquad
+    \caption[Masseschleife des Core-Moduls]{Masseschleife des \gls{Core-Modul}s}
+    \label{fig:coremodul-masse}
+\end{figure}
 
 \subsection{Leiterplattenlayout}
 \label{sec:coremodul-leiterplattenlayout}
