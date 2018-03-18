@@ -240,7 +240,7 @@ Als weiter Spannungsversorgungsmöglichkeit bietet die \gls{Basisplatine} die M�
     \label{fig:basisplatine-dc}
 \end{figure}
 
-\subsubsection{RGB-LED Ring}
+\subsubsection{RGB-LED Ring \cite{basis:ws2812b}}
 Auf der \gls{Basisplatine} wurde ein aus zwölf RGB-LEDs bestehender Ring aufgebaut, welcher in den verschiedensten Farben leuchten kann. Jede RGB-LED besitzt einen eigenen eingebauten Controller. Die Ansteuerung der LEDs wird über den Port-Pin PB0 realisiert. Um diesen verwenden zu können muss zuvor die Stiftleiste (\fref{fig:basisplatine-ledring}, X41) mit einem Jumper versehen werden. Weiters muss die Spannungsversorgung der LEDs gewährleistet sein. Dazu muss lediglich die Stiftleiste (\fref{fig:basisplatine-ledring}, X42) mit einem Jumper versehen werden.
 
 \begin{figure}[htb]
@@ -253,8 +253,8 @@ Auf der \gls{Basisplatine} wurde ein aus zwölf RGB-LEDs bestehender Ring aufgeb
 
 Zur Programmierung der LEDs muss über den Port PB0 ein Datenwort übetragen werden, welches 24 bit pro LED enthält, siehe \fref{fig:basisplatine-ledring-data}. Dies ergibt insgesamt 288 bit, welche übertragen werden müssen. Wie die Übertragung genau aussieht kann aus \fref{fig:basisplatine-ledring-timing} entnommen werden.
 
-\fig{basisplatine-ledring-data}{RGB-LED Ring Datenstruktur}{RGB-LED Ring Datenstruktur}{\textwidth}{Schuh/Pictures/Basis-ledring-data}
-\fig{basisplatine-ledring-timing}{RGB-LED Ring Timing Diagram}{RGB-LED Ring Timing Diagram}{\textwidth}{Schuh/Pictures/Basis-ledring-timing}
+\fig{basisplatine-ledring-data}{RGB-LED Ring Datenstruktur}{RGB-LED Ring Datenstruktur \cite{basis:ws2812b}}{\textwidth}{Schuh/Pictures/Basis-ledring-data}
+\fig{basisplatine-ledring-timing}{RGB-LED Ring Timing Diagram}{RGB-LED Ring Timing Diagram \cite{basis:ws2812b}}{\textwidth}{Schuh/Pictures/Basis-ledring-timing}
 
 \subsubsection{Sensor-Selektion}
 Da der verbaute Prozessor zu wenig Portleitungen besitzt um alle Sensoren und Module mit einer eigenen Portleitung zu versorgen, werden einige Portleitungen mehrmals verwendet. Um nun einzelne Module oder Sensoren verwenden zu können, müssen diese einsprechend gejumpert werden. Eine dieser Stiftleisten ist der Header (\fref{fig:basisplatine-ssel}, X9), welches es ermöglicht zwischen einem Potentiometer (\gls{ADC}), Piezo-Summer, einem LFU, einem Infrarotempfänger, einem Temperaturfühler und einem NE555 auszuwählen.
@@ -357,9 +357,7 @@ Der auf der \gls{Basisplatine} realisierte LFU (Licht-Frequenz-Wandler), wandelt
 \fig{basisplatine-lfu-freq}{Frequenzgang des LFUs}{Frequenzgang des LFUs}{0.5\textwidth}{Schuh/Pictures/Basis-lfu-freq}
 
 \subsubsection{RGB-LED}
-Der auf der \gls{Basisplatine} realisierte LFU (Licht-Frequenz-Wandler), wandeltet wie der Name bereits sagt Licht in eine bestimmte Frequenz um. Je höher die Bestrahlungsstärke des Lichts, desto höher wird die über den Output des LFUs ausgegebene Frequenz. Den linearen Zusammenhang zwischen der Bestrahlungsstärke und der ausgegebenen Frequenz kann aus \fref{fig:basisplatine-lfu-freq} entnommen werden.\todo{Quelle?} Um den LFU verwenden zu können muss lediglich der Pin5 mit dem Pin6, der Stiftleiste (\fref{fig:basisplatine-ssel}, X9), gejumpert werden.
-
-Auf der Hardware der \gls{Basisplatine} wurde eine RGB-LED verbaut, welche mit Hilfe des LED-Divers (\fref{fig:basisplatine-rgbled}, D4), welcher mit dem \IIC{}-Bus angesteuert werden kann. Dieser LED-Driver hat den Vorteil, dass er eine interne Stromüberwachung besitzt. Dadurch benötigen die einzelnen Anoden der RGB-LED keine Vorwiderstände, da sich der Strom automatisch entsprechend der gewünschten Farbe reguliert.
+Auf der Hardware der \gls{Basisplatine} wurde eine RGB-LED \cite{basis:rgbled} verbaut, welche mit Hilfe des LED-Divers (\fref{fig:basisplatine-rgbled}, D4) \cite{basis:rgbdriver}, welcher mit dem \IIC{}-Bus angesteuert werden kann. Dieser LED-Driver hat den Vorteil, dass er eine interne Stromüberwachung besitzt. Dadurch benötigen die einzelnen Anoden der RGB-LED keine Vorwiderstände, da sich der Strom automatisch entsprechend der gewünschten Farbe reguliert.
 
 \begin{figure}[htb]
     \centering
@@ -368,9 +366,9 @@ Auf der Hardware der \gls{Basisplatine} wurde eine RGB-LED verbaut, welche mit H
     \caption[RGB-LED der Basisplatine]{RGB-LED der \gls{Basisplatine}}
     \label{fig:basisplatine-rgbled}
 \end{figure}
-\fig{basisplatine-rgbled-befehl}{Befehlsaufbau der RGB-LED}{Befehlsaufbau der RGB-LED}{\textwidth}{Schuh/Pictures/Basis-rgbled-befehl}
-\fig{basisplatine-rgbled-register}{Register der RGB-LED}{Register der RGB-LED}{\textwidth}{Schuh/Pictures/Basis-rgbled-register}
-\fig{basisplatine-rgbled-seq}{Sequenzen der RGB-LED}{Sequenzen der RGB-LED}{\textwidth}{Schuh/Pictures/Basis-rgbled-seq}
+\fig{basisplatine-rgbled-befehl}{Befehlsaufbau der RGB-LED}{Befehlsaufbau der RGB-LED \cite{basis:rgbdriver}}{\textwidth}{Schuh/Pictures/Basis-rgbled-befehl}
+\fig{basisplatine-rgbled-register}{Register der RGB-LED}{Register der RGB-LED \cite{basis:rgbdriver}}{\textwidth}{Schuh/Pictures/Basis-rgbled-register}
+\fig{basisplatine-rgbled-seq}{Sequenzen der RGB-LED}{Sequenzen der RGB-LED \cite{basis:rgbdriver}}{\textwidth}{Schuh/Pictures/Basis-rgbled-seq}
 
 \subsubsection{Arduino-Shield-Header}
 Um Hardware des Arduino-Mikrocontrollersystems nutzten zu können, ohne selbst großen Aufwand in die Entwicklung entsprechender Module investieren zu müssen, wurde ein Arduino-Shield-Header auf der \gls{Basisplatine} vorgesehen. Dieser ermöglicht es durch die Portkompatibilität mit einem Arduino, dessen Shields zu verwenden oder selbst Shields entwickeln zu können. Möchte man nun ein Arduino-Shield verwenden muss dieses lediglich in die vorgesehene Buchsenleiste (\fref{fig:basisplatine-arduino}, X33) gesteckt werden. Da jedes Arduino-Shield die Möglichkeit besitzt eine Referenzspannung für diverse ADCs zu vergeben wurde das Potentiometer R31 vorgesehen, um diesen Spannungspegel variabel zu gestallten. Darüber hinaus gibt es noch die Möglichkeit bei speziellen Shields zu definieren mit welcher Betriebsspannung die darüberliegenden versorgt werden sollen. Dazu wurde die Stiftleiste X27 verbaut, um festzulegen ob die darüberliegenden Shields mit \unit{+5}{\volt} oder \unit{+3,3}{\volt} versorgt werden. Sollte kein Jumper gesetzt werden wird automatisch auf die \unit{+5}{\volt} Spannungsversorgung zurückgegriffen.
@@ -383,7 +381,7 @@ Um Hardware des Arduino-Mikrocontrollersystems nutzten zu können, ohne selbst g
     \label{fig:basisplatine-arduino}
 \end{figure}
 
-\subsubsection{WLAN-Modul}
+\subsubsection{WLAN-Modul \cite{basis:wlan}}
 Um Daten ohne großen Aufwand direkt in das Heimnetzwerk einspeisen zu können, wurde auf der auf der \gls{Basisplatine} ein Steckplatz (\fref{fig:basisplatine-wlan}, X35) für ein ESP8266 W-LAN Modul vorgesehen. Dieses Funkmodul benutzt zu Kommunikation mit dem Prozessor des Core-Moduls die UART2 Schnittstelle und sendet die Daten mit einer Sendefrequenz von \unit{2,4}{\giga\hertz} im ISM-Band. Wenn man die Firmware des ESP8266 verändern möchte muss man lediglich die Portleitung GPIO0 des ESP8266, durch jumpern der Pin2 und Pin3 der Stiftleiste (\fref{fig:basisplatine-wlan}, X39), gegen Masse schalten.
 
 \begin{figure}[htb]
@@ -405,7 +403,7 @@ Um Daten ohne großen Aufwand per Funk übertragen können, wurde auf der auf de
     \label{fig:basisplatine-xbee}
 \end{figure}
 
-\subsubsection{HC-06-Modul}
+\subsubsection{HC-06-Modul \cite{basis:hc06}}
 Um Daten ohne großen Aufwand per Bluetooth übertragen können, wurde auf der auf der \gls{Basisplatine} ein Steckplatz (\fref{fig:basisplatine-hc06}, X28) für ein HC-06 Bluetooth-Modul vorgesehen. Dieses Bluetooth-Modul benutzt zur Kommunikation mit dem Prozessor des \gls{Core-Modul}s die UART1 Schnittstelle und sendet die Daten mit einer Sendefrequenz von \unit{2,4}{\giga\hertz} im ISM-Band. Darüber hinaus weist das Bluetooth-Modul eine maximale Datenübertragungsrate von 1382400 baud auf.
 
 \begin{figure}[htb]
@@ -416,7 +414,7 @@ Um Daten ohne großen Aufwand per Bluetooth übertragen können, wurde auf der a
     \label{fig:basisplatine-hc06}
 \end{figure}
 
-\subsubsection{HC-12-Modul}
+\subsubsection{HC-12-Modul \cite{basis:hc12}}
 Um Daten ohne großen Aufwand per Bluetooth übertragen können, wurde auf der auf der \gls{Basisplatine} ein Steckplatz (\fref{fig:basisplatine-hc12}, X31) für ein HC-12 Funkmodul vorgesehen. Dieses Funkmodul benutzt zu Kommunikation mit dem Prozessor des \gls{Core-Modul}s die UART1 Schnittstelle und sendet die Daten mit einer Sendefrequenz von \unit{433,4}{\mega\hertz} bis \unit{473,0}{\mega\hertz} im ISM-Band. Darüber hinaus weist das Funkmodul eine maximale Datenübertragungsrate von 115200 baud auf und hat eine maximale Reichweite von \unit{1800}{\metre}. Das HC-12 Funkmodul kann mittels AT-Befehlen konfiguriert werden. Dabei kann die maximale Ausgangsleistung, die Sendefrequenz und die maximale Datenübertragungsrate verändert werden.
 
 \begin{figure}[htb]
@@ -433,7 +431,7 @@ Um das Modul in den Programming-Mode zu setzen, müssen folgende Schritte ausgef
     \item Anschließend muss die Spannungsversorgung unterbrochen werden und der Pin5 (\enquote{SET}) wieder mit Masse verbunden werden. Erst wenn der SET-Pin mit Masse verbunden ist darf das Modul wieder mit Spannung versorgt werden.
 \end{itemize}
 
-\tab{basisplatine-hc12-atbefehlsaufbau}{Aufbau von AT-Befehlen}{Aufbau von AT-Befehlen}{|c|p{10cm}|}{
+\tab{basisplatine-hc12-atbefehlsaufbau}{Aufbau von AT-Befehlen}{Aufbau von AT-Befehlen \cite{basis:hc12}}{|c|p{10cm}|}{
     \hline
     \textbf{Befehl} & \textbf{Funktion}\\
     \hline
@@ -454,7 +452,7 @@ Um das Modul in den Programming-Mode zu setzen, müssen folgende Schritte ausgef
     AT-V & Mit diesem Befehl kann die aktuelle Firmwareversion des Funkmoduls abgefragt werden.\\
     \hline
 }
-\tabpdf{basisplatine-hc12-at}{HC-12 AT-Befehlsparameter}{Übersicht über die HC-12 AT-Befehlsparameter}{\textwidth}{Schuh/Pictures/Basis-hc12-at}
+\tabpdf{basisplatine-hc12-at}{HC-12 AT-Befehlsparameter}{Übersicht über die HC-12 AT-Befehlsparameter \cite{basis:hc12}}{\textwidth}{Schuh/Pictures/Basis-hc12-at}
 
 Um das Funkmodul auf Werkseinstellungen zurückzusetzen muss der AT-Befehl \enquote{AT+DEFAULT} eingegeben werden. Sollte der Befehl korrekt an das Funkmodul weitergegeben worden sein antwortet dieses mit \enquote{OK+DEFAULT}. Um die Firmware des Funkmoduls zu updaten muss der AT-Befehl \enquote{AT+UPDATE} eingegeben werden.
 
