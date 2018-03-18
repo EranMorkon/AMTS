@@ -1,0 +1,46 @@
+\section{Theorie}
+\label{sec:theorie}
+\subsection{Versionierung}
+Das Kapitel Versionierung teilt sich in zwei große Teile auf, Semantic Versioning, was die Vergabe der Versionsnummer an sich behandelt und Git, was im generellen Workflow zur Versionskontrolle benutzt wurde.
+
+\subsubsection{Semantic Versioning}
+Semantic Versioning, oder auch semantische Versionierung bezeichnet ein Verfahren zur Vergabe von Versionsnummern welches sich als sehr praktisch zum Versionieren von Softwarekomponenten herausgestellt hat. Heute benutzen sehr viele große Softwareprojekte, vor allem im Open Source Bereich, Semantic Versioning für die Versionierung von Releases.
+
+Bei Semantic Versioning setzt sich die Versionsnummer aus drei Hauptgruppen welche aus Ziffern bestehen und durch einen Punkt getrennt sind zusammen. Jede dieser Gruppen hat eine festgelegte Bedeutung, von links nach rechts heißen die Gruppen \enquote{Major}, \enquote{Minor} und \enquote{Patch}.
+
+Ein Produkt mit der Versionsnummer \textbf{2.5.15} hat also die Major-Version \textbf{2}, Minor-Version \textbf{5} und Patch-Level \textbf{15}.
+
+Will man nun eine neue Version der Software (oder des Produkts) veröffentlichen, so muss man, je nach Änderung, die Versionsnummer erhöhen. Hierbei wird meist nach \fref{tab:versionierung} vorgegangen.
+
+\tab{versionierung}{Semantic Versioning Zifferngruppen}{Zifferngruppen}{|c|p{10cm}|}{
+    \hline
+    \textbf{Gruppe} & \textbf{Bedeutung}\\
+    \hline
+    Patch & wird erhöht wenn Fehler in der Software ausgebessert werden, jedoch keine neuen Funktionen hinzugefügt werden. Binäre Bibliotheken bleiben untereinander komplett kompatibel.\\
+    \hline
+    Minor & wird erhöht wenn neue Funktinen hinzugefügt werden, nebenbei können auch Fehler ausgebessert werden, ohne eine Erhöhung des Patch Levels zu erfordern. Binäre Bibliotheken sind abwärtskompatibel, das heißt Bibliotheken mit Version \textbf{2.15.6} können anstatt Version \textbf{2.10.0} verwendet werden. Umgekehrt ist das aber nur so lange möglich, so lange mein keine erweiterten Funktionen aus der Bibliothek mit der höheren Minor-Version verwendet.\\
+    \hline
+    Major & wird erhöht wenn einerseits neue Funktionen hinzugefügt werden, allerdings gleichzeit auch alte gelöscht oder sonst irgendwie inkompatibel gemacht (Umbennenung, Änderung der Übergabeparameter) werden. Binäre Bibliotheken sind, bis auf wenige Ausnahmen, normalerweise nicht kompatibel.\\
+    \hline
+}
+
+Für die Softwareprodukte, welche im Rahmen dieser Diplomarbeit entstanden sind, wurde Semantic Versioning angewendet, um zukünftigen Nutzern oder Bearbeitern ein solides Fundament in Sachen Kompatibilität zu gewähren.
+
+\subsubsection{Git}
+Git ist ein dezentrales Versionskontrollsystem, welches erlaubt Zeitpunkte in der Softwareentwicklung (mit Kommentaren versehen) festzuhalten, zwischen diesen zu springen und Teile von oder komplette Änderungen rückgängig zu machen, wenn dies nötig sein sollte. Git legt hierbei für jedes Projekt ein dezentrales Repository an, welches, je nach belieben auch quasi-zentral auf einem Server liegen kann. In einem Repository kann man dann entweder alleine, oder zusammen mit einer oder mehreren Personen am selben Projekt arbeiten. Git übernimmt dabei die Versionskontrolle und in den meisten Fällen auch erfolgreich die Konflktlösung.
+
+\subsubsubsection{Repository anlegen}
+Um die Arbeit an einem Projekt beginnen zu können, muss erstmal ein leeres Git-Repository erstellt werden, dies geschieht mit dem Befehl \texttt{git init}. Dieser Befehl legt im Verzeichnis, in dem man sich gerade befindet, einen \texttt{.git}-Ordner an, in welchem Git seine internen Daten speichert.
+
+\subsubsubsection{Der erste Commit}
+Nun, da ein Repository angelgt ist, kann die eigentliche Arbeit am Projekt beginnen, so wie man das gewöhnt ist. Wenn man nun vorzeigbare Ergebnisse hat, oder seinen Fortschritt vor größeren Änderungen sichern will, muss man einen Commit erstellen, dieser bildet dann den aktuellen Zustand des Projekts (mit Dateiberechtigungen) und kompletten Inhalt ab. Wenn man später zu diesem Zustand zurückkehren will, kann man einfach auf den Commit zurückkehren. Weiters speichert Git die Änderungen von einem zum nächsten Commit in einem Diff-Format, was bedeutet, dass nicht immer die ganze Datei, sondern nur die Änderungen zur letzten Version, gespeichert werden. Dies ist für ASCII-Dateien (wie zum Beispiel auch Source-Code) sehr effizient, da nicht geänderte Zeilen nicht immer abgespeichert werden müssen.
+
+Um nun die gemachten Änderungen in den Staging-Bereich hinzuzufügen führt man nun entweder \texttt{git add -A} (für alle Dateien und Verzeichnisse) oder \texttt{git add <file.name>} für genau eine (oder mehrere angegebene) Datei(en). Nun können entweder noch weitere Dateien hinzugefügt, Dateien wieder aus dem Staging-Bereich entfernt (\texttt{git reset HEAD <file.name>}) oder ein Commit erstellt werden. Letzteres wird mit dem Befehl \texttt{git commit} gemacht, dieser öffnet den Standard-Texteditor, in welchem man eine Nachricht (meistens die Änderungen, die man gemacht hat) eingibt. Wird der Befehl mit dem Flag \texttt{-m "Nachricht"} ausgeführt, so geht kein Editor auf und der Commit wird direkt mit der angegebenen Nachricht erstellt.
+
+\subsubsubsection{Zurück zu einer alten Version}
+Wenn man nun feststellt, dass das, was man programmiert hat nicht zielführend ist oder sich gar negativ auf das Projekt ausgewirkt hat, kann man relativ einfach wieder auf eine funktionierende Version zurück kehren. Hierzu führt man zuerst \texttt{git log} aus, was dann die IDs aller Commits und die erste Zeile der Commit-Nachricht anzeigt, hier sucht man sich nun die ID heraus, zu der man zurück kehren will, und gibt diese bei \texttt{git checkout <commitid>} ein. Nun stellt Git wieder die Version her, wie sie zum Zeitpunkt des Commits existierte.
+
+\subsection{Nextion Editor}
+
+\subsection{\LaTeX{}}
+Zum setzen der Dokumentation und anderer aus dieser Diplomarbeit resultierenden Dokument wurde \LaTeX{} verwendet. Die Verwendung von \LaTeX{} bietet im Gegensatz zu anderer Software einige Vorteile, wie zum Beispiel die einfacher Literaturverwaltung mittels BiB\LaTeX{} und das einfache erstellen von Tabellen und ähnlichem direkt in einem handelsüblichen Texteditor. Des weiteren ist es möglich ganze Dokumente in quasi unendlich kleine Teile aufzuteilen, sodass mehrere Leute parallel an einem Gesamtdokument arbeiten können.

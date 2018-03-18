@@ -1,0 +1,136 @@
+\section{Software}
+\label{sec:software}
+Im Zuge dieser Diplomarbeit entstanden zwei größere Softwareprojekte für das \gls{ARM} Cortex-M3 \gls{Minimalsystem}.
+
+\subsection{Tag der offenen Tür}
+Für die Tage der offenen Tür der HTBL Hollabrunn im Jahr 2017/18 entstand ein Testprogramm, welches die neuen Features des Minimalsystems demonstrieren sollte. Hierzu wurde ein einfaches \gls{GUI} für das NEXTION-Display programmiert, welche die X, Y und Z Werte der Beschleunigung vom über SPI angesteuerten Gyroskop ausliest, und in Form eines Graphen anzeigt. Des weiteren wurde eine -- nicht 100\% funktinierenden -- Funktion zum Speichern des Graphen (auf dem verbauten EEPROM) programmiert.
+
+\subsubsection{main.c}
+Das Hauptprogramm in \texttt{main.c} initsialisiert alle Ports sowie den SysTick Interrupt. Die einzelnen Komponenten wurden für die Übersichtlichkeit in extra Files ausgelagert. Im Hauptprogramm ist außerdem der Main-Loop, welcher die Werte vom BMA einliest und am Display ausgibt. Der Main-Loop fragt auch Displayeingaben ab und reagiert auf diese (Start/Stopp, Speichern und Laden).
+\lstinputlisting[language={[ANSI]C}, caption=Tag der offenen Tür: Hauptprogramm, label=lst:sw-odd-main]{Mieke/SW/ODD/main.c}
+
+\subsubsection{io.h}
+Dieses Headerfile enthält alle Deklarationen, welche für I/O-Aufgaben des Demoprogramms wichtig sind.
+\lstinputlisting[language={[ANSI]C}, caption=Tag der offenen Tür: I/O Headerfile, label=lst:sw-odd-ioh]{Mieke/SW/ODD/io.h}
+
+\subsubsection{io.c}
+Dieses C-File enthält die Implementation der I/O Funktionen des Demoprogramms.
+\lstinputlisting[language={[ANSI]C}, caption=Tag der offenen Tür: I/O Implementation, label=lst:sw-odd-ioc]{Mieke/SW/ODD/io.c}
+
+\subsubsection{display.h}
+Dieses Headerfile enthält alle Deklarationen, welche für das Display des Demoprogramms wichtig sind.
+\lstinputlisting[language={[ANSI]C}, caption=Tag der offenen Tür: Display Headerfile, label=lst:sw-odd-displayh]{Mieke/SW/ODD/display.h}
+
+\subsubsection{display.c}
+Dieses C-File enthält die Implementation der Display Funktionen des Demoprogramms.
+\lstinputlisting[language={[ANSI]C}, caption=Tag der offenen Tür: Display Implementation, label=lst:sw-odd-displayc]{Mieke/SW/ODD/display.c}
+
+\subsubsection{bma.h}
+Dieses Headerfile enthält alle Deklarationen, welche für das Gyroskop des Demoprogramms wichtig sind.
+\lstinputlisting[language={[ANSI]C}, caption=Tag der offenen Tür: BMA Headerfile, label=lst:sw-odd-bmah]{Mieke/SW/ODD/bma.h}
+
+\subsubsection{bma.c}
+Dieses C-File enthält die Implementation der BMA Funktionen des Demoprogramms.
+\lstinputlisting[language={[ANSI]C}, caption=Tag der offenen Tür: BMA Implementation, label=lst:sw-odd-bmac]{Mieke/SW/ODD/bma.c}
+
+\subsubsection{eeprom.h}
+Dieses Headerfile enthält alle Deklarationen, welche für das EEPROM des Demoprogramms wichtig sind.
+\lstinputlisting[language={[ANSI]C}, caption=Tag der offenen Tür: EEPROM Headerfile, label=lst:sw-odd-eepromh]{Mieke/SW/ODD/eeprom.h}
+
+\subsubsection{eeprom.c}
+Dieses C-File enthält die Implementation der EEPROM Funktionen des Demoprogramms.
+\lstinputlisting[language={[ANSI]C}, caption=Tag der offenen Tür: EEPROM Implementation, label=lst:sw-odd-eepromc]{Mieke/SW/ODD/eeprom.c}
+
+\subsubsection{bluetooth.h}
+Dieses Headerfile enthält alle Deklarationen, welche für die Bluetooth-Signalübertragung des Demoprogramms wichtig sind.
+\begin{warning}
+    Im finalen Programm wurde das Senden der Werte über Bluetooth weggelassen, da es die Main-Loop zu sehr verlangsamte, und somit die Displayausgabe nicht mehr flüssig genug war.
+\end{warning}
+\lstinputlisting[language={[ANSI]C}, caption=Tag der offenen Tür: Bluetooth Headerfile, label=lst:sw-odd-bluetoothh]{Mieke/SW/ODD/bluetooth.h}
+
+\subsubsection{bluetooth.c}
+Dieses C-File enthält die Implementation der Bluetooth Funktionen des Demoprogramms.
+\lstinputlisting[language={[ANSI]C}, caption=Tag der offenen Tür: Bluetooth Implementation, label=lst:sw-odd-bluetoothc]{Mieke/SW/ODD/bluetooth.c}
+
+\subsection{Testprogramm}
+Um die im Unterricht hergestellten Einheiten des \gls{Minimalsystem}s testen zu können, musste ein Testpgrogramm geschrieben werden, welches alle verwendeten Peripherieeinheiten ansteuern kann. Dabei war es nicht das Ziel eine bestimmte Funktion zu erreichen, sondenr zu testen, ob die Busse komplett durchverbunden sind, oder ob sich irgendwo auf der Leiterkarte kalte Lötstellen oder andere Fehler befinden. Dementsprechend testen diese Tests nur ob generell eine Kommunikation mit einer Peripherieeinheit möglich ist, und nicht ob diese auch korrekt funktioniert.
+
+\subsubsection{main.h}
+Einige globale Definitionen.
+\lstinputlisting[language={[ANSI]C}, caption=Tests: Hauptprogramm Headerfile, label=lst:sw-mt-mainh]{Mieke/SW/MT/main.h}
+
+\subsubsection{main.c}
+Im Hauptprogramm werden die UARTs für das anzeigen der Menüs konfiguriert, die Menüs angezeigt und auf Eingaben auf eben diese reagiert. Die einzelnen Tests wurden möglichst kompakt und modular geschrieben. Ein Test stellt dabei immer ein Interface bestehend aus Init-, Run- und DeInit-Funktion.
+\lstinputlisting[language={[ANSI]C}, caption=Tests: Hauptprogramm, label=lst:sw-mt-main]{Mieke/SW/MT/main.c}
+
+\subsubsection{interface\_uart.h}
+Dieses Headerfile enthält alle Deklarationen, welche für das UART Interface des Testpgrogramms wichtig sind.
+\lstinputlisting[language={[ANSI]C}, caption=Tests: UART Headerfile, label=lst:sw-mt-uarth]{Mieke/SW/MT/interface_uart.h}
+
+\subsubsection{interface\_uart.c}
+Dieses C-File enthält die Implementation der UART Funktionen des Testpgrogramms.
+\lstinputlisting[language={[ANSI]C}, caption=Tests: UART Implementation, label=lst:sw-mt-uartc]{Mieke/SW/MT/interface_uart.c}
+
+\subsubsection{bma.h}
+Dieses Headerfile enthält alle Deklarationen, welche für den BMA Test des Testpgrogramms wichtig sind.
+\lstinputlisting[language={[ANSI]C}, caption=Tests: BMA Headerfile, label=lst:sw-mt-bmah]{Mieke/SW/MT/bma.h}
+
+\subsubsection{bma.c}
+Dieses C-File enthält die Implementation der BMA Test Funktionen des Testpgrogramms.
+\lstinputlisting[language={[ANSI]C}, caption=Tests: BMA Implementation, label=lst:sw-mt-bmac]{Mieke/SW/MT/bma.c}
+
+\subsubsection{ne555.h}
+Dieses Headerfile enthält alle Deklarationen, welche für den NE555 Test des Testpgrogramms wichtig sind.
+\lstinputlisting[language={[ANSI]C}, caption=Tests: NE555 Headerfile, label=lst:sw-mt-ne555h]{Mieke/SW/MT/ne555.h}
+
+\subsubsection{ne555.c}
+Dieses C-File enthält die Implementation der NE555 Test Funktionen des Testpgrogramms.
+\lstinputlisting[language={[ANSI]C}, caption=Tests: NE555 Implementation, label=lst:sw-mt-ne555c]{Mieke/SW/MT/ne555.c}
+
+\subsubsection{ledswitch.h}
+Dieses Headerfile enthält alle Deklarationen, welche für den LED/Switch Test des Testpgrogramms wichtig sind.
+\lstinputlisting[language={[ANSI]C}, caption=Tests: LED/Switch Headerfile, label=lst:sw-mt-ledswitchh]{Mieke/SW/MT/ledswitch.h}
+
+\subsubsection{ledswitch.c}
+Dieses C-File enthält die Implementation der LED/Switch Test Funktionen des Testpgrogramms.
+\lstinputlisting[language={[ANSI]C}, caption=Tests: LED/Switch Implementation, label=lst:sw-mt-ledswitchc]{Mieke/SW/MT/ledswitch.c}
+
+\subsubsection{eeprom.h}
+Dieses Headerfile enthält alle Deklarationen, welche für den EEPROM Test des Testpgrogramms wichtig sind.
+\lstinputlisting[language={[ANSI]C}, caption=Tests: EEPROM Headerfile, label=lst:sw-mt-eepromh]{Mieke/SW/MT/eeprom.h}
+
+\subsubsection{eeprom.c}
+Dieses C-File enthält die Implementation der EEPROM Test Funktionen des Testpgrogramms.
+\lstinputlisting[language={[ANSI]C}, caption=Tests: EEPROM Implementation, label=lst:sw-mt-eepromc]{Mieke/SW/MT/eeprom.c}
+
+\subsubsection{esp.h}
+Dieses Headerfile enthält alle Deklarationen, welche für den ESP Test des Testpgrogramms wichtig sind.
+\lstinputlisting[language={[ANSI]C}, caption=Tests: ESP Headerfile, label=lst:sw-mt-esph]{Mieke/SW/MT/esp.h}
+
+\subsubsection{esp.c}
+Dieses C-File enthält die Implementation der ESP Test Funktionen des Testpgrogramms.
+\lstinputlisting[language={[ANSI]C}, caption=Tests: ESP Implementation, label=lst:sw-mt-espc]{Mieke/SW/MT/esp.c}
+
+\subsubsection{rgb.h}
+Dieses Headerfile enthält alle Deklarationen, welche für den RGB LED Test des Testpgrogramms wichtig sind.
+\lstinputlisting[language={[ANSI]C}, caption=Tests: RGB LED Headerfile, label=lst:sw-mt-rgbh]{Mieke/SW/MT/rgb.h}
+
+\subsubsection{rgb.c}
+Dieses C-File enthält die Implementation der RGB LED Test Funktionen des Testpgrogramms.
+\lstinputlisting[language={[ANSI]C}, caption=Tests: RGB LED Implementation, label=lst:sw-mt-rgbc]{Mieke/SW/MT/rgb.c}
+
+\subsubsection{piezo.h}
+Dieses Headerfile enthält alle Deklarationen, welche für den Piezo Test des Testpgrogramms wichtig sind.
+\lstinputlisting[language={[ANSI]C}, caption=Tests: Piezo Headerfile, label=lst:sw-mt-piezoh]{Mieke/SW/MT/piezo.h}
+
+\subsubsection{piezo.c}
+Dieses C-File enthält die Implementation der Piezo Test Funktionen des Testpgrogramms.
+\lstinputlisting[language={[ANSI]C}, caption=Tests: Piezo Implementation, label=lst:sw-mt-piezoc]{Mieke/SW/MT/piezo.c}
+
+\subsubsection{display.h}
+Dieses Headerfile enthält alle Deklarationen, welche für den Display Test des Testpgrogramms wichtig sind.
+\lstinputlisting[language={[ANSI]C}, caption=Tests: Display Headerfile, label=lst:sw-mt-displayh]{Mieke/SW/MT/display.h}
+
+\subsubsection{display.c}
+Dieses C-File enthält die Implementation der Display Test Funktionen des Testpgrogramms.
+\lstinputlisting[language={[ANSI]C}, caption=Tests: Display Implementation, label=lst:sw-mt-displayc]{Mieke/SW/MT/display.c}

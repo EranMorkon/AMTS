@@ -31,7 +31,7 @@
 
 \usepackage{htlDT}    % HTBL Diplomarbeitsstyle
 
-\usepackage{todonotes}
+%\usepackage{todonotes}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% General Settings, like Title, Students and supporters
 \title{Advanced Microcontroller Training System}
@@ -113,12 +113,20 @@
 \input{Allgemein/Allgemein}
 
 \clearpage
+\pageauthor{Mieke}
+\input{Mieke/Theorie}
+
+\clearpage
 \pageauthor{Schuh}
 \input{Schuh/Core-Modul}
 \input{Schuh/Basisplatine}
 \input{Schuh/USB-to-UART}
 \input{Schuh/Audio}
 \input{Schuh/Kosten}
+
+\clearpage
+\pageauthor{Mieke}
+\input{Mieke/Software}
 
 \clearpage
 \pageauthor{Mieke}
@@ -136,7 +144,7 @@
 \listoffigures
 \listoftables
 \printglossary[title=Begriffsverzeichnis,toctitle=Begriffsverzeichnis]
-\listoftodos[To-Dos]
+%\listoftodos[To-Dos]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% End Document
 \end{document}

@@ -194,7 +194,7 @@ Um das Messen mit einem Oszilloskop oder anderen Messgeräten zu vereinfachen wu
     \label{fig:basisplatine-masse}
 \end{figure}
 
-\subsubsection{Powerswitch STMPS2141}\todo{Quelle?}
+\subsubsection{Powerswitch STMPS2141}
 Um USB-Geräte zu betreiben, welche selbst keine eigene Spannungsversorgung besitzen (z.B. USB-Sticks) wurde ein Powerswitch (\fref{fig:basisplatine-power}, D3) verbaut. Dieser ermöglicht es die interne \unit{5}{\volt}-Versorgung auf die USB-Buchsen zu legen, damit diese Geräte mit Spannung versorgt werden können. Sollte das Gerät zu viel Strom verbrauchen beginnt die LED (\fref{fig:basisplatine-power}, V9) zu leuchten. Durch Jumpern der Stiftleiste (\fref{fig:basisplatine-power}, X4) an den Port-Pin PC9 kann die Versorgung von externen Geräten gesteuert werden.
 
 \begin{figure}[htb]
@@ -334,7 +334,7 @@ Um die Platine auch mit einer Fernbedienung oder einem Mobiltelefon steuern zu k
 \end{figure}
 
 \subsubsection{Temperatursensor}
-Um die Umgebungstemperatur feststellen zu können wurde auf der Basisplatine der Temperaturfühler DS18B20 verbaut, welcher mit Hilfe des 1-Wire Protokolls angesprochen werden kann. Die maximale Mesfehler dieses Temperatursensors beträgt ±0,5°C laut Datenblattangabe\todo{Quelle?}. Um den Temperaturfühler verwenden zu können muss lediglich der Pin9 mit dem Pin10, der Stiftleiste (\fref{fig:basisplatine-ssel}, X9), gejumpert werden. 
+Um die Umgebungstemperatur feststellen zu können wurde auf der Basisplatine der Temperaturfühler DS18B20 verbaut, welcher mit Hilfe des 1-Wire Protokolls angesprochen werden kann. Die maximale Mesfehler dieses Temperatursensors beträgt ±0,5°C laut Datenblattangabe. Um den Temperaturfühler verwenden zu können muss lediglich der Pin9 mit dem Pin10, der Stiftleiste (\fref{fig:basisplatine-ssel}, X9), gejumpert werden. 
 
 \begin{figure}[htb]
     \centering
@@ -345,7 +345,7 @@ Um die Umgebungstemperatur feststellen zu können wurde auf der Basisplatine der
 \end{figure}
 
 \subsubsection{Lichtwandler LFU}
-Der auf der \gls{Basisplatine} realisierte LFU (Licht-Frequenz-Wandler), wandeltet wie der Name bereits sagt Licht in eine bestimmte Frequenz um. Je höher die Bestrahlungsstärke des Lichts, desto höher wird die über den Output des LFUs ausgegebene Frequenz. Den linearen Zusammenhang zwischen der Bestrahlungsstärke und der ausgegebenen Frequenz kann aus \fref{fig:basisplatine-lfu-freq} entnommen werden.\todo{Quelle?} Um den LFU verwenden zu können muss lediglich der Pin5 mit dem Pin6, der Stiftleiste (\fref{fig:basisplatine-ssel}, X9), gejumpert werden.
+Der auf der \gls{Basisplatine} realisierte LFU (Licht-Frequenz-Wandler), wandeltet wie der Name bereits sagt Licht in eine bestimmte Frequenz um. Je höher die Bestrahlungsstärke des Lichts, desto höher wird die über den Output des LFUs ausgegebene Frequenz. Den linearen Zusammenhang zwischen der Bestrahlungsstärke und der ausgegebenen Frequenz kann aus \fref{fig:basisplatine-lfu-freq} entnommen werden. Um den LFU verwenden zu können muss lediglich der Pin5 mit dem Pin6, der Stiftleiste (\fref{fig:basisplatine-ssel}, X9), gejumpert werden.
 
 \begin{figure}[htb]
     \centering
@@ -357,7 +357,7 @@ Der auf der \gls{Basisplatine} realisierte LFU (Licht-Frequenz-Wandler), wandelt
 \fig{basisplatine-lfu-freq}{Frequenzgang des LFUs}{Frequenzgang des LFUs}{0.5\textwidth}{Schuh/Pictures/Basis-lfu-freq}
 
 \subsubsection{RGB-LED}
-Auf der Hardware der \gls{Basisplatine} wurde eine RGB-LED \cite{basis:rgbled} verbaut, welche mit Hilfe des LED-Divers (\fref{fig:basisplatine-rgbled}, D4) \cite{basis:rgbdriver}, welcher mit dem \IIC{}-Bus angesteuert werden kann. Dieser LED-Driver hat den Vorteil, dass er eine interne Stromüberwachung besitzt. Dadurch benötigen die einzelnen Anoden der RGB-LED keine Vorwiderstände, da sich der Strom automatisch entsprechend der gewünschten Farbe reguliert.
+Auf der Hardware der \gls{Basisplatine} wurde eine RGB-LED \cite{basis:rgbled} verbaut, welche mit Hilfe des LED-Drivers (\fref{fig:basisplatine-rgbled}, D4) \cite{basis:rgbdriver}, welcher mit dem \IIC{}-Bus angesteuert werden kann. Dieser LED-Driver hat den Vorteil, dass er eine interne Stromüberwachung besitzt. Dadurch benötigen die einzelnen Anoden der RGB-LED keine Vorwiderstände, da sich der Strom automatisch entsprechend der gewünschten Farbe reguliert.
 
 \begin{figure}[htb]
     \centering
