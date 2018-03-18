@@ -5,14 +5,15 @@
 \usepackage{hhline}     % Tutorial Table border
 \usepackage{listings}   % Code Listings
 \usepackage{lstlangarm} % ARM ASM
+\usepackage{lstlangz80} % Z80 ASM
+\usepackage[dvipsnames]{xcolor}
 
 \lstset{
-    language=C,
     basicstyle=\ttfamily,
-    keywordstyle=\color{blue}\ttfamily,
-    stringstyle=\color{red}\ttfamily,
-    commentstyle=\color{green}\ttfamily,
-    morecomment=[l][\color{magenta}]{\#},
+    keywordstyle=\color{ProcessBlue}\ttfamily,
+    stringstyle=\color{Red}\ttfamily,
+    commentstyle=\color{ForestGreen}\ttfamily,
+    morecomment=[l][\color{Thistle}]{\#},
     basicstyle=\footnotesize,
     numbers=left,
     stepnumber=1,
@@ -20,38 +21,7 @@
     tabsize=1,
     breaklines=true,
     breakatwhitespace=false,
-}
-
-\lstset{
-    language=[ARM]Assembler,
-    basicstyle=\ttfamily,
-    keywordstyle=\color{blue}\ttfamily,
-    stringstyle=\color{red}\ttfamily,
-    commentstyle=\color{green}\ttfamily,
-    morecomment=[l][\color{magenta}]{\#},
-    basicstyle=\footnotesize,
-    numbers=left,
-    stepnumber=1,
-    showstringspaces=false,
-    tabsize=1,
-    breaklines=true,
-    breakatwhitespace=false,
-}
-
-\lstset{
-    language=XML,
-    basicstyle=\ttfamily,
-    keywordstyle=\color{blue}\ttfamily,
-    stringstyle=\color{red}\ttfamily,
-    commentstyle=\color{green}\ttfamily,
-    morecomment=[l][\color{magenta}]{\#},
-    basicstyle=\footnotesize,
-    numbers=left,
-    stepnumber=1,
-    showstringspaces=false,
-    tabsize=1,
-    breaklines=true,
-    breakatwhitespace=false,
+    columns=fullflexible,
 }
 
 \usepackage{hyperref}
@@ -133,6 +103,7 @@
 \begin{document}
 \newcommand*{\IIC}{I$^2$C}
 \newcommand*{\IIS}{I$^2$S}
+\newcommand*{\uVision}{$\mu$Vision}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Titlepage, DA database and TOC
 \maketitle{}
 \makedadb{pdfs/DADB}{pdfs/DADBErklarung}
@@ -140,13 +111,22 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% First real page
 \input{Allgemein/Allgemein}
+
+\clearpage
+\pageauthor{Schuh}
 \input{Schuh/Core-Modul}
 \input{Schuh/Basisplatine}
 \input{Schuh/USB-to-UART}
 \input{Schuh/Audio}
 \input{Schuh/Kosten}
 
+\clearpage
+\pageauthor{Mieke}
 \input{Mieke/Mieke}
+
+\clearpage
+\pageauthor{Reischl}
+\input{Reischl/Reischl}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Appendix
 \cleardoublepage
