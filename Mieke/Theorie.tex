@@ -40,7 +40,18 @@ Um nun die gemachten Änderungen in den Staging-Bereich hinzuzufügen führt man
 \subsubsubsection{Zurück zu einer alten Version}
 Wenn man nun feststellt, dass das, was man programmiert hat nicht zielführend ist oder sich gar negativ auf das Projekt ausgewirkt hat, kann man relativ einfach wieder auf eine funktionierende Version zurück kehren. Hierzu führt man zuerst \texttt{git log} aus, was dann die IDs aller Commits und die erste Zeile der Commit-Nachricht anzeigt, hier sucht man sich nun die ID heraus, zu der man zurück kehren will, und gibt diese bei \texttt{git checkout <commitid>} ein. Nun stellt Git wieder die Version her, wie sie zum Zeitpunkt des Commits existierte.
 
-\subsection{Nextion Editor}
+\subsection{Nextion Editor} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Das Interface für das Display kann neben den zur verfügung stehenden Befehlen auch mit einem grafischen Editor erstellt werden. Die Software die dafür genutzt werden muss ist der Nextion Editor. Damit können auch Bitmap-Schriftarten für das
+Display erstellt werden. Das Display wird mit einer eigenen Programmiersprache programmiert, die simple Befehle ausführen kann, wie Wechsel von Display-Seiten, User-Interface Elemente beeinflussen und verschiedene Modi des Displays aktivieren
+oder deaktivieren.
+
+Ein simples Projekt kann mit den in \fref{fig:nextion-1} gezeigten Einstellungen kofiguriert werden.
+
+\fig{nextion-1}{Einstellungen für ein neues Nextion Editor Projekt}{Screenshot der Einstellungen die für ein neues Nextion Editor Projekt gewählt werden müssen}{\textwidth}{Mieke/Nextion/settings}
+
+Um ein fertiges Programm auf das Display zu flashen muss das Display mit dem \gls{USB-to-UART}-Adapter mit dem Computer verbunden werden und dann im Nextion Editor das Programm übertragen werden. Die Baudrate und der Port werden vom Editor im Normalfall autoamtisch ermittelt und müssen nicht eigestellt werden. Des weiteren ist zu beachten, das beim flashen des Programms unter anderem die Display Firmware aktualisiert werden kann und somit andere Programme nicht mehr auf dem Display ausführbar sind, wenn die Firmware die Befehle der Nextion Programmiersprache ändert. Dies kann ggf. den Editor-Changelogs entnommen werden.
+
+\fig{nextion-2}{Nestion Editor Hauptoberfläche}{Die Nextion Editor Oberfläche}{\textwidth}{Mieke/Nextion/editor}
 
 \subsection{\LaTeX{}}
 Zum setzen der Dokumentation und anderer aus dieser Diplomarbeit resultierenden Dokument wurde \LaTeX{} verwendet. Die Verwendung von \LaTeX{} bietet im Gegensatz zu anderer Software einige Vorteile, wie zum Beispiel die einfacher Literaturverwaltung mittels BiB\LaTeX{} und das einfache erstellen von Tabellen und ähnlichem direkt in einem handelsüblichen Texteditor. Des weiteren ist es möglich ganze Dokumente in quasi unendlich kleine Teile aufzuteilen, sodass mehrere Leute parallel an einem Gesamtdokument arbeiten können.
