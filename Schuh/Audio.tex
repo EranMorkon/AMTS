@@ -1,17 +1,7 @@
-\section{Audioadapter \cite{da:sps}}
+\section[Audioadapter]{Audioadapter \cite{da:sps}}
 \label{sec:audioadapter}
 
-Der Audioadapter dient zum Einlesen und Ausgeben von analogen Signalen, wobei bei der Diplomarbeit nur das Einlesen benötigt wird. Die eingelesenen Audiosignale, die von zwei Mikrofonen geliefert werden, werden mittels \gls{ADC} in ein digitales Signal umgewandelt und mittels \IIS{}-Protokoll zum \gls{DSP} übertragen, wo sie dann weiterverarbeitet werden können. Der vorherige Audioadapter (Version 2.1) stammt aus der Diplomarbeit \enquote{Universal Mover} von Georg Amstetter \cite{da:umover} aus dem Jahr 2011/12. Dieser Audioadapter wies allerdings einige Probleme auf.
-
-\subsection{Nachteile des alten Audioadapters}
-Folgende Nachteile des \enquote{alten} Audioadapters führten zur Entwicklung eines neuen Audioadapters:
-\begin{itemize}
-    \item Der Takt für den \gls{DAC} und den \gls{ADC} wird vom Mikrocontroller erzeugt und ist nicht 100\% stabil. Dadurch kann Jitter bei der Abtastrate entstehen. Um dieses Problem zu lösen wurde ein Audiocodec mit \enquote{Crystal Input} gewählt. Der Takt kann direkt auf dem Audioadapter erzeugt werden. Da der \unit{12}{\mega\hertz} Quarz gleich neben dem Audiocodec platziert ist, wird eine stabile Taktversorgung gewährt.
-    \item Eine weitere Schwäche des \enquote{alten} Audioadapters war der hohe Klirrfaktor (hohe harmonische Störungen). Genaue Messergebnisse sind aus \fref{sec:audio-messergebnisse} zu entnehmen. Um diese Störungen zu minimieren wurde eine 4-fach Multilayer Platine entworfen.
-    \item Außerdem erfolgt die Eingangsauswahl zwischen Klinke und Cinch beim alten Audioadapter durch softwareseitiges Konfigurieren des \gls{ADC}s, da intern die Multiplexer MUX1 und MUX2 zwischen den Eingängen umschalten, wie in \fref{fig:audio-eingang} erkennbar ist. Somit ist es nicht möglich, während einer Anwendung statt der Klinkenbuchse einfach die Cinchbuchsen als Eingang zu verwenden, ohne die Software zu ändern und den \gls{ADC} erneut zu konfigurieren. Dieses Problem wird beim neuen Audioadapter durch einen \enquote{Analog Switch} gelöst, der jederzeit durch das Setzen eines Jumpers zwischen den Eingängen umschalten kann.
-\end{itemize}
-
-\fig{audio-eingangalt}{Eingänge des alten ADCs}{Eingänge des alten \gls{ADC}s (PCM1870) \cite{ti:pcm1870}}{0.5\textwidth}{Schuh/Pictures/audio-eingangalt}
+Der Audioadapter wurde entwickelt, um Echtzeit Audioverarbeitung (Signalverarbeitung) mit dem ARM-\gls{Minimalsystem} zu ermöglichen. Die eingelesenen Audiosignale, die beispielsweise von einem Mikrofon geliefert werden, werden abgetastet und mit einem \gls{ADC} in einen digitalen Wert gewandelt und via \IIS{} zum Microcontroller gesendet. Dort werden sie dann verarbeitet. Schließlich wird das Audiosignal dann via \IIS{} zu einem \gls{DAC} gesendet und Schließlich wird das analoge Signal wieder auf einem Lautsprecher ausgegeben.
 
 \subsection{Aufbau des neuen Audioadapters}
 \subsubsection{Blockschaltbild}
@@ -195,7 +185,7 @@ Die zwei Audioquellen auf der linken Seite stellen die Eingänge des Audioadapte
 Die in \fref{fig:audio-switch-jmp-chinch} gezeigte Jumperstellung verbindet die miteinander verbundenen IN-Pins mit VCC und der Cincheingang wird durchgeschaltet.
 Die in \fref{fig:audio-switch-jmp-klinke} gezeigte Jumperstellung verbindet die IN-Pins mit GND und der Klinkeneingang wird durchgeschaltet.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \subfloat[Chinch\label{fig:audio-switch-jmp-chinch}]{\includegraphics[width=.4\linewidth]{Schuh/Pictures/audio-switch-jmp-chinch}}\qquad
     \subfloat[Klinke\label{fig:audio-switch-jmp-klinke}]{\includegraphics[width=.4\linewidth]{Schuh/Pictures/audio-switch-jmp-klinke}}\qquad
@@ -223,7 +213,7 @@ Nun wurde das Signal am Cincheingang über den internen Shunt Switch gegen Masse
 \subsubsection{Ein- und Ausgänge}
 Es stehen zum Anschließen einer Audioquelle ein Cinch-Eingang und ein Klinken-Eingang zur Verfügung. Die Ausgabe erfolgt ebenfalls entweder über Cinch oder Klinke.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \subfloat[Frontansicht\label{fig:audio-io-front}]{\includegraphics[width=.4\linewidth]{Schuh/Pictures/audio-io-front}}\qquad
     \subfloat[Draufsicht\label{fig:audio-io-up}]{\includegraphics[width=.4\linewidth]{Schuh/Pictures/audio-io-up}}\qquad
