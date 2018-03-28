@@ -11,7 +11,7 @@ Das \gls{Core-Modul} ist das Herzstück des gesamten \gls{ARM}-\gls{Minimalsyste
 \subsection{Schnittstellen}
 \label{sec:coremodul-schnittstellen}
 
-Das \gls{Core-Modul} verfügt über die in \fref{tab:coremodul-schnittstellen} angegebenen Schnittstellen, welche wie in \fref{fig:coremodul-plan} zu sehen platziert sind.
+In \fref{tab:coremodul-schnittstellen} sind die verfügbaren Schnittstellen des \gls{Core-Modul}s aufgelistet. In \fref{fig:coremodul-plan} ist dargestellt, wo auf der Platine die einzelnen Schnittstellen platziert sind.
 
 \tab{coremodul-schnittstellen}{Schnittstellen des Core-Moduls}{Schnittstellen des \gls{Core-Modul}s}{|c|p{10cm}|}{
     \hline
@@ -32,65 +32,62 @@ Das \gls{Core-Modul} verfügt über die in \fref{tab:coremodul-schnittstellen} a
 \subsection{Prozessor}
 \label{sec:coremodul-prozessor}
 
-Als Prozessor für das \gls{Core-Modul} wurde der \gls{cpu} von der Firma \gls{STM} verwendet. Die Key-Features werden in \fref{fig:coremodul-features} zusammengefasst.
+Als Prozessor für das \gls{Core-Modul} wurde der \gls{cpu} von der Firma \gls{STM} verwendet. Die Key-Features sind in \fref{fig:coremodul-features} zusammengefasst.
 
 \fig{coremodul-features}{Features des Prozessors}{Features des Prozessors \cite{stm:stm32f107rc-web}}{\textwidth}{Schuh/Pictures/Features}
 
 \subsubsection{Blockschaltbild}
-\fig{coremodul-cpubsb}{Blockschaltbild des Prozessors}{Blockschaltbild des Prozessors \cite{stm:stm32f107rc}}{0.8\textwidth}{Schuh/Pictures/BSB}
+Im Gegensatz zum bisher verwendeten STM32F103RB verfügt der \gls{cpu} über zwei \IIS{}-Schnittstellen, welche für den Audioadapter (\fref{sec:audioadapter}) verwendet werden. Des weiteren verfügt der neue Microcontroller einen \gls{DAC}, einen Ethernet-Controller (MAC) und ist USB OTG-fähig.
+\fig{coremodul-cpubsb}{Blockschaltbild des Prozessors}{Blockschaltbild des Prozessors \cite{stm:stm32f107rc}}{\textwidth}{Schuh/Pictures/BSB}
 
 \subsubsection{Pinning}
-\fig{coremodul-cpupinning}{Pinning des Prozessors}{Pinning des Prozessors \cite{stm:stm32f107rc}}{0.8\textwidth}{Schuh/Pictures/Pinning}
+\fig{coremodul-cpupinning}{Pinning des Prozessors}{Pinning des Prozessors \cite{stm:stm32f107rc}}{\textwidth}{Schuh/Pictures/Pinning}
 
 \subsubsection{Abmessungen}
 \fig{coremodul-cpumeasure}{Abmessungen des Prozessors}{Abmessungen des Prozessors \cite{stm:stm32f107rc}}{0.8\textwidth}{Schuh/Pictures/MeasureGraphic}
 \tabpdf{coremodul-cpumeasure}{Abmessungen des Prozessors}{Abmessungen des Prozessors \cite{stm:stm32f107rc}}{0.8\textwidth}{Schuh/Pictures/MeasureTable}
 
 \subsubsection{Pinbelegung}
-\begin{table}[htb]
+\begin{table}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{Schuh/Pictures/Pinbelegung1}
+    \includegraphics[width=0.9\textwidth]{Schuh/Pictures/Pinbelegung1}
     \caption[Pinbelegung des Prozessors]{Pinbelegung des Prozessors \cite{stm:stm32f107rc}}
     \label{tab:coremodul-cpupins}
 \end{table}
-\begin{table}[htb]\ContinuedFloat
+\begin{table}[H]\ContinuedFloat
     \centering
-    \includegraphics[width=0.8\textwidth]{Schuh/Pictures/Pinbelegung2}
+    \includegraphics[width=0.9\textwidth]{Schuh/Pictures/Pinbelegung2}
     \caption[Pinbelegung des Prozessors]{Pinbelegung des Prozessors \cite{stm:stm32f107rc}}
 \end{table}
-\begin{table}[htb]\ContinuedFloat
+\begin{table}[H]\ContinuedFloat
     \centering
-    \includegraphics[width=0.8\textwidth]{Schuh/Pictures/Pinbelegung3}
+    \includegraphics[width=0.9\textwidth]{Schuh/Pictures/Pinbelegung3}
     \caption[Pinbelegung des Prozessors]{Pinbelegung des Prozessors \cite{stm:stm32f107rc}}
 \end{table}
-\begin{table}[htb]\ContinuedFloat
+\begin{table}[H]\ContinuedFloat
     \centering
-    \includegraphics[width=0.8\textwidth]{Schuh/Pictures/Pinbelegung4}
+    \includegraphics[width=0.9\textwidth]{Schuh/Pictures/Pinbelegung4}
     \caption[Pinbelegung des Prozessors]{Pinbelegung des Prozessors \cite{stm:stm32f107rc}}
 \end{table}
-\begin{table}[htb]\ContinuedFloat
+\begin{table}[H]\ContinuedFloat
     \centering
-    \includegraphics[width=0.8\textwidth]{Schuh/Pictures/Pinbelegung5}
+    \includegraphics[width=0.9\textwidth]{Schuh/Pictures/Pinbelegung5}
     \caption[Pinbelegung des Prozessors]{Pinbelegung des Prozessors \cite{stm:stm32f107rc}}
 \end{table}
 
 \subsection{Portbelegungsplan}
 \label{sec:coremodul-portbelegung}
-\tabpdf{coremodul-portbelegung}{Portbelegungsplan des Core-Moduls}{Portbelegungsplan des \gls{Core-Modul}s}{0.5\textwidth}{Schuh/Pictures/Portbelegung}
-
-\subsection{Gesamtschaltung}
-\label{sec:coremodul-schaltung}
-\fig{coremodul-gesamtschaltung}{Gesamtschaltung des Core-Moduls}{Gesamtschaltung des \gls{Core-Modul}s}{0.8\textwidth}{Schuh/Pictures/SchaltungCM}
+\tabpdf{coremodul-portbelegung}{Portbelegungsplan des Core-Moduls}{Portbelegungsplan des \gls{Core-Modul}s}{0.55\textwidth}{Schuh/Pictures/Portbelegung}
 
 \subsubsection{Programmierung mit ST-Link V2}
 \label{sec:coremodul-stlink}
 Zur Programmierung und zum \gls{Debugging} des neuen \gls{ARM}-\gls{Minimalsystem}s sollte ein \textbf{ST-Link V2 Mini} (\fref{fig:coremodul-stlink}) verwendet werden. Dieser Programmer besitzt eine verpolungssichere zweireihige Stiftreihe, welche es ermöglicht Programme mit Hilfe von \gls{SWD} auf den Microcontroller zu übertragen oder diese zu debuggen. Darüber hinaus ist der ST-Link V2 Mini der Lieferant der Hauptversorgungsspannung von \unit{+5}{\volt}.
 
-Um den ST-Link V2 Mini und den Microcontroller im Falle eines Kurzschlusses zwischen der Versorgungsspannung und Masse zu schützen wurde eine Schottky-Diode (\fref{fig:coremodul-swd}, V1), mit einem maximalen Durchflussstrom von \unit{1}{\ampere}, vorgesehen. Um die Verpolungssicherheit des ST-Link V2 Mini zu gewährleisten, wurde eine zweireihige Buchsenleiste mit Nase (\fref{fig:coremodul-swd}, X1; \fref{fig:coremodul-stlinkbuchse}) verbaut, welche eine Verpolung des ST-Links unmöglich macht.
+Um den ST-Link V2 Mini und den Microcontroller im Falle eines Kurzschlusses zwischen der Versorgungsspannung und Masse zu schützen wurde eine Schottky-Diode V1 (\fref{fig:coremodul-swd}), mit einem maximalen Durchflussstrom von \unit{1}{\ampere}, vorgesehen. Um die Verpolungssicherheit des ST-Link V2 Mini zu gewährleisten, wurde eine zweireihige Buchsenleiste mit Nase X1 (\fref{fig:coremodul-swd}; \fref{fig:coremodul-stlinkbuchse}) verbaut, welche eine Verpolung des ST-Links unmöglich macht.
 
 \fig{coremodul-stlink}{ST-Link V2 Mini}{ST-Link V2 Mini}{0.5\textwidth}{Schuh/Pictures/STLink}
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \subfloat[Schematic\label{fig:coremodul-swd-schem}]{\includegraphics[width=.4\linewidth]{Schuh/Pictures/SchaltungSWD}}\qquad
 \subfloat[Hardware\label{fig:coremodul-swd-hard}]{\includegraphics[width=.4\linewidth,angle=270]{Schuh/Pictures/core-stlink}}\qquad
@@ -100,10 +97,10 @@ Um den ST-Link V2 Mini und den Microcontroller im Falle eines Kurzschlusses zwis
 
 \fig{coremodul-stlinkbuchse}{Buchse mit Nase}{Buchse mit Nase}{0.5\textwidth}{Schuh/Pictures/STLinkBuchse}
 
-\subsubsection{SWD-Adapter}
-Der als Buchsenleiste ausgeführte SWD-Adapter (\fref{fig:coremodul-swd2}, X4), erfüllt vom Prinzip her die gleiche Funktion wie der bereits in \fref{sec:coremodul-stlink} beschriebene Stecker für den ST-Link V2 Mini. Dieser ermöglicht lediglich Kompatibilität zu anderen SWD-Programmern und Debuggern, welche diesen Stecker nicht besitzen.
+\subsubsection{Single Wire Debug (SWD) Adapter}
+Der als Buchsenleiste ausgeführte SWD-Adapter X4 (\fref{fig:coremodul-swd2}), erfüllt vom Prinzip her die gleiche Funktion wie der bereits in \fref{sec:coremodul-stlink} beschriebene Stecker für den ST-Link V2 Mini. Dieser ermöglicht lediglich Kompatibilität zu anderen SWD-Programmern und Debuggern, welche diesen Stecker nicht besitzen.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \subfloat[Schematic\label{fig:coremodul-swd2-schem}]{\includegraphics[width=.4\linewidth]{Schuh/Pictures/SchaltungSWD2}}\qquad
     \subfloat[Hardware\label{fig:coremodul-swd2-hard}]{\includegraphics[width=.4\linewidth]{Schuh/Pictures/core-swd}}\qquad
@@ -111,10 +108,10 @@ Der als Buchsenleiste ausgeführte SWD-Adapter (\fref{fig:coremodul-swd2}, X4), 
     \label{fig:coremodul-swd2}
 \end{figure}
 
-\subsubsection{USART 1}
-Die Buchsenleiste (\fref{fig:coremodul-uart}, X3) dient hauptsächlich zur seriellen Kommunikation. Die Pinanordnung wurde so gewählt, dass die Kommunikation entweder kabelgebunden, über den \gls{USB-to-UART} Adapter, oder alternativ über ein HC-06 Bluetooth Modul erfolgen kann.
+\subsubsection{Serielle Schnittstelle (USART1)}
+Die Buchsenleiste X3 (\fref{fig:coremodul-uart}) dient hauptsächlich zur seriellen Kommunikation. Die Pinanordnung wurde so gewählt, dass die Kommunikation entweder kabelgebunden, über den \gls{USB-to-UART} Adapter, oder alternativ über ein HC-06 Bluetooth Modul erfolgen kann.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \subfloat[Schematic\label{fig:coremodul-uart-schem}]{\includegraphics[width=.4\linewidth]{Schuh/Pictures/SchaltungUART}}\qquad
     \subfloat[Hardware\label{fig:coremodul-uart-hard}]{\includegraphics[angle=90,width=.4\linewidth]{Schuh/Pictures/core-uart}}\qquad
@@ -123,9 +120,9 @@ Die Buchsenleiste (\fref{fig:coremodul-uart}, X3) dient hauptsächlich zur serie
 \end{figure}
 
 \subsubsection{Bootkonfiguration}
-Mit Hilfe des zweireihigen Bootjumpers (\fref{fig:coremodul-boot}, X5) kann der Benutzter entscheiden von welchem Speichermedium der Cortex booten soll.
+Mit Hilfe des zweireihigen Bootjumpers X5 (\fref{fig:coremodul-boot}) kann der Benutzter entscheiden von welchem Speichermedium der Cortex booten soll.
 
-Die Standardkonfiguration sieht vor, dass man vom Flash-Speicher bootet. Daher muss, wie in \fref{tab:coremodul-boot} beschrieben, Boot 0 auf GND gesetzt werden und Boot 1 auf +3.3V.
+Die Standardkonfiguration sieht vor, dass man vom Flash-Speicher bootet. Daher muss, wie in \fref{tab:coremodul-boot} beschrieben, Boot 0 auf GND gesetzt werden und Boot 1 auf \unit{+3.3}{\volt}.
 
 \fig{coremodul-boot}{Boot-Schaltung des Core-Moduls}{Boot-Schaltung des \gls{Core-Modul}s}{0.5\textwidth}{Schuh/Pictures/SchaltungBoot}
 \tab{coremodul-boot}{Bootkonfigurationen des Core-Moduls}{Bootkonfigurationen des \gls{Core-Modul}s}{|c|c|p{10cm}|}{
@@ -141,28 +138,28 @@ Die Standardkonfiguration sieht vor, dass man vom Flash-Speicher bootet. Daher m
 }
 
 \subsubsection{Reset}
-Der Kurzhubtaster (\fref{fig:coremodul-reset}, S2) dient zum Reset des \gls{Core-Modul}s. Mit Hilfe dieses ist ein erneuter Programmstart möglich, da er den Pin des low-aktiven Reset gegen Masse zieht. Gegebenenfalls angeschlossene Arduino-Shields werden mit diesem Taster ebenfalls zurückgesetzt.
+Der Kurzhubtaster S2 (\fref{fig:coremodul-reset}) dient zum Reset des \gls{Core-Modul}s. Mit Hilfe dieses ist ein erneuter Programmstart möglich, da er den Pin des low-aktiven Reset gegen Masse zieht. Gegebenenfalls angeschlossene Arduino-Shields werden mit diesem Taster ebenfalls zurückgesetzt.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
-    \subfloat[Schematic\label{fig:coremodul-reset-schem}]{\includegraphics[width=.4\linewidth]{Schuh/Pictures/schaltung-reset}}\qquad
-    \subfloat[Hardware\label{fig:coremodul-reset-hard}]{\includegraphics[width=.4\linewidth]{Schuh/Pictures/core-reset}}\qquad
+    \subfloat[Schematic\label{fig:coremodul-reset-schem}]{\includegraphics[width=.2\linewidth]{Schuh/Pictures/schaltung-reset}}\qquad
+    \subfloat[Hardware\label{fig:coremodul-reset-hard}]{\includegraphics[width=.2\linewidth]{Schuh/Pictures/core-reset}}\qquad
     \caption[Reset-Schaltung des Core-Moduls]{Reset-Schaltung des \gls{Core-Modul}s}
     \label{fig:coremodul-reset}
 \end{figure}
 
-\subsubsection{\unit{5}{\volt} Spannungsversorgung}
-Die \unit{+5}{\volt} Spannungsversorgung für das \gls{Core-Modul} kann auf zwei verschiedenen Wegen bezogen werden. Entweder man verwendet den ST-Link V2 Mini als \unit{5}{\volt} Spannungsversorgung (\fref{fig:coremodul-swd}, X1), wie bereits in \fref{sec:coremodul-stlink} beschrieben, oder man speist die \unit{+5}{\volt} Versorgung über den \unit{5}{\volt}-Pin am DIL-Adapter (\fref{fig:coremodul-spannung}, X2) ein.
+\subsubsection{5 V Spannungsversorgung}
+Die \unit{+5}{\volt} Spannungsversorgung für das \gls{Core-Modul} kann auf zwei verschiedenen Wegen bezogen werden. Entweder man verwendet den ST-Link V2 Mini als \unit{5}{\volt} Spannungsversorgung X1 (\fref{fig:coremodul-swd}), wie bereits in \fref{sec:coremodul-stlink} beschrieben, oder man speist die \unit{+5}{\volt} Versorgung über den \unit{5}{\volt}-Pin des 50-poligen Headers des \gls{Core-Modul}s X2 (\fref{fig:coremodul-spannung}) ein.
 
 \fig{coremodul-spannung}{Spannungsversorgungsschaltung des Core-Moduls}{Spannungsversorgungsschaltung des \gls{Core-Modul}s}{0.5\textwidth}{Schuh/Pictures/schaltung-spannung}
 
 \subsubsection{Batterieversorgung}
-An VB kann eine \unit{3,3}{\volt}-Batterie angeschlossen werden, damit die \gls{RTC} auch dann mit Spannung versorgt ist, wenn der Cortex-M3 außer Betrieb ist. Darüber hinaus wird im Falle des stromsparenden Deep-Sleep-Mode des Cortex-M3 ebenfalls eine Puffer-Batterie benötigt. Die Schottky-Diode (\fref{fig:coremodul-batterie}, V4) soll verhindern, dass die Batterie welche die \gls{RTC} des Cortex betreiben soll, nicht geladen wird. In den meisten Fällen handelt es sich bei dieser Batterie um eine Knopfzelle, welche häufig nicht wiederaufladbar ist. Die Schottky-Diode (\fref{fig:coremodul-batterie}, V3) soll verhindern, dass die Batteriespannung der \unit{3,3}{\volt}-Knopfzelle, mit der über einen Linearregler generierten Versorgungsspannung des Prozessors verbunden wird.
+Am VB-Anschluss des 50-poligen Headers (\fref{fig:coremodul-spannung}) kann eine \unit{3,3}{\volt}-Batterie angeschlossen werden, damit die \gls{RTC} auch dann mit Spannung versorgt ist, wenn der Cortex-M3 außer Betrieb ist. Darüber hinaus wird im Falle des stromsparenden Deep-Sleep-Mode des Cortex-M3 ebenfalls eine Puffer-Batterie benötigt. Die Schottky-Diode V4 (\fref{fig:coremodul-batterie}) soll verhindern, dass die Batterie welche die \gls{RTC} des Cortex betreiben soll, nicht geladen wird. In den meisten Fällen handelt es sich bei dieser Batterie um eine Knopfzelle, welche häufig nicht wiederaufladbar ist. Die Schottky-Diode V3 (\fref{fig:coremodul-batterie}) soll verhindern, dass die Batteriespannung der \unit{3,3}{\volt}-Knopfzelle, mit der über einen Linearregler generierten Versorgungsspannung des Prozessors verbunden wird.
 
 \fig{coremodul-batterie}{Batterieversorgungsschaltung des Core-Moduls}{Batterieversorgungsschaltung des \gls{Core-Modul}s}{0.5\textwidth}{Schuh/Pictures/schaltung-batterie}
 
-\subsubsection{\unit{3,3}{\volt} Fixspannungsregler}
-Zur Generierung der für den Prozessor erforderlichen Betriebsspannung wurde ein \unit{3,3}{\volt}-Linearregler (\fref{fig:coremodul-fix}, U2) verwendet, welcher die Eingangsspannung von \unit{+5}{\volt} auf \unit{+3,3}{\volt} herabsetzt. Bei Verwendung eines Linearreglers ist zu beachten, dass dieser die Spannungsdifferenz zwischen Ausgangsspannung und Eingangsspannung in Wärme umwandelt. Daher sollten keine temperaturempfindlichen Bauteile in dessen Nähe platziert werden. Zur Überprüfung ob das Modul mit der Betriebsspannung von \unit{+5}{\volt} versorgt wird, wurde die LED (\fref{fig:coremodul-fix}, V4) zur optischen Kontrolle eingebaut. Wenn das Modul mit Spannung versorgt wird, leuchtet diese. Zur Überprüfung ob der Prozessor mit seiner Betriebsspannung von \unit{3,3}{\volt} versorgt wird, wurde die LED (\fref{fig:coremodul-fix}, V6) zur optischen Kontrolle eingebaut. Wenn der Prozessor mit Spannung versorgt wird, leuchtet sie. Um den Stromverbrauch des \gls{Core-Modul}s im Low-Power Modus weiter zu senken, können die LEDs mit Hilfe von Jumpern außer Betrieb gesetzt werden.
+\subsubsection{3,3 V Fixspannungsregler}
+Zur Generierung der für den Prozessor erforderlichen Betriebsspannung wurde ein \unit{3,3}{\volt}-Linearregler U2 (\fref{fig:coremodul-fix}) verwendet, welcher die Eingangsspannung von \unit{+5}{\volt} auf \unit{+3,3}{\volt} herabsetzt. Bei Verwendung eines Linearreglers ist zu beachten, dass dieser die Spannungsdifferenz zwischen Ausgangsspannung und Eingangsspannung in Wärme umwandelt. Daher sollten keine temperaturempfindlichen Bauteile in dessen Nähe platziert werden. Zur Überprüfung, ob das Modul mit der Betriebsspannung von \unit{+5}{\volt} versorgt wird, wurde die LED V5 (\fref{fig:coremodul-fix}) zur optischen Kontrolle eingebaut. Wenn das Modul mit Spannung versorgt wird, leuchtet diese. Zur Überprüfung ob der Prozessor mit seiner Betriebsspannung von \unit{3,3}{\volt} versorgt wird, wurde die LED V6 (\fref{fig:coremodul-fix}) zur optischen Kontrolle eingebaut. Wenn der Prozessor mit Spannung versorgt wird, leuchtet sie. Um den Stromverbrauch des \gls{Core-Modul}s im Low-Power Modus weiter zu senken, können die LEDs mit Hilfe von Jumpern außer Betrieb gesetzt werden.
 
 \begin{figure}[htb]
     \centering
@@ -174,9 +171,9 @@ Zur Generierung der für den Prozessor erforderlichen Betriebsspannung wurde ein
 
 
 \subsubsection{Prozessor}
-Das Schaltplansymbol für den Prozessor (\fref{fig:coremodul-prozessor}, U1) zeigt den im Schematic verwendeten Bauteil. Alle wichtigen Detailinformationen über den Prozessor wurden bereits in \fref{sec:coremodul-prozessor} behandelt.
+In \fref{fig:coremodul-prozessor} ist die Pinbelegung des verwendeten Prozessors U1 dargestellt.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \subfloat[Schematic\label{fig:coremodul-prozessor-schem}]{\includegraphics[width=.75\linewidth]{Schuh/Pictures/schaltung-prozessor}}\qquad
     \subfloat[Hardware\label{fig:coremodul-prozessor-hard}]{\includegraphics[width=.4\linewidth]{Schuh/Pictures/core-prozessor}}\qquad
@@ -185,22 +182,22 @@ Das Schaltplansymbol für den Prozessor (\fref{fig:coremodul-prozessor}, U1) zei
 \end{figure}
 
 \subsubsection{Stützkondensatoren}
-Während des laufenden Betriebs eines Microcontrollers benötigt dieser unterschiedlich viel Strom. Um auf diese Stromspitzen reagieren zu können, wurden Stützkondensatoren vorgesehen, damit es nicht zu Absturz des Programmes oder zu anderen Problemen durch Spannungseinbrüche kommt. Die Stützkondensatoren (\fref{fig:coremodul-kond}: C5, C6, C7 und C8) können daher die in ihnen gespeicherte Ladung bei stark wechselnden Stromaufnahmen abgeben und dadurch eine ordnungsmäßige Versorgung des Prozessors gewährleisten.
+Während des laufenden Betriebs eines Microcontrollers benötigt dieser unterschiedlich viel Strom. Um Spannungseinbrüche zu vermeiden wurden die Stützkondensatoren C5, C6, C7 und C8 (\fref{fig:coremodul-kond}) vorgesehen. Die Stützkondensatoren können die in ihnen gespeicherte Ladung bei stark wechselnden Stromaufnahmen abgeben und somit eine ordnungsgemäße Versorgung des Prozessors gewährleisten.
 
 \fig{coremodul-kond}{Stützkondensatoren des Core-Moduls}{Stützkondensatoren des \gls{Core-Modul}s}{0.5\textwidth}{Schuh/Pictures/schaltung-kond}
 
 \subsubsection{DIL-Adapter}
-Das Schaltplansymbol des DIL-Adapters (\fref{fig:coremodul-dil}, X2) zeigt das Pinning, welches hardwaremäßig auf den zwei getrennten Buchsenleisten auf der Leiterkarte ausgeführt wurde.
+Das Schaltplansymbol des DIL-Adapters X2 (\fref{fig:coremodul-dil}) zeigt das Pinning, welches hardwaremäßig auf den zwei getrennten Buchsenleisten auf der Leiterkarte ausgeführt wurde.
 
 \fig{coremodul-dil}{DIL-Adapter des Core-Moduls}{DIL-Adapter des \gls{Core-Modul}s}{0.5\textwidth}{Schuh/Pictures/schaltung-dil}
 
 \subsubsection{Schwingquarze}
-Das \gls{Core-Modul} besitzt standardmäßig zwei verschiedene Taktquellen. Diese bestehen aus einem 25MHz Quarz (\fref{fig:coremodul-quarz}, Y1), welcher für die Taktfrequenz des Prozessors zuständig ist, und einem 32kHz Quarz (\fref{fig:coremodul-quarz}, Y2), welcher für die interne \gls{RTC} zur Verfügung steht.
+Das \gls{Core-Modul} besitzt standardmäßig zwei verschiedene Taktquellen. Diese bestehen aus einem 25MHz Quarz Y1 (\fref{fig:coremodul-quarz}), welcher für die Taktfrequenz des Prozessors zuständig ist, und einem 32kHz Quarz Y2 (\fref{fig:coremodul-quarz}), welcher für die interne \gls{RTC} zur Verfügung steht.
 
 \fig{coremodul-quarz}{Schwingquarze des Core-Moduls}{Schwingquarze des \gls{Core-Modul}s}{0.75\textwidth}{Schuh/Pictures/schaltung-quarz}
 
 \subsubsection{Taster}
-Auf dem \gls{Core-Modul} wurde ein Kurzhubtaster (\fref{fig:coremodul-taster}, S1) vorgesehen, dessen Funktion nach belieben ausprogrammiert werden kann.
+Auf dem \gls{Core-Modul} wurde ein Kurzhubtaster S1 (\fref{fig:coremodul-taster}) vorgesehen, dessen Funktion nach belieben ausprogrammiert werden kann.
 
 \begin{figure}[htb]
     \centering
@@ -211,7 +208,7 @@ Auf dem \gls{Core-Modul} wurde ein Kurzhubtaster (\fref{fig:coremodul-taster}, S
 \end{figure}
 
 \subsubsection{LED}
-Auf dem \gls{Core-Modul} wurde eine LED (\fref{fig:coremodul-led}, V2) vorgesehen, deren Funktion nach belieben ausprogrammiert werden kann.
+Auf dem \gls{Core-Modul} wurde eine LED V2 (\fref{fig:coremodul-led}) vorgesehen, deren Funktion nach belieben ausprogrammiert werden kann.
 
 \begin{figure}[htb]
     \centering
@@ -222,7 +219,7 @@ Auf dem \gls{Core-Modul} wurde eine LED (\fref{fig:coremodul-led}, V2) vorgesehe
 \end{figure}
 
 \subsubsection{Masseschleife}
-Um das Messen mit einem Oszilloskop oder anderen Messgeräten zu vereinfachen wurde eine Masseschleife (\fref{fig:coremodul-masse}, X6) auf dem \gls{Core-Modul} realisiert.
+Um das Messen mit einem Oszilloskop oder anderen Messgeräten zu vereinfachen wurde eine Masseschleife X6 (\fref{fig:coremodul-masse}) auf dem \gls{Core-Modul} vorgesehen.
 
 \begin{figure}[htb]
     \centering
@@ -231,6 +228,10 @@ Um das Messen mit einem Oszilloskop oder anderen Messgeräten zu vereinfachen wu
     \caption[Masseschleife des Core-Moduls]{Masseschleife des \gls{Core-Modul}s}
     \label{fig:coremodul-masse}
 \end{figure}
+
+\subsection{Gesamtschaltung}
+\label{sec:coremodul-schaltung}
+\fig{coremodul-gesamtschaltung}{Gesamtschaltung des Core-Moduls}{Gesamtschaltung des \gls{Core-Modul}s}{0.9\textwidth}{Schuh/Pictures/SchaltungCM}
 
 \subsection{Leiterplattenlayout}
 \label{sec:coremodul-leiterplattenlayout}
