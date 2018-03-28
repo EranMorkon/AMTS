@@ -1,7 +1,7 @@
 \section{Basisplatine}
 \label{sec:basisplatine}
 
-\fig{core-modul}{Basisplatine}{\gls{Basisplatine}}{0.75\textwidth}{Schuh/Pictures/basis}
+\fig{core-modul}{Basisplatine}{\gls{Basisplatine}}{\textwidth}{Schuh/Pictures/basis}
 
 \subsection{Allgemeines}
 \label{sec:basisplatine-allgemeines}
@@ -10,15 +10,15 @@ Die \gls{Basisplatine} dient dazu dem \gls{Core-Modul} eine umfangreiche, modern
 \subsection{Schnittstellen}
 \label{sec:basisplatine-schnittstellen}
 
-Die \gls{Basisplatine} verfügt über die in \fref{tab:basisplatine-schnittstellen} angegebenen Schnittstellen, welche wie in \fref{fig:basisplatine-plan} zu sehen platziert sind.
+Die \gls{Basisplatine} verfügt über mehrere in \fref{tab:basisplatine-schnittstellen} angegebene Schnittstellen. In \fref{fig:basisplatine-plan} dargestellt wie diese auf der \gls{Basisplatine} platziert sind.
 
 \tab{basisplatine-schnittstellen}{Schnittstellen der Basisplatine}{Schnittstellen der \gls{Basisplatine}}{|c|p{10cm}|}{
     \hline
     \textbf{Schnittstelle} & \textbf{Funktion}\\
     \hline
-    USART 1 & Ansteuerung von HC-06, HC-12, \gls{USB-to-UART}-Adapter\\
+    USART 1 & Ansteuerung von HC-06, HC-12, \gls{USB-to-UART}-Adapter, MAX232\\
     \hline
-    USART 2 & Ansteuerung von ESP8266, XBee-Pro, MAX232\\
+    USART 2 & Ansteuerung von ESP8266, XBee-Pro\\
     \hline
     USART 3 & Ansteuerung von Nextion-Display\\
     \hline
@@ -46,58 +46,19 @@ Die \gls{Basisplatine} verfügt über die in \fref{tab:basisplatine-schnittstell
     \hline
 }
 
-\fig{basisplatine-plan}{Übersichtsplan der Basisplatine}{Übersichtsplan der \gls{Basisplatine}}{0.75\textwidth}{Schuh/Pictures/Basisplatine}
+\fig{basisplatine-plan}{Übersichtsplan der Basisplatine}{Übersichtsplan der \gls{Basisplatine}}{\textwidth}{Schuh/Pictures/Basisplatine}
 
 \subsection{Portbelegungsplan}
 \label{sec:basisplatine-portbelegung}
-\tabpdf{basisplatine-portbelegung}{Portbelegungsplan der Basisplatine}{Portbelegungsplan der \gls{Basisplatine}}{0.5\textwidth}{Schuh/Pictures/Basis-Portbelegung}
-
-\subsection{Gesamtschaltung}
-\label{sec:basisplatine-schaltung}
-\begin{figure}[htb]
-    \centering
-    \includegraphics[width=0.8\textwidth]{Schuh/Pictures/Basis-Schaltung1}
-    \caption[Gesamtschaltung der Basisplatine]{Gesamtschaltung der \gls{Basisplatine}}
-    \label{fig:basisplatine-schaltung}
-\end{figure}
-\begin{figure}[htb]\ContinuedFloat
-    \centering
-    \includegraphics[width=0.8\textwidth]{Schuh/Pictures/Basis-Schaltung2}
-    \caption[Gesamtschaltung der Basisplatine]{Gesamtschaltung der \gls{Basisplatine}}
-\end{figure}
-\begin{figure}[htb]\ContinuedFloat
-    \centering
-    \includegraphics[width=0.8\textwidth]{Schuh/Pictures/Basis-Schaltung3}
-    \caption[Gesamtschaltung der Basisplatine]{Gesamtschaltung der \gls{Basisplatine}}
-\end{figure}
-\begin{figure}[htb]\ContinuedFloat
-    \centering
-    \includegraphics[width=0.8\textwidth]{Schuh/Pictures/Basis-Schaltung4}
-    \caption[Gesamtschaltung der Basisplatine]{Gesamtschaltung der \gls{Basisplatine}}
-\end{figure}
-\begin{figure}[htb]\ContinuedFloat
-    \centering
-    \includegraphics[width=0.8\textwidth]{Schuh/Pictures/Basis-Schaltung5}
-    \caption[Gesamtschaltung der Basisplatine]{Gesamtschaltung der \gls{Basisplatine}}
-\end{figure}
-\begin{figure}[htb]\ContinuedFloat
-    \centering
-    \includegraphics[width=0.8\textwidth]{Schuh/Pictures/Basis-Schaltung6}
-    \caption[Gesamtschaltung der Basisplatine]{Gesamtschaltung der \gls{Basisplatine}}
-\end{figure}
-\begin{figure}[htb]\ContinuedFloat
-    \centering
-    \includegraphics[width=0.8\textwidth]{Schuh/Pictures/Basis-Schaltung7}
-    \caption[Gesamtschaltung der Basisplatine]{Gesamtschaltung der \gls{Basisplatine}}
-\end{figure}
+\tabpdf{basisplatine-portbelegung}{Portbelegungsplan der Basisplatine}{Portbelegungsplan der \gls{Basisplatine}}{0.45\textwidth}{Schuh/Pictures/Basis-Portbelegung}
 
 \subsubsection{ST-Link V2}
 \label{sec:basisplatine-stlink}
 Zur Programmierung und zum \gls{Debugging} des neuen \gls{ARM}-\gls{Minimalsystem}s sollte ein \textbf{ST-Link V2 Mini} verwendet werden. Dieser Programmer besitzt eine verpolungssichere zweireihige Stiftreihe, welche es ermöglicht Programme mit Hilfe von \gls{SWD} auf den Microcontroller zu übertragen oder diese zu debuggen. Darüber hinaus ist der ST-Link V2 Mini der Lieferant der Hauptversorgungsspannung von \unit{+5}{\volt}.
 
-Um den ST-Link V2 Mini und den Microcontroller im Falle eines Kurzschlusses zwischen der Versorgungsspannung und Masse zu schützen wurde eine Schottky-Diode (\fref{fig:basisplatine-swd}, V16), mit einem maximalen Durchflussstrom von \unit{3}{\ampere}, vorgesehen.
+Um den ST-Link V2 Mini und den Microcontroller im Falle eines Kurzschlusses zwischen der Versorgungsspannung und Masse zu schützen wurde eine Schottky-Diode V16 (\fref{fig:basisplatine-swd}), mit einem maximalen Durchflussstrom von \unit{3}{\ampere}, vorgesehen.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \subfloat[Schematic\label{fig:basisplatine-swd-schem}]{\includegraphics[width=.6\linewidth]{Schuh/Pictures/Basis-SWD}}\qquad
     \subfloat[Hardware\label{fig:basisplatine-swd-hard}]{\includegraphics[width=.3\linewidth]{Schuh/Pictures/basis-stlink}}\qquad
@@ -106,9 +67,9 @@ Um den ST-Link V2 Mini und den Microcontroller im Falle eines Kurzschlusses zwis
 \end{figure}
 
 \subsubsection{SWD-Adapter}
-Der als Buchsenleiste ausgeführte SWD-Adapter (\fref{fig:basisplatine-swd2}, X23), erfüllt vom Prinzip her die gleiche Funktion wie der bereits in \fref{sec:basisplatine-stlink} beschriebene Stecker für den ST-Link V2 Mini. Dieser ermöglicht lediglich Kompatibilität zu anderen SWD-Programmern und Debuggern, welche diesen Stecker nicht besitzen.
+Der als Buchsenleiste ausgeführte SWD-Adapter X23 (\fref{fig:basisplatine-swd2}), erfüllt vom Prinzip her die gleiche Funktion wie der bereits in \fref{sec:basisplatine-stlink} beschriebene Stecker für den ST-Link V2 Mini. Dieser ermöglicht lediglich Kompatibilität zu anderen SWD-Programmern und Debuggern, welche diesen Stecker nicht besitzen.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \subfloat[Schematic\label{fig:basisplatine-swd2-schem}]{\includegraphics[width=.4\linewidth]{Schuh/Pictures/Basis-SWD2}}\qquad
     \subfloat[Hardware\label{fig:basisplatine-swd2-hard}]{\includegraphics[width=.2\linewidth]{Schuh/Pictures/basis-swd}}\qquad
@@ -117,9 +78,9 @@ Der als Buchsenleiste ausgeführte SWD-Adapter (\fref{fig:basisplatine-swd2}, X2
 \end{figure}
 
 \subsubsection{JTAG}
-Zur Programmierung und zum \gls{Debugging} des neuen \gls{ARM}-\gls{Minimalsystem}s wurde aus kompatibilitätsgründen zum alten System zusätzlich vollwertige JTAG-Schnittstelle vorgesehen, um weiterhin mit Hilfe des ULINK/ME Adapters arbeiten zu können. Auch diese Schnittstelle besitzt eine verpolungssichere zweireihige Buchsenleiste (\fref{fig:basisplatine-jtag}, X19), welche es ermöglicht Programme mit Hilfe des JTAG-Protokolls auf den Microcontroller zu übertragen oder diese zu debuggen.
+Zur Programmierung und zum \gls{Debugging} des neuen \gls{ARM}-\gls{Minimalsystem}s wurde aus kompatibilitätsgründen zum alten System zusätzlich vollwertige JTAG-Schnittstelle vorgesehen, um weiterhin mit Hilfe des ULINK/ME Adapters arbeiten zu können. Auch diese Schnittstelle besitzt eine verpolungssichere zweireihige Buchsenleiste X19 (\fref{fig:basisplatine-jtag}), welche es ermöglicht Programme mit Hilfe des JTAG-Protokolls auf den Microcontroller zu übertragen oder diese zu debuggen.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \subfloat[Schematic\label{fig:basisplatine-jtag-schem}]{\includegraphics[width=.5\linewidth]{Schuh/Pictures/Basis-JTAG}}\qquad
     \subfloat[Hardware\label{fig:basisplatine-jtag-hard}]{\includegraphics[width=.3\linewidth]{Schuh/Pictures/basis-jtag}}\qquad
@@ -128,9 +89,9 @@ Zur Programmierung und zum \gls{Debugging} des neuen \gls{ARM}-\gls{Minimalsyste
 \end{figure}
 
 \subsubsection{Core-Modul-Adapter}
-Das Schaltplansymbol des \gls{Core-Modul}s (\fref{fig:basisplatine-core}, X20) zeigt das Pinning, welches hardwaremäßig auf den zwei getrennten Buchsenleisten auf der Leiterkarte ausgeführt wurde.
+Das Schaltplansymbol des \gls{Core-Modul}s X20 (\fref{fig:basisplatine-core}) zeigt das Pinning, welches auf zwei Buchsenleisten auf der \gls{Basisplatine} herausgeführt wurde.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \subfloat[Schematic\label{fig:basisplatine-core-schem}]{\includegraphics[width=.5\linewidth]{Schuh/Pictures/Basis-core}}\qquad
     \subfloat[Hardware\label{fig:basisplatine-core-hard}]{\includegraphics[width=.5\linewidth]{Schuh/Pictures/basis-core}}\qquad
@@ -139,9 +100,9 @@ Das Schaltplansymbol des \gls{Core-Modul}s (\fref{fig:basisplatine-core}, X20) z
 \end{figure}
 
 \subsubsection{Audio-Adapter}
-Das bereits in einer anderen Diplomarbeit realisierte Audio-Shield kann auf der zweireihigen Buchsenleiste (\fref{fig:basisplatine-audio}, X24) aufgesteckt und anschließend betrieben werden.
+Der bereits in einer anderen Diplomarbeit realisierte Audio-Adapter kann auf der zweireihigen Buchsenleiste X24 (\fref{fig:basisplatine-audio}) aufgesteckt und anschließend betrieben werden.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \subfloat[Schematic\label{fig:basisplatine-audio-schem}]{\includegraphics[width=.4\linewidth]{Schuh/Pictures/Basis-audio}}\qquad
     \subfloat[Hardware\label{fig:basisplatine-audio-hard}]{\includegraphics[width=.4\linewidth]{Schuh/Pictures/basis-audio}}\qquad
@@ -150,21 +111,21 @@ Das bereits in einer anderen Diplomarbeit realisierte Audio-Shield kann auf der 
 \end{figure}
 
 \subsubsection{LED-Array}
-Auf der \gls{Basisplatine} wurde ein LED-Array realisiert, welches aus acht LEDs besteht und über die Portleitungen (\fref{fig:basisplatine-leds}: PC1 bis PC5 und PC7 bis PC8) angesteuert werden können. Diese LEDs sind in SMD-Form ausgeführt und haben die einheitliche Farbe Grün. Mit Hilfe der Stiftleiste (\fref{fig:basisplatine-leds}, X18) und deinem Jumper können die LEDs aktiviert oder deaktiviert werden. Wenn der Jumper entfernt ist sind die LEDs deaktiviert und die belegten Port-Pins des \gls{Core-Modul}s sind wieder frei verfügbar.
+Auf der \gls{Basisplatine} wurde ein LED-Array realisiert, welches aus acht LEDs besteht und über die Portleitungen PC1 bis PC5 und PC7 bis PC8 (\fref{fig:basisplatine-leds}) angesteuert werden können. Diese LEDs sind in SMD-Form ausgeführt und haben die einheitliche Farbe Grün. Mit Hilfe der Stiftleiste X18 (\fref{fig:basisplatine-leds}) und deinem Jumper können die LEDs aktiviert oder deaktiviert werden. Wenn der Jumper entfernt ist sind die LEDs deaktiviert und die belegten Port-Pins des \gls{Core-Modul}s sind wieder frei verfügbar.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
-    \subfloat[Schematic\label{fig:basisplatine-leds-schem}]{\includegraphics[width=.4\linewidth]{Schuh/Pictures/Basis-leds}}\qquad
-    \subfloat[Hardware\label{fig:basisplatine-leds-hard}]{\includegraphics[width=.4\linewidth]{Schuh/Pictures/basis-leds}}\qquad
+    \subfloat[Schematic\label{fig:basisplatine-leds-schem}]{\includegraphics[width=.3\linewidth]{Schuh/Pictures/Basis-leds}}\qquad
+    \subfloat[Hardware\label{fig:basisplatine-leds-hard}]{\includegraphics[width=.3\linewidth]{Schuh/Pictures/basis-leds}}\qquad
     \caption[LED-Array der Basisplatine]{LED-Array der \gls{Basisplatine}}
     \label{fig:basisplatine-leds}
 \end{figure}
 
 \subsubsection{DIP-Switches}
 \label{sec:basis-dip}
-Auf der \gls{Basisplatine} wurde ein achtpoliger DIP-Switch realisiert, welcher intern aus acht getrennten Schalten besteht und über die Portleitungen (\fref{fig:basisplatine-dip}: PA0 bis PA3 und PA5 bis PA8) ausgelesen werden kann. Da im Hardwarelayout keine Pullup-Widerstände vorgesehen wurden, muss bei der Programmierung darauf geachtet werden, dass die internen Pullup-Widerstände des Prozessors aktiviert sind. Da jedoch Port Pins PA2 und PA3 mit der UART2-Schnittstelle verbunden sind, erzeugen diese ein Echo, wenn die Schalter S3 und S4 gleichzeitig geschlossen sind. Weiters können durch Jumpern der Stiftleiste (\fref{fig:basisplatine-dip}, X22) alle Schalter im Kippschalter aktiviert oder deaktiviert werden.
+Auf der \gls{Basisplatine} wurde ein achtpoliger DIP-Switch realisiert, welcher intern aus acht getrennten Schalten besteht und über die Portleitungen PA0 bis PA3 und PA5 bis PA8 (\fref{fig:basisplatine-dip}) ausgelesen werden kann. Da im Hardwarelayout keine Pullup-Widerstände vorgesehen wurden, muss bei der Programmierung darauf geachtet werden, dass die internen Pullup-Widerstände des Prozessors aktiviert sind. Da jedoch Port Pins PA2 und PA3 mit der UART2-Schnittstelle verbunden sind, erzeugen diese ein Echo, wenn die Schalter S3 und S4 gleichzeitig geschlossen sind. Weiters können durch Jumpern der Stiftleiste X22 (\fref{fig:basisplatine-dip}) alle Schalter im Kippschalter aktiviert oder deaktiviert werden.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \subfloat[Schematic\label{fig:basisplatine-dip-schem}]{\includegraphics[width=.4\linewidth]{Schuh/Pictures/Basis-dip}}\qquad
     \subfloat[Hardware\label{fig:basisplatine-dip-hard}]{\includegraphics[width=.4\linewidth]{Schuh/Pictures/basis-dip}}\qquad
@@ -173,9 +134,15 @@ Auf der \gls{Basisplatine} wurde ein achtpoliger DIP-Switch realisiert, welcher 
 \end{figure}
 
 \subsubsection{USB-Varianten und Versorgung über USB}
-Die \gls{Basisplatine} unterstützt hardwaremäßig zwei verschiedene USB-Bauformen und drei verschiedene USB-Funktionen. Diese USB-Funktionen sind USB-Device, USB-Host, USB-OTG (on the go) und werden sowohl von der USB-A Buchse (\fref{fig:basisplatine-usb}, X3), als auch von der USB-B Buchse (\fref{fig:basisplatine-usb}, X1) unterstützt. Da beide Buchsenformen keine ID-Leitung besitzen muss für USB-OTG die dafür benötigte Portleitung PA10 mit einem Pullup-Widerstand versehen werden, um den USB-OTG Modus vorzutäuschen. Weiters müssen für den USB-OTG Modus der Pin1 mit dem Pin2 und der Pin3 mit dem Pin4 auf der zweireihigen Stiftleiste (\fref{fig:basisplatine-usb}, X37) gejumpert werden. Über die Portleitung PA10 kann ausgewählt werden ob der Prozessor als USB-Host oder USB-Device arbeitet. Mit der Portleitung PA9 hingegen kann festgestellt werden ob die Versorgung über die USB Buchse funktioniert. Falls man im Host-Modus Geräte ohne Adapter anschließen möchte, wurde eine zweite USB Buchse parallel geschalten.  Sollte man die USB-B Buchse auswählen wollen muss man den Pin1 mit dem Pin3 und dem Pin2 mit dem Pin4 auf der zweireihigen Stiftleiste (\fref{fig:basisplatine-usb}, X2) jumpern. Um die USB-A Buchse auswählen muss man den Pin4 mit dem Pin6 und dem Pin3 mit dem Pin5 auf der zweireihigen Stiftleiste (\fref{fig:basisplatine-usb}, X2) jumpern.
+Die \gls{Basisplatine} unterstützt hardwaremäßig zwei verschiedene USB-Bauformen und drei verschiedene USB-Funktionen. Diese USB-Funktionen sind USB-Device, USB-Host, USB-OTG (on the go) und werden sowohl von der USB-A Buchse X3 (\fref{fig:basisplatine-usb}), als auch von der USB-B Buchse X1 (\fref{fig:basisplatine-usb}) unterstützt. Da beide Buchsenformen keine ID-Leitung besitzen muss für USB-OTG die dafür benötigte Portleitung PA10 mit einem Pullup-Widerstand versehen werden, um den USB-OTG Modus vorzutäuschen. Weiters müssen für den USB-OTG Modus der Pin1 mit dem Pin2 und der Pin3 mit dem Pin4 auf der zweireihigen Stiftleiste X37 (\fref{fig:basisplatine-usb}) gejumpert werden. Über die Portleitung PA10 kann ausgewählt werden ob der Prozessor als USB-Host oder USB-Device arbeitet. Mit der Portleitung PA9 hingegen kann festgestellt werden ob die Versorgung über die USB Buchse funktioniert.
 
-\begin{figure}[htb]
+Falls man im Host-Modus Geräte ohne Adapter anschließen möchte, wurde eine zweite USB Buchse parallel geschaltet. Sollte man die USB-B Buchse auswählen wollen muss man den Pin1 mit dem Pin3 und dem Pin2 mit dem Pin4 auf der zweireihigen Stiftleiste X2 (\fref{fig:basisplatine-usb}) jumpern. Um die USB-A Buchse auswählen muss man den Pin4 mit dem Pin6 und dem Pin3 mit dem Pin5 auf der zweireihigen Stiftleiste X2 (\fref{fig:basisplatine-usb}) jumpern.
+
+Die Feinsicherung F2 (\fref{fig:basisplatine-usb}) dient zur Absicherung des USB-Hosts, welcher die Versorgungsspannung normalerweise zur Verfügung stellt. Laut USB-Spezifikation ist hierbei bei USB 2.0 ein maximaler Strom von \unit{500}{\milli\ampere} erlaubt. Die Sicherung stellt sicher, dass dieser Strom niemals überschritten wird.
+
+Die ESD Protection F1 (\fref{fig:basisplatine-usb}) stellt sicher, dass die Spannungen auf den Datenleitungen zwischen GND und \unit{5}{\volt} bleiben. Durch an- und abstecken an Host-Geräte können Spannungsspitzen auf den Datenleitungen auftreten, die ESD Protection leitet diese ab, sodass der Prozessor nicht beschädigt wird.
+
+\begin{figure}[H]
     \centering
     \subfloat[Schematic\label{fig:basisplatine-usb-schem}]{\includegraphics[width=\linewidth]{Schuh/Pictures/Basis-usb}}\qquad
     \subfloat[Hardware\label{fig:basisplatine-usb-hard}]{\includegraphics[width=\linewidth]{Schuh/Pictures/basis-usb}}\qquad
@@ -184,9 +151,9 @@ Die \gls{Basisplatine} unterstützt hardwaremäßig zwei verschiedene USB-Baufor
 \end{figure}
 
 \subsubsection{Masseschleife}
-Um das Messen mit einem Oszilloskop oder anderen Messgeräten zu vereinfachen wurde eine Masseschleife (\fref{fig:basisplatine-masse}, X5) auf der \gls{Basisplatine} realisiert.
+Um das Messen mit einem Oszilloskop oder anderen Messgeräten zu vereinfachen wurde eine Masseschleife X5 (\fref{fig:basisplatine-masse}) auf der \gls{Basisplatine} realisiert.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \subfloat[Schematic\label{fig:basisplatine-masse-schem}]{\includegraphics[width=.3\linewidth]{Schuh/Pictures/Basis-masse}}\qquad
     \subfloat[Hardware\label{fig:basisplatine-masse-hard}]{\includegraphics[width=.4\linewidth]{Schuh/Pictures/basis-masse}}\qquad
@@ -195,9 +162,9 @@ Um das Messen mit einem Oszilloskop oder anderen Messgeräten zu vereinfachen wu
 \end{figure}
 
 \subsubsection{Powerswitch STMPS2141}
-Um USB-Geräte zu betreiben, welche selbst keine eigene Spannungsversorgung besitzen (z.B. USB-Sticks) wurde ein Powerswitch (\fref{fig:basisplatine-power}, D3) verbaut. Dieser ermöglicht es die interne \unit{5}{\volt}-Versorgung auf die USB-Buchsen zu legen, damit diese Geräte mit Spannung versorgt werden können. Sollte das Gerät zu viel Strom verbrauchen beginnt die LED (\fref{fig:basisplatine-power}, V9) zu leuchten. Durch Jumpern der Stiftleiste (\fref{fig:basisplatine-power}, X4) an den Port-Pin PC9 kann die Versorgung von externen Geräten gesteuert werden.
+Um USB-Geräte zu betreiben, welche selbst keine eigene Spannungsversorgung besitzen (z.B. USB-Sticks) wurde ein Powerswitch D3 (\fref{fig:basisplatine-power}) verbaut. Dieser ermöglicht es die interne \unit{5}{\volt}-Versorgung auf die USB-Buchsen zu legen, damit diese Geräte mit Spannung versorgt werden können. Sollte das Gerät zu viel Strom verbrauchen beginnt die LED V9 (\fref{fig:basisplatine-power}) zu leuchten. Durch Jumpern der Stiftleiste X4 (\fref{fig:basisplatine-power}) an den Port-Pin PC9 kann die Versorgung von externen Geräten gesteuert werden.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \subfloat[Schematic\label{fig:basisplatine-power-schem}]{\includegraphics[width=\linewidth]{Schuh/Pictures/Basis-power}}\qquad
     \subfloat[Hardware\label{fig:basisplatine-power-hard}]{\includegraphics[width=\linewidth]{Schuh/Pictures/basis-power}}\qquad
@@ -206,9 +173,9 @@ Um USB-Geräte zu betreiben, welche selbst keine eigene Spannungsversorgung besi
 \end{figure}
 
 \subsubsection{Powerheader}
-Um die auf der \gls{Basisplatine} verwendeten Spannungen direkt für Versuchsaufbauten am Steckbrett oder für externe Sensoren verwenden zu können wurden zwei Buchsenleisten (\fref{fig:basisplatine-pwrhdr}, X6 und X7) ausgeführt, welche diese Spannungen bereitstellen. Dabei ist zu beachten, dass am \unit{12}{\volt}-Ausgang nur \unit{+12}{\volt} anliegen, wenn die Basisplatine über ein externes Netzteil mit einer Ausgangsspannung von \unit{+12}{\volt} betrieben wird. Sollte eine geringere Spannung über das Netzgerät eingespeist werden liegt diese am Ausgang an, wenn hingegen kein Netzteil verwendet wird ist dieser Ausgang spannungsfrei.
+Um die auf der \gls{Basisplatine} verwendeten Spannungen direkt für Versuchsaufbauten am Steckbrett oder für externe Sensoren verwenden zu können wurden zwei Buchsenleisten X6 und X7 (\fref{fig:basisplatine-pwrhdr}) ausgeführt, welche diese Spannungen bereitstellen. Dabei ist zu beachten, dass am \unit{12}{\volt}-Ausgang nur \unit{+12}{\volt} anliegen, wenn die Basisplatine über ein externes Netzteil mit einer Ausgangsspannung von \unit{+12}{\volt} betrieben wird. Sollte eine geringere Spannung über das Netzgerät eingespeist werden liegt diese am Ausgang an, wenn hingegen kein Netzteil verwendet wird ist dieser Ausgang spannungsfrei.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \subfloat[Schematic\label{fig:basisplatine-pwrhdr-schem}]{\includegraphics[width=\linewidth]{Schuh/Pictures/Basis-pwrhdr}}\qquad
     \subfloat[Hardware\label{fig:basisplatine-pwrhdr-hard}]{\includegraphics[width=\linewidth]{Schuh/Pictures/basis-pwrhdr}}\qquad
@@ -216,10 +183,10 @@ Um die auf der \gls{Basisplatine} verwendeten Spannungen direkt für Versuchsauf
     \label{fig:basisplatine-pwrhdr}
 \end{figure}
 
-\subsubsection{\unit{3,3}{\volt}-Versorgung}
-Zur Überprüfung ob die \gls{Basisplatine} mit der Betriebsspannung von \unit{+3,3}{\volt} über das \gls{Core-Modul} versorgt wird, wurde die LED zur optischen Kontrolle eingebaut. Wenn die Basisplatine mit Spannung versorgt wird, beginnt diese zu leuchten (\fref{fig:basisplatine-3v3}, V14).
+\subsubsection{3,3 V-Versorgung}
+Zur Überprüfung ob die \gls{Basisplatine} mit der Betriebsspannung von \unit{+3,3}{\volt} über das \gls{Core-Modul} versorgt wird, wurde die LED V14 (\fref{fig:basisplatine-3v3}) zur optischen Kontrolle eingebaut. Wenn die Basisplatine mit Spannung versorgt wird, beginnt diese zu leuchten.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \subfloat[Schematic\label{fig:basisplatine-3v3-schem}]{\includegraphics[width=.2\linewidth]{Schuh/Pictures/Basis-3v3}}\qquad
     \subfloat[Hardware\label{fig:basisplatine-3v3-hard}]{\includegraphics[width=.4\linewidth]{Schuh/Pictures/basis-3v3}}\qquad
@@ -228,11 +195,9 @@ Zur Überprüfung ob die \gls{Basisplatine} mit der Betriebsspannung von \unit{+
 \end{figure}
 
 \subsubsection{Spannungsversorgung über DC-Buchse}
-Die \gls{Basisplatine} unterstützt hardwaremäßig zwei verschiedene USB-Bauformen und drei verschiedene USB-Funktionen. Diese USB-Funktionen sind USB-Device, USB-Host, USB-OTG (on the go) und werden sowohl von der USB-A Buchse (\fref{fig:basisplatine-usb}, X3), als auch von der USB-B Buchse (\fref{fig:basisplatine-usb}, X1) unterstützt. Da beide Buchsenformen keine ID-Leitung besitzen muss für USB-OTG die dafür benötigte Portleitung PA10 mit einem Pullup-Widerstand versehen werden, um den USB-OTG Modus vorzutäuschen. Weiters müssen für den USB-OTG Modus der Pin1 mit dem Pin2 und der Pin3 mit dem Pin4 auf der zweireihigen Stiftleiste (\fref{fig:basisplatine-usb}, X37) gejumpert werden. Über die Portleitung PA10 kann ausgewählt werden ob der Prozessor als USB-Host oder USB-Device arbeitet. Mit der Portleitung PA9 hingegen kann festgestellt werden ob die Versorgung über die USB Buchse funktioniert. Falls man im Host-Modus Geräte ohne Adapter anschließen möchte, wurde eine zweite USB Buchse parallel geschalten.  Sollte man die USB-B Buchse auswählen wollen muss man den Pin1 mit dem Pin3 und dem Pin2 mit dem Pin4 auf der zweireihigen Stiftleiste (\fref{fig:basisplatine-usb}, X2) jumpern. Um die USB-A Buchse auswählen muss man den Pin4 mit dem Pin6 und dem Pin3 mit dem Pin5 auf der zweireihigen Stiftleiste (\fref{fig:basisplatine-usb}, X2) jumpern.
+Als weitere Spannungsversorgungsmöglichkeit bietet die \gls{Basisplatine} die Möglichkeit ein \unit{9}{\volt} bis \unit{12}{\volt} DC-Netzteil am die DC-Buchse J1 (\fref{fig:basisplatine-dc}) anzuschließen um die Basisplatine mit Spannung zu versorgen. Der Brückengleichrichter U1 (\fref{fig:basisplatine-dc}) dient dabei lediglich als Verpolungsschutz und nicht als Gleichrichter für Wechselspannung. Das Anlegen von Wechselspannung an die DC-Buchse J1 (\fref{fig:basisplatine-dc}) sollte aus Sicherheitsgründen unterlassen werden. Um aus der hohen Spannung, welche von der DC-Buchse kommt, die Betriebsspannung von \unit{+5}{\volt} zu generieren wurde ein Step-Down Modul U3 (\fref{fig:basisplatine-dc}) der Firma Würth verbaut. Zur Überprüfung ob das Step-Down Modul die Betriebsspannung von \unit{+5}{\volt} generiert, wurde die LED V13 (\fref{fig:basisplatine-dc}) zur optischen Kontrolle eingebaut. Wenn das Step-Down Modul die gewünschte Spannung generiert, beginnt diese zu leuchten. Die Stiftleiste X43 (\fref{fig:basisplatine-dc}) kann im Bedarfsfall gejumpert werden, wenn ein Unterspannungsschutz der Versorgungsspannung gewünscht ist. Um die vom Step-Down Modul generierte Spannung verwenden zu können muss lediglich die Stiftleiste X8 (\fref{fig:basisplatine-dc}) mit einem Jumper versehen werden.
 
-Als weiter Spannungsversorgungsmöglichkeit bietet die \gls{Basisplatine} die Möglichkeit ein \unit{9}{\volt} bis \unit{12}{\volt} DC-Netzteil am die DC-Buchse (\fref{fig:basisplatine-dc}, J1) anzuschließen um die Basisplatine mit Spannung zu versorgen. Der Brückengleichrichter (\fref{fig:basisplatine-dc}, U1) dient dabei lediglich als Verpolungsschutz und nicht als Gleichrichter für Wechselspannung. Das Anlegen von Wechselspannung an die DC-Buchse (\fref{fig:basisplatine-dc}, J1) sollte aus Sicherheitsgründen unterlassen werden. Um aus der hohen Spannung, welche von der DC-Buchse kommt, die Betriebsspannung von \unit{+5}{\volt} zu generieren wurde ein Step-Down Modul (\fref{fig:basisplatine-dc}, U3) der Firma Würth verbaut. Zur Überprüfung ob das Step-Down Modul die Betriebsspannung von \unit{+5}{\volt} generiert, wurde die LED (\fref{fig:basisplatine-dc}, V13) zur optischen Kontrolle eingebaut. Wenn das Step-Down Modul die gewünschte Spannung generiert, beginnt diese zu leuchten. Die Stiftleiste (\fref{fig:basisplatine-dc}, X43) kann im Bedarfsfall gejumpert werden, wenn ein Unterspannungsschutz der Versorgungsspannung gewünscht ist. Um die vom Step-Down Modul generierte Spannung verwenden zu können muss lediglich die Stiftleiste (\fref{fig:basisplatine-dc}, X8) mit einem Jumper versehen werden.
-
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \subfloat[Schematic\label{fig:basisplatine-dc-schem}]{\includegraphics[width=\linewidth]{Schuh/Pictures/Basis-dc}}\qquad
     \subfloat[Hardware\label{fig:basisplatine-dc-hard}]{\includegraphics[width=\linewidth]{Schuh/Pictures/basis-dc}}\qquad
@@ -241,11 +206,11 @@ Als weiter Spannungsversorgungsmöglichkeit bietet die \gls{Basisplatine} die M�
 \end{figure}
 
 \subsubsection{RGB-LED Ring \cite{basis:ws2812b}}
-Auf der \gls{Basisplatine} wurde ein aus zwölf RGB-LEDs bestehender Ring aufgebaut, welcher in den verschiedensten Farben leuchten kann. Jede RGB-LED besitzt einen eigenen eingebauten Controller. Die Ansteuerung der LEDs wird über den Port-Pin PB0 realisiert. Um diesen verwenden zu können muss zuvor die Stiftleiste (\fref{fig:basisplatine-ledring}, X41) mit einem Jumper versehen werden. Weiters muss die Spannungsversorgung der LEDs gewährleistet sein. Dazu muss lediglich die Stiftleiste (\fref{fig:basisplatine-ledring}, X42) mit einem Jumper versehen werden.
+Auf der \gls{Basisplatine} wurde ein aus zwölf RGB-LEDs bestehender Ring aufgebaut, welcher in den verschiedensten Farben leuchten kann. Jede RGB-LED besitzt einen eigenen eingebauten Controller. Die Ansteuerung der LEDs wird über den Port-Pin PB0 realisiert. Um diesen verwenden zu können muss zuvor die Stiftleiste X41 (\fref{fig:basisplatine-ledring}) mit einem Jumper versehen werden. Weiters muss die Spannungsversorgung der LEDs gewährleistet sein. Dazu muss lediglich die Stiftleiste X42 (\fref{fig:basisplatine-ledring}) mit einem Jumper versehen werden.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
-    \subfloat[Schematic\label{fig:basisplatine-ledring-schem}]{\includegraphics[width=.9\linewidth]{Schuh/Pictures/Basis-ledring}}\qquad
+    \subfloat[Schematic\label{fig:basisplatine-ledring-schem}]{\includegraphics[width=.75\linewidth]{Schuh/Pictures/Basis-ledring}}\qquad
     \subfloat[Hardware\label{fig:basisplatine-ledring-hard}]{\includegraphics[width=.3\linewidth]{Schuh/Pictures/basis-ledring}}\qquad
     \caption[RGB-LED Ring der Basisplatine]{RGB-LED Ring der \gls{Basisplatine}}
     \label{fig:basisplatine-ledring}
@@ -256,12 +221,14 @@ Zur Programmierung der LEDs muss über den Port PB0 ein Datenwort übetragen wer
 \fig{basisplatine-ledring-data}{RGB-LED Ring Datenstruktur}{RGB-LED Ring Datenstruktur \cite{basis:ws2812b}}{\textwidth}{Schuh/Pictures/Basis-ledring-data}
 \fig{basisplatine-ledring-timing}{RGB-LED Ring Timing Diagram}{RGB-LED Ring Timing Diagram \cite{basis:ws2812b}}{\textwidth}{Schuh/Pictures/Basis-ledring-timing}
 
+Die Daten für jede LED im Ring werden seriell hintereinander wie in \fref{fig:basisplatine-ledring-data} beschrieben übertragen, hierbei wird zuerste die erste LED angesprochen, wenn diese die richtigen Daten hat, leitet sie alle weiteren Datenpakete transparent weiter, sodass danach die zweite LED angesprochen wird und so weiter, bis ein Reset Code (\unit{50}{\micro\second} oder länger \enquote{High}) gesendet wird. Danach kann wieder die erste LED angesprochen werden. das genau Timing kann hierbai aus dem Datenblatt \cite{basis:ws2812b} entnommen werden.
+
 \subsubsection{Sensor-Selektion}
-Da der verbaute Prozessor zu wenig Portleitungen besitzt um alle Sensoren und Module mit einer eigenen Portleitung zu versorgen, werden einige Portleitungen mehrmals verwendet. Um nun einzelne Module oder Sensoren verwenden zu können, müssen diese einsprechend gejumpert werden. Eine dieser Stiftleisten ist der Header (\fref{fig:basisplatine-ssel}, X9), welches es ermöglicht zwischen einem Potentiometer (\gls{ADC}), Piezo-Summer, einem LFU, einem Infrarotempfänger, einem Temperaturfühler und einem NE555 auszuwählen.
+Da der verbaute Prozessor zu wenig Portleitungen besitzt um alle Sensoren und Module mit einer eigenen Portleitung zu versorgen, werden einige Portleitungen mehrmals verwendet. Um nun einzelne Module oder Sensoren verwenden zu können, müssen diese einsprechend gejumpert werden. Eine dieser Stiftleisten ist der Header X9 (\fref{fig:basisplatine-ssel}), welches es ermöglicht zwischen einem Potentiometer (\gls{ADC}), Piezo-Summer, einem LFU, einem Infrarotempfänger, einem Temperaturfühler und einem NE555 auszuwählen.
 
-Eine weitere dieser Stiftleisten ist der Header (\fref{fig:basisplatine-ssel2}, X11), welche es ermöglicht zwischen dem Beschleunigungssensor und dem EEPROM auszuwählen.
+Eine weitere dieser Stiftleisten ist der Header X11 (\fref{fig:basisplatine-ssel2}), welche es ermöglicht zwischen dem Beschleunigungssensor und dem EEPROM auszuwählen.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \subfloat[Schematic\label{fig:basisplatine-ssel-schem}]{\includegraphics[width=.5\linewidth]{Schuh/Pictures/Basis-ssel}}\qquad
     \subfloat[Hardware\label{fig:basisplatine-ssel-hard}]{\includegraphics[width=.3\linewidth]{Schuh/Pictures/basis-ssel}}\qquad
@@ -269,7 +236,7 @@ Eine weitere dieser Stiftleisten ist der Header (\fref{fig:basisplatine-ssel2}, 
     \label{fig:basisplatine-ssel}
 \end{figure}
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \subfloat[Schematic\label{fig:basisplatine-ssel2-schem}]{\includegraphics[width=.5\linewidth]{Schuh/Pictures/Basis-ssel2}}\qquad
     \subfloat[Hardware\label{fig:basisplatine-ssel2-hard}]{\includegraphics[width=.3\linewidth]{Schuh/Pictures/basis-ssel2}}\qquad
@@ -278,9 +245,9 @@ Eine weitere dieser Stiftleisten ist der Header (\fref{fig:basisplatine-ssel2}, 
 \end{figure}
 
 \subsubsection{Piezo-Summer}
-Auf der \gls{Basisplatine} wurde ein Piezo-Summer (\fref{fig:basisplatine-piezo}, B4) verbaut, welcher über den Port-Pin PB0 angesteuert werden kann. Ja nach anliegender Taktfrequenz am Eingang des Summers wird der erzeugte Ton höher oder tiefer. Um den Piezo-Summer verwenden zu können muss lediglich der Pin11 mit dem Pin12, der zweireihige Stiftleiste (\fref{fig:basisplatine-ssel}, X9), gejumpert werden.
+Auf der \gls{Basisplatine} wurde ein Piezo-Summer B4 (\fref{fig:basisplatine-piezo}) verbaut, welcher über den Port-Pin PB0 angesteuert werden kann. Ja nach anliegender Taktfrequenz am Eingang des Summers wird der erzeugte Ton höher oder tiefer. Um den Piezo-Summer verwenden zu können muss lediglich der Pin11 mit dem Pin12, der zweireihige Stiftleiste X9 (\fref{fig:basisplatine-ssel}), gejumpert werden.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \subfloat[Schematic\label{fig:basisplatine-piezo-schem}]{\includegraphics[width=.5\linewidth]{Schuh/Pictures/Basis-piezo}}\qquad
     \subfloat[Hardware\label{fig:basisplatine-piezo-hard}]{\includegraphics[width=.3\linewidth]{Schuh/Pictures/basis-piezo}}\qquad
@@ -289,9 +256,9 @@ Auf der \gls{Basisplatine} wurde ein Piezo-Summer (\fref{fig:basisplatine-piezo}
 \end{figure}
 
 \subsubsection{Potentiometer}
-Es wurden zwei Potentiometer R9 und R4 hardwaremäßig auf der \gls{Basisplatine} vorgesehen. Diese sind direkt mit einem \gls{ADC}-Eingang des Prozessors verbunden. Der Unterschied zwischen den Potentiometern R9 und R4 besteht darin, dass das Potentiometer R4 über einen Jumper auf der Stiftleiste (\fref{fig:basisplatine-poti2-schem}, X40) aktiviert werden muss und dieses an einem anderen Port-Pin angeschlossen ist. Dieser Aufbau wurde deswegen gewählt da damit, damit an den \gls{ADC}-Eingang auch optional ein anderes Signal angelegt werden kann. 
+Es wurden zwei Potentiometer R9 und R4 hardwaremäßig auf der \gls{Basisplatine} vorgesehen. Diese sind direkt mit einem \gls{ADC}-Eingang des Prozessors verbunden. Der Unterschied zwischen den Potentiometern R9 und R4 besteht darin, dass das Potentiometer R4 über einen Jumper auf der Stiftleiste X40 (\fref{fig:basisplatine-poti2-schem}) aktiviert werden muss und dieses an einem anderen Port-Pin angeschlossen ist. Dieser Aufbau wurde deswegen gewählt da damit, damit an den \gls{ADC}-Eingang auch optional ein anderes Signal angelegt werden kann. 
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \subfloat[Schematic\label{fig:basisplatine-poti1-schem}]{\includegraphics[width=.4\linewidth]{Schuh/Pictures/Basis-poti1}}\qquad
     \subfloat[Schematic\label{fig:basisplatine-poti2-schem}]{\includegraphics[width=.4\linewidth]{Schuh/Pictures/Basis-poti2}}\qquad
@@ -301,9 +268,9 @@ Es wurden zwei Potentiometer R9 und R4 hardwaremäßig auf der \gls{Basisplatine
 \end{figure}
 
 \subsubsection{EEPROM}
-Um Daten permanent speichern zu können wurde das EEPROM (\fref{fig:basisplatine-eeprom}, D1) vorgesehen. Standardmäßig wird das EEPROM 24AA256 verwendet, welches es ermöglicht 256 kbit abzuspeichern. Dieses EEPROM besitzt eine Write-Protection WP welche es ermöglicht das EEPROM schreibgeschützt zu schalten. Die Write-Protection kann über die Portleitung PB5 gesteuert werden. Damit das Signal am EEPROM ankommt, muss jedoch der Pin3 mit dem Pin4 der zweireihigen Stiftleiste (\fref{fig:basisplatine-ssel2}, X11) gejumpert werden. Die Kommunikation mit dem EEPROM erfolgt mit dem \IIC{}-Bus.
+Um Daten permanent speichern zu können wurde das EEPROM D1 (\fref{fig:basisplatine-eeprom}) vorgesehen. Standardmäßig wird das EEPROM 24AA256 verwendet, welches es ermöglicht 256 kbit abzuspeichern. Dieses EEPROM besitzt eine Write-Protection WP welche es ermöglicht das EEPROM schreibgeschützt zu schalten. Die Write-Protection kann über die Portleitung PB5 gesteuert werden. Damit das Signal am EEPROM ankommt, muss jedoch der Pin3 mit dem Pin4 der zweireihigen Stiftleiste X11 (\fref{fig:basisplatine-ssel2}) gejumpert werden. Die Kommunikation mit dem EEPROM erfolgt über den \IIC{}-Bus (Adresse \texttt{0xA0}).
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \subfloat[Schematic\label{fig:basisplatine-eeprom-schem}]{\includegraphics[width=.5\linewidth]{Schuh/Pictures/Basis-eeprom}}\qquad
     \subfloat[Hardware\label{fig:basisplatine-eeprom-hard}]{\includegraphics[width=.3\linewidth]{Schuh/Pictures/basis-eeprom}}\qquad
@@ -312,9 +279,9 @@ Um Daten permanent speichern zu können wurde das EEPROM (\fref{fig:basisplatine
 \end{figure}
 
 \subsubsection{Beschleunigungssensor}
-Auf der \gls{Basisplatine} wurde auch ein Beschleunigungssensormodul mit dem Beschleunigungssensor BMA020 vorgesehen. Die Kommunikation mit dem Beschleunigungssensor erfolgt mit Hilfe des \IIC{}-Buses (Adresse \texttt{0x70}). Durch diesen Sensor kann die Neigung, sowie die Kraft welche auf die Platine wirkt in der X, Y und Z-Richtung erfasst werden. Der Beschleunigungssensor besitzt einen Interrupt-Pin, welcher es ermöglicht ein Interrupt auszulösen. Der Interrupt kann über die Portleitung PB5 empfangen werden. Damit das Interrupt-Signal an der Portleitung PB5 ankommt, muss jedoch der Pin1 mit dem Pin2 der zweireihigen Stiftleiste (\fref{fig:basisplatine-ssel2}, X11) gejumpert werden.
+Auf der \gls{Basisplatine} wurde auch ein Beschleunigungssensormodul mit dem Beschleunigungssensor BMA020 vorgesehen. Die Kommunikation mit dem Beschleunigungssensor erfolgt mit Hilfe des \IIC{}-Buses (Adresse \texttt{0x70}). Durch diesen Sensor kann die Neigung, sowie die Kraft welche auf die Platine wirkt in der X, Y und Z-Richtung erfasst werden. Der Beschleunigungssensor besitzt einen Interrupt-Pin, welcher es ermöglicht ein Interrupt auszulösen. Der Interrupt kann über die Portleitung PB5 empfangen werden. Damit das Interrupt-Signal an der Portleitung PB5 ankommt, muss jedoch der Pin1 mit dem Pin2 der zweireihigen Stiftleiste X11 (\fref{fig:basisplatine-ssel2}) gejumpert werden.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \subfloat[Schematic\label{fig:basisplatine-bma-schem}]{\includegraphics[width=.5\linewidth]{Schuh/Pictures/Basis-bma}}\qquad
     \subfloat[Hardware\label{fig:basisplatine-bma-hard}]{\includegraphics[width=.3\linewidth]{Schuh/Pictures/basis-bma}}\qquad
@@ -323,9 +290,9 @@ Auf der \gls{Basisplatine} wurde auch ein Beschleunigungssensormodul mit dem Bes
 \end{figure}
 
 \subsubsection{IR-Receiver}
-Um die Platine auch mit einer Fernbedienung oder einem Mobiltelefon steuern zu können würde ein IR-Receiver verbaut. Dieser Sensor wurde hardwaremäßig unter dem NEXTION-Display angebracht. Der IR-Receiver arbeitet mit einer Wellenlänge von 850nm bis 1000nm und einer Trägerfrequenz von 38kHz. Das vom IR-Receiver empfangene Signal wird direkt im Receiver demoduliert und anschließend zur Stiftleiste X9 (\fref{fig:basisplatine-ssel}) weitergeleitet. Um den IR-Receiver verwenden zu können muss lediglich der Pin7 mit dem Pin8, der Stiftleiste (\fref{fig:basisplatine-ssel}, X9), gejumpert werden.
+Um die Platine auch mit einer Fernbedienung oder einem Mobiltelefon steuern zu können würde ein IR-Receiver verbaut. Dieser Sensor wurde hardwaremäßig unter dem NEXTION-Display angebracht. Der IR-Receiver arbeitet mit einer Wellenlänge von 850nm bis 1000nm und einer Trägerfrequenz von 38kHz. Das vom IR-Receiver empfangene Signal wird direkt im Receiver demoduliert und anschließend zur Stiftleiste X9 (\fref{fig:basisplatine-ssel}) weitergeleitet. Um den IR-Receiver verwenden zu können muss lediglich der Pin7 mit dem Pin8, der Stiftleiste X9 (\fref{fig:basisplatine-ssel}), gejumpert werden.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \subfloat[Schematic\label{fig:basisplatine-ir-schem}]{\includegraphics[width=.5\linewidth]{Schuh/Pictures/Basis-ir}}\qquad
     \subfloat[Hardware\label{fig:basisplatine-ir-hard}]{\includegraphics[width=.3\linewidth]{Schuh/Pictures/basis-ir}}\qquad
@@ -334,9 +301,9 @@ Um die Platine auch mit einer Fernbedienung oder einem Mobiltelefon steuern zu k
 \end{figure}
 
 \subsubsection{Temperatursensor}
-Um die Umgebungstemperatur feststellen zu können wurde auf der Basisplatine der Temperaturfühler DS18B20 verbaut, welcher mit Hilfe des 1-Wire Protokolls angesprochen werden kann. Die maximale Mesfehler dieses Temperatursensors beträgt ±0,5°C laut Datenblattangabe. Um den Temperaturfühler verwenden zu können muss lediglich der Pin9 mit dem Pin10, der Stiftleiste (\fref{fig:basisplatine-ssel}, X9), gejumpert werden. 
+Um die Umgebungstemperatur feststellen zu können wurde auf der Basisplatine der Temperaturfühler DS18B20 verbaut, welcher mit Hilfe des 1-Wire Protokolls angesprochen werden kann. Die maximale Mesfehler dieses Temperatursensors beträgt ±0,5°C laut Datenblattangabe. Um den Temperaturfühler verwenden zu können muss lediglich der Pin9 mit dem Pin10, der Stiftleiste X9 (\fref{fig:basisplatine-ssel}), gejumpert werden. 
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \subfloat[Schematic\label{fig:basisplatine-temp-schem}]{\includegraphics[width=.5\linewidth]{Schuh/Pictures/Basis-temp}}\qquad
     \subfloat[Hardware\label{fig:basisplatine-temp-hard}]{\includegraphics[width=.3\linewidth]{Schuh/Pictures/basis-temp}}\qquad
@@ -345,9 +312,9 @@ Um die Umgebungstemperatur feststellen zu können wurde auf der Basisplatine der
 \end{figure}
 
 \subsubsection{Lichtwandler LFU}
-Der auf der \gls{Basisplatine} realisierte LFU (Licht-Frequenz-Wandler), wandeltet wie der Name bereits sagt Licht in eine bestimmte Frequenz um. Je höher die Bestrahlungsstärke des Lichts, desto höher wird die über den Output des LFUs ausgegebene Frequenz. Den linearen Zusammenhang zwischen der Bestrahlungsstärke und der ausgegebenen Frequenz kann aus \fref{fig:basisplatine-lfu-freq} entnommen werden. Um den LFU verwenden zu können muss lediglich der Pin5 mit dem Pin6, der Stiftleiste (\fref{fig:basisplatine-ssel}, X9), gejumpert werden.
+Der auf der \gls{Basisplatine} realisierte LFU (Licht-Frequenz-Wandler), wandeltet wie der Name bereits sagt Licht in eine bestimmte Frequenz um. Je höher die Bestrahlungsstärke des Lichts, desto höher wird die über den Output des LFUs ausgegebene Frequenz. Den linearen Zusammenhang zwischen der Bestrahlungsstärke und der ausgegebenen Frequenz kann aus \fref{fig:basisplatine-lfu-freq} entnommen werden. Um den LFU verwenden zu können muss lediglich der Pin5 mit dem Pin6, der Stiftleiste X9 (\fref{fig:basisplatine-ssel}), gejumpert werden.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \subfloat[Schematic\label{fig:basisplatine-lfu-schem}]{\includegraphics[width=.5\linewidth]{Schuh/Pictures/Basis-lfu}}\qquad
     \subfloat[Hardware\label{fig:basisplatine-lfu-hard}]{\includegraphics[width=.3\linewidth]{Schuh/Pictures/basis-lfu}}\qquad
@@ -357,9 +324,9 @@ Der auf der \gls{Basisplatine} realisierte LFU (Licht-Frequenz-Wandler), wandelt
 \fig{basisplatine-lfu-freq}{Frequenzgang des LFUs}{Frequenzgang des LFUs}{0.5\textwidth}{Schuh/Pictures/Basis-lfu-freq}
 
 \subsubsection{RGB-LED}
-Auf der Hardware der \gls{Basisplatine} wurde eine RGB-LED \cite{basis:rgbled} verbaut, welche mit Hilfe des LED-Drivers (\fref{fig:basisplatine-rgbled}, D4) \cite{basis:rgbdriver}, welcher mit dem \IIC{}-Bus angesteuert werden kann. Dieser LED-Driver hat den Vorteil, dass er eine interne Stromüberwachung besitzt. Dadurch benötigen die einzelnen Anoden der RGB-LED keine Vorwiderstände, da sich der Strom automatisch entsprechend der gewünschten Farbe reguliert.
+Auf der \gls{Basisplatine} wurde ebenso eine RGB-LED \cite{basis:rgbled} verbaut, welche mit Hilfe des LED-Drivers D4 (\fref{fig:basisplatine-rgbled}) \cite{basis:rgbdriver}, welcher mit dem \IIC{}-Bus (Adresse \texttt{0x70}) angesteuert werden kann. Dieser LED-Driver hat den Vorteil, dass er eine interne Stromüberwachung besitzt. Dadurch benötigen die einzelnen Anoden der RGB-LED keine Vorwiderstände, da sich der Strom automatisch entsprechend der gewünschten Farbe reguliert.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \subfloat[Schematic\label{fig:basisplatine-rgbled-schem}]{\includegraphics[width=.5\linewidth]{Schuh/Pictures/Basis-rgbled}}\qquad
     \subfloat[Hardware\label{fig:basisplatine-rgbled-hard}]{\includegraphics[width=.3\linewidth]{Schuh/Pictures/basis-rgbled}}\qquad
@@ -371,9 +338,9 @@ Auf der Hardware der \gls{Basisplatine} wurde eine RGB-LED \cite{basis:rgbled} v
 \fig{basisplatine-rgbled-seq}{Sequenzen der RGB-LED}{Sequenzen der RGB-LED \cite{basis:rgbdriver}}{\textwidth}{Schuh/Pictures/Basis-rgbled-seq}
 
 \subsubsection{Arduino-Shield-Header}
-Um Hardware des Arduino-Mikrocontrollersystems nutzten zu können, ohne selbst großen Aufwand in die Entwicklung entsprechender Module investieren zu müssen, wurde ein Arduino-Shield-Header auf der \gls{Basisplatine} vorgesehen. Dieser ermöglicht es durch die Portkompatibilität mit einem Arduino, dessen Shields zu verwenden oder selbst Shields entwickeln zu können. Möchte man nun ein Arduino-Shield verwenden muss dieses lediglich in die vorgesehene Buchsenleiste (\fref{fig:basisplatine-arduino}, X33) gesteckt werden. Da jedes Arduino-Shield die Möglichkeit besitzt eine Referenzspannung für diverse ADCs zu vergeben wurde das Potentiometer R31 vorgesehen, um diesen Spannungspegel variabel zu gestallten. Darüber hinaus gibt es noch die Möglichkeit bei speziellen Shields zu definieren mit welcher Betriebsspannung die darüberliegenden versorgt werden sollen. Dazu wurde die Stiftleiste X27 verbaut, um festzulegen ob die darüberliegenden Shields mit \unit{+5}{\volt} oder \unit{+3,3}{\volt} versorgt werden. Sollte kein Jumper gesetzt werden wird automatisch auf die \unit{+5}{\volt} Spannungsversorgung zurückgegriffen.
+Um Hardware des Arduino-Mikrocontrollersystems nutzten zu können, ohne selbst großen Aufwand in die Entwicklung entsprechender Module investieren zu müssen, wurde ein Arduino-Shield-Header auf der \gls{Basisplatine} vorgesehen. Dieser ermöglicht es durch die Portkompatibilität mit einem Arduino, dessen Shields zu verwenden oder selbst Shields entwickeln zu können. Möchte man nun ein Arduino-Shield verwenden muss dieses lediglich in die vorgesehene Buchsenleiste X33 (\fref{fig:basisplatine-arduino}) gesteckt werden. Da jedes Arduino-Shield die Möglichkeit besitzt eine Referenzspannung für diverse ADCs zu vergeben wurde das Potentiometer R31 vorgesehen, um diesen Spannungspegel variabel zu gestallten. Darüber hinaus gibt es noch die Möglichkeit bei speziellen Shields zu definieren mit welcher Betriebsspannung die darüberliegenden versorgt werden sollen. Dazu wurde die Stiftleiste X27 verbaut, um festzulegen ob die darüberliegenden Shields mit \unit{+5}{\volt} oder \unit{+3,3}{\volt} versorgt werden. Sollte kein Jumper gesetzt werden wird automatisch auf die \unit{+5}{\volt} Spannungsversorgung zurückgegriffen.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \subfloat[Schematic\label{fig:basisplatine-arduino-schem}]{\includegraphics[width=.5\linewidth]{Schuh/Pictures/Basis-arduino}}\qquad
     \subfloat[Hardware\label{fig:basisplatine-arduino-hard}]{\includegraphics[width=.3\linewidth]{Schuh/Pictures/basis-arduino}}\qquad
@@ -382,9 +349,9 @@ Um Hardware des Arduino-Mikrocontrollersystems nutzten zu können, ohne selbst g
 \end{figure}
 
 \subsubsection{WLAN-Modul \cite{basis:wlan}}
-Um Daten ohne großen Aufwand direkt in das Heimnetzwerk einspeisen zu können, wurde auf der auf der \gls{Basisplatine} ein Steckplatz (\fref{fig:basisplatine-wlan}, X35) für ein ESP8266 W-LAN Modul vorgesehen. Dieses Funkmodul benutzt zu Kommunikation mit dem Prozessor des Core-Moduls die UART2 Schnittstelle und sendet die Daten mit einer Sendefrequenz von \unit{2,4}{\giga\hertz} im ISM-Band. Wenn man die Firmware des ESP8266 verändern möchte muss man lediglich die Portleitung GPIO0 des ESP8266, durch jumpern der Pin2 und Pin3 der Stiftleiste (\fref{fig:basisplatine-wlan}, X39), gegen Masse schalten.
+Um Daten ohne großen Aufwand direkt in das Heimnetzwerk einspeisen zu können, wurde auf der auf der \gls{Basisplatine} ein Steckplatz X35 (\fref{fig:basisplatine-wlan}) für ein ESP8266 W-LAN Modul vorgesehen. Dieses Funkmodul benutzt zu Kommunikation mit dem Prozessor des Core-Moduls die UART2 Schnittstelle und sendet die Daten mit einer Sendefrequenz von \unit{2,4}{\giga\hertz} im ISM-Band. Wenn man die Firmware des ESP8266 verändern möchte muss man lediglich die Portleitung GPIO0 des ESP8266, durch jumpern von Pin2 und Pin3 der Stiftleiste X39 (\fref{fig:basisplatine-wlan}), gegen Masse schalten.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \subfloat[Schematic\label{fig:basisplatine-wlan-schem}]{\includegraphics[width=.5\linewidth]{Schuh/Pictures/Basis-wlan}}\qquad
     \subfloat[Hardware\label{fig:basisplatine-wlan-hard}]{\includegraphics[width=.3\linewidth]{Schuh/Pictures/basis-wlan}}\qquad
@@ -393,9 +360,9 @@ Um Daten ohne großen Aufwand direkt in das Heimnetzwerk einspeisen zu können, 
 \end{figure}
 
 \subsubsection{XBee-Pro-Modul}
-Um Daten ohne großen Aufwand per Funk übertragen können, wurde auf der auf der \gls{Basisplatine} ein Steckplatz (\fref{fig:basisplatine-xbee}, A2) für ein XBee-Pro Modul vorgesehen. Dieses Funkmodul benutzt zu Kommunikation mit dem Prozessor des \gls{Core-Modul}s die UART2 Schnittstelle und sendet die Daten mit einer Sendefrequenz von \unit{2,4}{\giga\hertz} im ISM-Band. Darüber hinaus weist das Funkmodul eine maximale Datenübertragungsrate von 250 kb/s auf und hat eine maximale Reichweite von \unit{1600}{\metre}.
+Um Daten ohne großen Aufwand per Funk übertragen können, wurde auf der auf der \gls{Basisplatine} ein Steckplatz A2 (\fref{fig:basisplatine-xbee}) für ein XBee-Pro Modul vorgesehen. Dieses Funkmodul benutzt zu Kommunikation mit dem Prozessor des \gls{Core-Modul}s die UART2 Schnittstelle und sendet die Daten mit einer Sendefrequenz von \unit{2,4}{\giga\hertz} im ISM-Band. Darüber hinaus weist das Funkmodul eine maximale Datenübertragungsrate von 250 kb/s auf und hat eine maximale Reichweite von \unit{1600}{\metre}.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \subfloat[Schematic\label{fig:basisplatine-xbee-schem}]{\includegraphics[width=.5\linewidth]{Schuh/Pictures/Basis-xbee}}\qquad
     \subfloat[Hardware\label{fig:basisplatine-xbee-hard}]{\includegraphics[width=.3\linewidth]{Schuh/Pictures/basis-xbee}}\qquad
@@ -404,9 +371,9 @@ Um Daten ohne großen Aufwand per Funk übertragen können, wurde auf der auf de
 \end{figure}
 
 \subsubsection{HC-06-Modul \cite{basis:hc06}}
-Um Daten ohne großen Aufwand per Bluetooth übertragen können, wurde auf der auf der \gls{Basisplatine} ein Steckplatz (\fref{fig:basisplatine-hc06}, X28) für ein HC-06 Bluetooth-Modul vorgesehen. Dieses Bluetooth-Modul benutzt zur Kommunikation mit dem Prozessor des \gls{Core-Modul}s die UART1 Schnittstelle und sendet die Daten mit einer Sendefrequenz von \unit{2,4}{\giga\hertz} im ISM-Band. Darüber hinaus weist das Bluetooth-Modul eine maximale Datenübertragungsrate von 1382400 baud auf.
+Um Daten ohne großen Aufwand per Bluetooth übertragen können, wurde auf der auf der \gls{Basisplatine} ein Steckplatz X28 (\fref{fig:basisplatine-hc06}) für ein HC-06 Bluetooth-Modul vorgesehen. Dieses Bluetooth-Modul benutzt zur Kommunikation mit dem Prozessor des \gls{Core-Modul}s die UART1 Schnittstelle und sendet die Daten mit einer Sendefrequenz von \unit{2,4}{\giga\hertz} im ISM-Band. Darüber hinaus weist das Bluetooth-Modul eine maximale Datenübertragungsrate von 1382400 baud auf.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \subfloat[Schematic\label{fig:basisplatine-hc06-schem}]{\includegraphics[width=.5\linewidth]{Schuh/Pictures/Basis-hc06}}\qquad
     \subfloat[Hardware\label{fig:basisplatine-hc06-hard}]{\includegraphics[width=.3\linewidth]{Schuh/Pictures/basis-hc06}}\qquad
@@ -415,9 +382,9 @@ Um Daten ohne großen Aufwand per Bluetooth übertragen können, wurde auf der a
 \end{figure}
 
 \subsubsection{HC-12-Modul \cite{basis:hc12}}
-Um Daten ohne großen Aufwand per Bluetooth übertragen können, wurde auf der auf der \gls{Basisplatine} ein Steckplatz (\fref{fig:basisplatine-hc12}, X31) für ein HC-12 Funkmodul vorgesehen. Dieses Funkmodul benutzt zu Kommunikation mit dem Prozessor des \gls{Core-Modul}s die UART1 Schnittstelle und sendet die Daten mit einer Sendefrequenz von \unit{433,4}{\mega\hertz} bis \unit{473,0}{\mega\hertz} im ISM-Band. Darüber hinaus weist das Funkmodul eine maximale Datenübertragungsrate von 115200 baud auf und hat eine maximale Reichweite von \unit{1800}{\metre}. Das HC-12 Funkmodul kann mittels AT-Befehlen konfiguriert werden. Dabei kann die maximale Ausgangsleistung, die Sendefrequenz und die maximale Datenübertragungsrate verändert werden.
+Um Daten ohne großen Aufwand per Funk übertragen können, wurde auf der auf der \gls{Basisplatine} ein Steckplatz X31 (\fref{fig:basisplatine-hc12}) für ein HC-12 Funkmodul vorgesehen. Dieses Funkmodul benutzt zu Kommunikation mit dem Prozessor des \gls{Core-Modul}s die UART1 Schnittstelle und sendet die Daten mit einer Sendefrequenz von \unit{433,4}{\mega\hertz} bis \unit{473,0}{\mega\hertz} im ISM-Band. Darüber hinaus weist das Funkmodul eine maximale Datenübertragungsrate von 115200 baud auf und hat eine maximale Reichweite von \unit{1800}{\metre}. Das HC-12 Funkmodul kann mittels AT-Befehlen konfiguriert werden. Dabei kann die maximale Ausgangsleistung, die Sendefrequenz und die maximale Datenübertragungsrate verändert werden.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \subfloat[Schematic\label{fig:basisplatine-hc12-schem}]{\includegraphics[width=.5\linewidth]{Schuh/Pictures/Basis-hc12}}\qquad
     \subfloat[Hardware\label{fig:basisplatine-hc12-hard}]{\includegraphics[width=.3\linewidth]{Schuh/Pictures/basis-hc12}}\qquad
@@ -457,14 +424,14 @@ Um das Modul in den Programming-Mode zu setzen, müssen folgende Schritte ausgef
 Um das Funkmodul auf Werkseinstellungen zurückzusetzen muss der AT-Befehl \enquote{AT+DEFAULT} eingegeben werden. Sollte der Befehl korrekt an das Funkmodul weitergegeben worden sein antwortet dieses mit \enquote{OK+DEFAULT}. Um die Firmware des Funkmoduls zu updaten muss der AT-Befehl \enquote{AT+UPDATE} eingegeben werden.
 
 \subsubsection{PI-Filter}
-Da die \gls{Basisplatine} auf die Verwendung von Funkmodulen ausgelegt ist, welche im HF-Bereich senden und empfangen, wurden aus Vorsichtsmaßname PI-Filter für die RX- und TX-Leitungen der UARTs, welche mit den Funkmodulen verbunden sind, vorgesehen um HF-Störungen zu unterdrücken. Je nach Bedarfsfall können nun diese PI-Filter bestückt werden. Im laufendem Betrieb hat sich jedoch gezeigt, dass diese nicht unbedingt erforderlich sind.
+Da die \gls{Basisplatine} auf die Verwendung von Funkmodulen ausgelegt ist, welche im HF-Bereich senden und empfangen, wurden als Vorsichtsmaßname PI-Filter für die RX- und TX-Leitungen der UARTs, welche mit den Funkmodulen verbunden sind, vorgesehen um HF-Störungen zu unterdrücken. Je nach Bedarfsfall können nun diese PI-Filter bestückt werden. Im laufendem Betrieb hat sich jedoch gezeigt, dass diese nicht unbedingt erforderlich sind.
 
 \fig{basisplatine-pi}{PI-Filter der Basisplatine}{PI-Filter der \gls{Basisplatine}}{\textwidth}{Schuh/Pictures/Basis-pi}
 
 \subsubsection{NEXTION-Display}
-Um den Benutzer eine grafische Darstellungsmöglichkeit von Messwerten, Bildern oder ähnlichen zu geben wurde auf der Basisplatine der Header (\fref{fig:basisplatine-nextion}, X25) vorgesehen. Mit Hilfe dieses Headers ist es möglich ein NEXTION-Display auf der Basisplatine zu befestigen und über die UART3-Schnittstelle anzusteuern. Um das NEXTION-Display verwenden zu können muss lediglich die beiden Pins der Stiftleiste (\fref{fig:basisplatine-nextion}, X38) mit einem Jumper verbunden werden. Zur Programmierung des \gls{GUI}, des NEXTION-Displays wird der selbst entwickelte \gls{USB-to-UART}-Adapter benutzt, welcher in \fref{sec:usbtouart} näher erklärt wird.
+Um den Benutzer eine grafische Darstellungsmöglichkeit von Messwerten, Bildern oder ähnlichen zu geben wurde auf der Basisplatine der Header X25 (\fref{fig:basisplatine-nextion}) vorgesehen. Mit Hilfe dieses Headers ist es möglich ein NEXTION-Display auf der Basisplatine zu befestigen und über die UART3-Schnittstelle anzusteuern. Um das NEXTION-Display verwenden zu können muss lediglich die beiden Pins der Stiftleiste X38 (\fref{fig:basisplatine-nextion}) mit einem Jumper verbunden werden. Zur Programmierung des \gls{GUI}, des NEXTION-Displays wird der selbst entwickelte \gls{USB-to-UART}-Adapter benutzt, welcher in \fref{sec:usbtouart} näher erklärt wird.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \subfloat[Schematic\label{fig:basisplatine-nextion-schem}]{\includegraphics[width=.5\linewidth]{Schuh/Pictures/Basis-nextion}}\qquad
     \subfloat[Hardware\label{fig:basisplatine-nextion-hard}]{\includegraphics[width=.3\linewidth]{Schuh/Pictures/basis-nextion}}\qquad
@@ -473,9 +440,9 @@ Um den Benutzer eine grafische Darstellungsmöglichkeit von Messwerten, Bildern 
 \end{figure}
 
 \subsubsection{SPI-Schnittstelle}
-Um zusätzliche Hardware mit der \gls{Basisplatine} ansteuern zu können wurde die SPI-Schnittstelle (\fref{fig:basisplatine-spi}, X30) vorgesehen, welche mit der SPI2-Schnitstelle des Prozessors verbunden ist. Da die Chip-Select Leitung (CS) von keiner Hardware auf der Basisplatine benötigt wird, kann diese verwendet werden. Sollten jedoch mehrere Geräte an den SPI-Bus angeschlossen werden, müssen weitere Portleitungen als Chip-Select Leitungen verwendet werden.
+Um zusätzliche Hardware mit der \gls{Basisplatine} ansteuern zu können wurde die SPI-Schnittstelle X30 (\fref{fig:basisplatine-spi}) vorgesehen, welche mit der SPI2-Schnitstelle des Prozessors verbunden ist. Da die Chip-Select Leitung (CS) von keiner Hardware auf der Basisplatine benötigt wird, kann diese verwendet werden. Sollten jedoch mehrere Geräte an den SPI-Bus angeschlossen werden, müssen weitere Portleitungen als Chip-Select Leitungen verwendet werden.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \subfloat[Schematic\label{fig:basisplatine-spi-schem}]{\includegraphics[width=.5\linewidth]{Schuh/Pictures/Basis-spi}}\qquad
     \subfloat[Hardware\label{fig:basisplatine-spi-hard}]{\includegraphics[width=.3\linewidth]{Schuh/Pictures/basis-spi}}\qquad
@@ -484,24 +451,24 @@ Um zusätzliche Hardware mit der \gls{Basisplatine} ansteuern zu können wurde d
 \end{figure}
 
 \subsubsection{UART-Schnittstelle}
-Um zusätzliche Hardware mit der \gls{Basisplatine} ansteuern zu können wurden die Buchsenleiste (\fref{fig:basisplatine-uart}: X32, X34 und X36) realisiert, welche den UART1, UART2, und UART3 des Prozessors verbunden sind. Um eine UART-Schnittstelle verwenden zu können ist es wichtig die RX- und TX-Leitung im Vergleich zum verwendeten Modul zu vertauschen (Null-Modem-Kabel). Alle verwendeten UART-Schnittstellen wurden aus der Sicht des Prozessors bezeichnet.
+Um zusätzliche Hardware mit der \gls{Basisplatine} ansteuern zu können wurden die Buchsenleisten X32, X34 und X36 (\fref{fig:basisplatine-uart}) realisiert, welche den UART1, UART2, und UART3 des Prozessors verbunden sind. Um eine UART-Schnittstelle verwenden zu können ist es wichtig die RX- und TX-Leitung im Vergleich zum verwendeten Modul zu vertauschen (Null-Modem-Kabel). Alle verwendeten UART-Schnittstellen wurden aus der Sicht des Prozessors bezeichnet.
 
 \begin{warning}
-    Anmerkung: Bei der Verwendung der UART2-Schittstelle ist Vorsicht geboten, da wie bereits in \fref{sec:basis-dip} beschrieben, ein Echo auf der Schnittstelle ausgelöst wir, wenn die Kippschaltschalter S3 und S4 gleichzeitig geschlossen sind.
+    Anmerkung: Bei der Verwendung der UART2-Schittstelle ist Vorsicht geboten, da wie bereits in \fref{sec:basis-dip} beschrieben, ein Echo auf der Schnittstelle ausgelöst wird, wenn die Kippschaltschalter S3 und S4 gleichzeitig geschlossen sind.
 \end{warning}
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
-    \subfloat[Schematic\label{fig:basisplatine-uart-schem}]{\includegraphics[width=.5\linewidth]{Schuh/Pictures/Basis-uart}}\qquad
+    \subfloat[Schematic\label{fig:basisplatine-uart-schem}]{\includegraphics[width=.35\linewidth]{Schuh/Pictures/Basis-uart}}\qquad
     \subfloat[Hardware\label{fig:basisplatine-uart-hard}]{\includegraphics[width=.3\linewidth]{Schuh/Pictures/basis-uart}}\qquad
     \caption[UART-Schnittstelle der Basisplatine]{UART-Schnittstelle der \gls{Basisplatine}}
     \label{fig:basisplatine-uart}
 \end{figure}
 
 \subsubsection{\IIC{}-Schnittstelle}
-Um über die \gls{Basisplatine} weitere \IIC{} Geräten anschließen zu können wurde die Buchsenleiste (\fref{fig:basisplatine-iic}, X26) vorgesehen. Die Anschlüsse sind direkt mit der \IIC{}1 Schnittstelle des Mikrocontrollers verbunden. Die \IIC{}-Schnittstelle verfügt über zwei PullUp-Widerstände, da der verwendete Mikrocontroller PullUp-Widerstände nur im Input-Modus zur Verfügung stellt.
+Um über die \gls{Basisplatine} weitere \IIC{} Geräten anschließen zu können wurde die Buchsenleiste X26 (\fref{fig:basisplatine-iic}) vorgesehen. Die Anschlüsse sind direkt mit der \IIC{}1 Schnittstelle des Mikrocontrollers verbunden. Die \IIC{}-Schnittstelle verfügt über zwei PullUp-Widerstände, da der verwendete Mikrocontroller PullUp-Widerstände nur im Input-Modus zur Verfügung stellt.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \subfloat[Schematic\label{fig:basisplatine-iic-schem}]{\includegraphics[width=.5\linewidth]{Schuh/Pictures/Basis-iic}}\qquad
     \subfloat[Hardware\label{fig:basisplatine-iic-hard}]{\includegraphics[width=.3\linewidth]{Schuh/Pictures/basis-iic}}\qquad
@@ -510,9 +477,9 @@ Um über die \gls{Basisplatine} weitere \IIC{} Geräten anschließen zu können 
 \end{figure}
 
 \subsubsection{Inkrementalgeber}
-Um einfache Regelaufgaben oder Auswahlaufgaben realisieren zu können wurde auf der \gls{Basisplatine} ein Inkrementalgeber vorgesehen. Dieser verfügt über einen Taster, welcher über die Portleitung PC11 abgefragt werden kann. Darüber hinaus kann mit Hilfe der Portleitungen PB8 und PB14 festgestellt werden in welche Richtung und um wie viele Schritte der Inkrementalgeber gedreht wurde. Eine komplette Umdrehung des Inkrementalgebers setzt sich aus 24 Einzelschritten zusammen.
+Um einfache Winkelmessungen, Positionierungsaufgaben, Geschwindigkeitsmessungen oder Weglängenmessungen realisieren zu können wurde auf der \gls{Basisplatine} ein Inkrementalgeber vorgesehen. Dieser verfügt über einen Taster, welcher über die Portleitung PC11 abgefragt werden kann. Darüber hinaus kann mit Hilfe der Portleitungen PB8 und PB14 festgestellt werden in welche Richtung und um wie viele Schritte der Inkrementalgeber gedreht wurde. Eine komplette Umdrehung des Inkrementalgebers setzt sich aus 24 Einzelschritten zusammen.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \subfloat[Schematic\label{fig:basisplatine-ink-schem}]{\includegraphics[width=.5\linewidth]{Schuh/Pictures/Basis-ink}}\qquad
     \subfloat[Hardware\label{fig:basisplatine-ink-hard}]{\includegraphics[width=.3\linewidth]{Schuh/Pictures/basis-ink}}\qquad
@@ -522,9 +489,9 @@ Um einfache Regelaufgaben oder Auswahlaufgaben realisieren zu können wurde auf 
 \fig{basisplatine-ink-timing}{Inkrementalgeber Timing-Diagramm}{Inkrementalgeber Timing-Diagramm}{\textwidth}{Schuh/Pictures/Basis-ink-timing}
 
 \subsubsection{Serielle Schnittstelle}
-Um mit Messgeräten oder PCs zu kommunizieren unterstützt die \gls{Basisplatine} eine Serielle-Schnittstelle. Für diese Schnittstelle wird der UART1 des Prozessors verwendet. Die Pegelumwandlung, von $\pm$\unit{12}{\volt} auf \unit{3,3}{\volt}, welche für die Kommunikation benötigt werden erfolgt mit Hilfe eines MAX232. Die Portleitung PC13 (Tamper-RTC) kann als Handshakeleitung verwendet werden. Zur Verwendung der Seriellen-Schnittstelle, ohne Handshake-Leitung, muss lediglich der Pin1 mit dem Pin2 und der Pin3 mit dem Pin4, der Stiftleiste (\fref{fig:basisplatine-rs232}, X17) miteinander mit Hilfe eines Jumpers verbunden werden. Sollte man die Handshake-Leitung verwenden möchten, muss lediglich der Pin5 mit dem Pin6, der Stiftleiste (\fref{fig:basisplatine-rs232}, X17) miteinander verbunden werden.
+Um mit Messgeräten oder PCs zu kommunizieren unterstützt die \gls{Basisplatine} eine Serielle-Schnittstelle. Für diese Schnittstelle wird der UART1 des Prozessors verwendet. Die Pegelumwandlung, von $\pm$\unit{12}{\volt} auf \unit{3,3}{\volt}, welche für die Kommunikation benötigt werden erfolgt mit Hilfe eines MAX232. Die Portleitung PC13 (Tamper-RTC) kann als Handshakeleitung verwendet werden. Zur Verwendung der Seriellen-Schnittstelle, ohne Handshake-Leitung, muss lediglich der Pin1 mit dem Pin2 und der Pin3 mit dem Pin4, der Stiftleiste X17 (\fref{fig:basisplatine-rs232}) miteinander mit Hilfe eines Jumpers verbunden werden. Sollte man die Handshake-Leitung (CTS) verwenden möchten, muss lediglich der Pin5 mit dem Pin6, der Stiftleiste X17 (\fref{fig:basisplatine-rs232}) miteinander verbunden werden. Die RTS und CTS Leitung ist direkt miteinander verbunden, es wird also immer von einer Empfangsbereitschaft der Prozessors ausgegangen. Alternativ ist es möglich Software-Handshake mit XON/XOFF zu verwenden. Die Sub-D9 Buchse X16 (\fref{fig:basisplatine-rs232}) ist bereits so ausgeführt (Modem), dass man einen PC direkt (ohne Null-Modem-Kabel) anschließen kann.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \subfloat[Schematic\label{fig:basisplatine-rs232-schem}]{\includegraphics[width=\linewidth]{Schuh/Pictures/Basis-rs232}}\qquad
     \subfloat[Hardware\label{fig:basisplatine-rs232-hard}]{\includegraphics[width=.4\linewidth]{Schuh/Pictures/basis-rs232}}\qquad
@@ -533,9 +500,9 @@ Um mit Messgeräten oder PCs zu kommunizieren unterstützt die \gls{Basisplatine
 \end{figure}
 
 \subsubsection{NE555}
-Der auf der \gls{Basisplatine} verbaute NE555 kann als externer Taktgenerator verwendet werden. Die Periodendauer von diesen, kann mit Hilfe des Verhältnisses der beiden Potentiometer (\fref{fig:basisplatine-ne555}, R13 und R14) verändert werden. Für die Realisierung von großen Zeitkonstanten, kann man durch verbinden der beiden Pins auf der Stiftleiste (\fref{fig:basisplatine-ne555}, X15), mit einem Jumper, einen größeren Kondensator (\fref{fig:basisplatine-ne555}, C13) parallel zum kleineren Kondensator (\fref{fig:basisplatine-ne555}, C12) schalten. Möchte man einen kleineren Widerstand erzielen, kann man das durch einen Jumper auf der Stiftleiste (\fref{fig:basisplatine-ne555}, X14) erzielen. Um den NE555 verwenden zu können muss lediglich der Pin11 mit dem Pin12, der Stiftleiste X9 (\fref{fig:basisplatine-ssel}), mit einem Jumper verbunden werden.
+Der auf der \gls{Basisplatine} verbaute NE555 kann als externer Taktgenerator verwendet werden. Die Periodendauer von diesen, kann mit Hilfe des Verhältnisses der beiden Potentiometer R13 und R14 (\fref{fig:basisplatine-ne555}) verändert werden. Für die Realisierung von großen Zeitkonstanten, kann man durch verbinden der beiden Pins auf der Stiftleiste X15 (\fref{fig:basisplatine-ne555}), mit einem Jumper, einen größeren Kondensator C13 (\fref{fig:basisplatine-ne555}) parallel zum kleineren Kondensator C12 (\fref{fig:basisplatine-ne555}) schalten. Möchte man einen kleineren Widerstand erzielen, kann man das durch einen Jumper auf der Stiftleiste X14 (\fref{fig:basisplatine-ne555}) erzielen. Um den NE555 verwenden zu können muss lediglich der Pin11 mit dem Pin12, der Stiftleiste X9 (\fref{fig:basisplatine-ssel}), mit einem Jumper verbunden werden.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \subfloat[Schematic\label{fig:basisplatine-ne555-schem}]{\includegraphics[width=.5\linewidth]{Schuh/Pictures/Basis-ne555}}\qquad
     \subfloat[Hardware\label{fig:basisplatine-ne555-hard}]{\includegraphics[width=.3\linewidth]{Schuh/Pictures/basis-ne555}}\qquad
@@ -543,7 +510,7 @@ Der auf der \gls{Basisplatine} verbaute NE555 kann als externer Taktgenerator ve
     \label{fig:basisplatine-ne555}
 \end{figure}
 
-Die Gesamtperiodendauer des NE555 setzt sich aus Summe der Teilperiodendauern t1 und t2 zusammen, kann jedoch auch direkt berechnet werden. Die Formeln zu Berechnung der Periodendauer lauten wie \fref{eq:ne555} zeigt, \fref{fig:basisplatine-ne555-timing} stellt die Beziehung der Werte zueinander grafisch dar.
+Die Gesamtperiodendauer des NE555 setzt sich aus Summe der Teilperiodendauern $t_1$ und $t_2$ zusammen, kann jedoch auch direkt berechnet werden. Die Formeln zu Berechnung der Periodendauer lauten wie \fref{eq:ne555} zeigt, \fref{fig:basisplatine-ne555-timing} stellt die Beziehung der Werte zueinander grafisch dar.
 
 \fig{basisplatine-ne555-timing}{Timing des NE555}{Timing des NE555}{0.75\textwidth}{Schuh/Pictures/Basis-ne555-timing}
 
@@ -555,7 +522,46 @@ Die Gesamtperiodendauer des NE555 setzt sich aus Summe der Teilperiodendauern t1
     \end{split}
 }
 
-Der Kondensatorwert C entspricht bei nicht gejumperter Stiftleiste (\fref{fig:basisplatine-ne555}, X15), den Kondensatorwert von C12 (\unit{100}{\nano\farad}). Sollte die Stiftleiste jedoch gejumpert sein, entspricht der Kondensatorwert von C dem Kondensatorwert der Parallelschaltung des Kondensators C12 und C13 (\unit{220,1}{\micro\farad}). Möchte man einen Tastgrad von 0,5 erzielen, muss lediglich die Stiftleiste (\fref{fig:basisplatine-ne555}, X14) gejumpert werden. Wenn diese nicht gejumpert wird ergibt sich der Widerstand R aus der Summe von R14 und R17.
+Der Kondensatorwert C entspricht bei nicht gejumperter Stiftleiste X15 (\fref{fig:basisplatine-ne555}), den Kondensatorwert von C12 (\unit{100}{\nano\farad}). Sollte die Stiftleiste jedoch gejumpert sein, entspricht der Kondensatorwert von C dem Kondensatorwert der Parallelschaltung des Kondensators C12 und C13 (\unit{220,1}{\micro\farad}). Möchte man einen Tastgrad von 0,5 erzielen, muss lediglich die Stiftleiste X14 (\fref{fig:basisplatine-ne555}) gejumpert werden. Wenn diese nicht gejumpert wird ergibt sich der Widerstand R aus der Summe von R14 und R17.
+
+\subsection{Gesamtschaltung}
+\label{sec:basisplatine-schaltung}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{Schuh/Pictures/Basis-Schaltung1}
+    \caption[Gesamtschaltung der Basisplatine]{Gesamtschaltung der \gls{Basisplatine}}
+    \label{fig:basisplatine-schaltung}
+\end{figure}
+\begin{figure}[H]\ContinuedFloat
+    \centering
+    \includegraphics[width=0.85\textwidth]{Schuh/Pictures/Basis-Schaltung2}
+    \caption[Gesamtschaltung der Basisplatine]{Gesamtschaltung der \gls{Basisplatine}}
+\end{figure}
+\begin{figure}[H]\ContinuedFloat
+    \centering
+    \includegraphics[width=0.85\textwidth]{Schuh/Pictures/Basis-Schaltung3}
+    \caption[Gesamtschaltung der Basisplatine]{Gesamtschaltung der \gls{Basisplatine}}
+\end{figure}
+\begin{figure}[H]\ContinuedFloat
+    \centering
+    \includegraphics[width=0.85\textwidth]{Schuh/Pictures/Basis-Schaltung4}
+    \caption[Gesamtschaltung der Basisplatine]{Gesamtschaltung der \gls{Basisplatine}}
+\end{figure}
+\begin{figure}[H]\ContinuedFloat
+    \centering
+    \includegraphics[width=0.85\textwidth]{Schuh/Pictures/Basis-Schaltung5}
+    \caption[Gesamtschaltung der Basisplatine]{Gesamtschaltung der \gls{Basisplatine}}
+\end{figure}
+\begin{figure}[H]\ContinuedFloat
+    \centering
+    \includegraphics[width=0.85\textwidth]{Schuh/Pictures/Basis-Schaltung6}
+    \caption[Gesamtschaltung der Basisplatine]{Gesamtschaltung der \gls{Basisplatine}}
+\end{figure}
+\begin{figure}[H]\ContinuedFloat
+    \centering
+    \includegraphics[width=0.85\textwidth]{Schuh/Pictures/Basis-Schaltung7}
+    \caption[Gesamtschaltung der Basisplatine]{Gesamtschaltung der \gls{Basisplatine}}
+\end{figure}
 
 \subsection{Leiterplattenlayout}
 \label{sec:basisplatine-leiterplattenlayout}
