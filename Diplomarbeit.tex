@@ -57,9 +57,9 @@
 
 \aufgabenstellung{Aufgabe soll es sein, eine neue Version für das HTL eigene ARM Minimalsystem zu realisieren. Zunächst soll ein Touchscreen-Display zur Ein- und Ausgabe unterstützt werden. Des Weiteren soll eine Arduino-UNO kompatible Schnittstelle zur Verfügung gestellt werden, um Arduino Shields von verschiedenen Herstellern einsetzen zu können. Darüber hinaus soll das neue System verschiedene Funkmodule unterstützen, um damit eine Kommunikation mit anderer Peripherie zu erleichtern. Ein Audiomodul, welches bereits bei einer Diplomarbeit aus dem Jahre 2015/16 entwickelt wurde, soll ebenso unterstützt werden. Zusätzlich soll noch ein Z80 Minimalsystem, welches im Rahmen mehrerer Diplomarbeiten entstanden ist, für den Einsatz im Laborunterricht vervollständigt werden.}
 
-\realisierung{Zuerst sollen die einzelnen Arbeitsaufträge entwickelt und überprüft werden. Anschließend sollen die einzelnen Systemkomponenten zum fertigen System zusammengefügt und in Betrieb genommen werden. Die Funktion und die einzelnen Entwicklungsschritte zum fertigen Prototypen sollen anschließend durch eine umfangreiche Dokumentation und eine Bedienungsanleitung vervollständigt werden.}
+\realisierung{Ziel des Projekts war ein neues modulares HTL ARM-Minimalsystem für den Unterricht im Bereich embedded Systems zu entwickeln. Zu diesem Zweck wurden mehrere Leiterplatten entwickelt. Ein Core-Modul für den Microcontroller welches auf eine Basisplatine gesteckt werden kann sowie ein USB-to-UART Konverter um mit einem PC kommunizieren zu können. Für die Inbetriebnahme bei Fertigung wurde eine Testsoftware sowie Beispielapplikation entwickelt. Weiters wurden mehrere Leiterkarten für ein Z80 Minimalsystem gefertigt, die für den Laborunterricht dienen.}
 
-\ergebnisse{Es wurden funktionsfähige Prototypen aller Leiterkarten gefertigt. Darüber hinaus wurde eine Testsoftware zur Überprüfung der Prototypen geschrieben.}
+\ergebnisse{Es wurden 2 Komplettsysteme des ARM-Minimalsystems gefertigt und erfolgreich in Betrieb genommen. Die Testsoftware und die Demolibrary wurden erfolgreich demonstriert. Weiters wurden 4 Z80 Minimalsysteme gefertigt und erfolgreich in Betrieb genommen.}
 
 \grafikname{Gesamtsystem}
 \grafikinhalt{\includegraphics[width=\textwidth]{Allgemein/img/Gesamtsystem}}
@@ -70,9 +70,9 @@
 
 \tasks{The task should be to realize a new version for the HTL (secondary technical college) own ARM minimal system. At first, a touchscreen display for input and output should be supported. Furthermore, an Arduino-UNO compatible interface should make it possible to use Arduino shields from different manufacturers.  In addition, the new system should support various wireless modules to facilitate communication with other peripherals. An audio module, which was already developed in a diploma thesis from the year 2015/16, should also be supported. In addition, a Z80 minimal system, which was created in the context of several diploma theses, should be finalised for the use in laboratory lessons.}
 
-\realisation{At first, the individual work orders should be developed and checked. Subsequently, the individual system components were to be assembled into the finished system and put into operation. The function and the individual development steps for the finished prototype should be completed with a documentation and a user manual.}
+\realisation{Goal of the project was to develop a new modular HTL ARM minimal system for embedded systems classes. For this purpose multiple PCBs were developed. A core-module, housing the microcontroller, which can be connected to the basis board as well as a USB-to-UART converter which allows simple communication with a PC. For testing while manufacturing the board a test software and example application was developed. Moreover, multiple PCBs for a Z80 minimal system for usage in laboratory classes was developed.}
 
-\results{Working prototypes of all printed circuit boards have been developed. Moreover, a test software to prove the functionality of the prototype has been written.}
+\results{Two complete ARM minimal systems were built and tested successfully. The test software as well as the demo library were demonstrated successfully. Last but not least, four Z80 minimal systems were built and tested successfully.}
 
 \graphname{System overview}
 \graphcontent{\includegraphics[width=\textwidth]{Allgemein/img/Gesamtsystem}}
@@ -104,6 +104,7 @@
 \newcommand*{\IIC}{I$^2$C}
 \newcommand*{\IIS}{I$^2$S}
 \newcommand*{\uVision}{$\mu$Vision}
+\renewcommand{\fancyrefdefaultformat}{plain}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Titlepage, DA database and TOC
 \maketitle{}
 \makedadb{pdfs/DADB}{pdfs/DADBErklarung}
@@ -111,10 +112,6 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% First real page
 \input{Allgemein/Allgemein}
-
-\clearpage
-\pageauthor{Mieke}
-\input{Mieke/Theorie}
 
 \clearpage
 \pageauthor{Schuh}

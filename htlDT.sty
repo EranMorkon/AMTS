@@ -277,6 +277,16 @@
 % Listing extension for fancyref using the prefix "lst".
 \newcommand*{\fancyreflstlabelprefix}{lst}
 
+% Plain format
+\frefformat{plain}{\fancyreflstlabelprefix}{%
+\MakeUppercase{\freflstname}\fancyrefdefaultspacing#1#2%
+}%
+\Frefformat{plain}{\fancyreflstlabelprefix}{%
+\MakeUppercase{\Freflstname}\fancyrefdefaultspacing#1#2%
+}%
+\Frefformat{plain}{\fancyreflstlabelprefix}{Listing~#1}
+\frefformat{plain}{\fancyreflstlabelprefix}{Listing~#1}
+
 % Main format
 \frefformat{main}{\fancyreflstlabelprefix}{%
 \MakeUppercase{\freflstname}\fancyrefdefaultspacing#1#2%
@@ -360,11 +370,11 @@
 }%
 
 \newcommand*{\maketoc}{%
-  \cleardoublepage
-  \pagestyle{empty}
-  \centering
-  \textbf{\Huge \@title}
-  \raggedright
+  %\cleardoublepage
+  %\pagestyle{empty}
+  %\centering
+  %\textbf{\Huge \@title}
+  %\raggedright
   \cleardoublepage
   \tableofcontents
   \cleardoublepage
@@ -542,11 +552,11 @@
   \vfill%
   \begin{tabularx}{\textwidth}{| p{5cm} | X |}%
   \hline%
-  \begin{minipage}[c][3.5cm]{5cm}%
+  \begin{minipage}[c][5cm]{5cm}%
     \textsf{Realisierung}%
   \end{minipage}%
   &%
-  \begin{minipage}[c][3.5cm]{\textwidth - 5.8cm}%
+  \begin{minipage}[c][5cm]{\textwidth - 5.8cm}%
     \textsf{\@realisierung{}}%
   \end{minipage}\\%
   \hline%
@@ -554,11 +564,11 @@
   \vfill%
   \begin{tabularx}{\textwidth}{| p{5cm} | X |}%
   \hline%
-  \begin{minipage}[c][2cm]{5cm}%
+  \begin{minipage}[c][2.5cm]{5cm}%
     \textsf{Ergebnisse}%
   \end{minipage}%
   &%
-  \begin{minipage}[c][2cm]{\textwidth - 5.8cm}%
+  \begin{minipage}[c][2.5cm]{\textwidth - 5.8cm}%
     \textsf{\@ergebnisse{}}%
   \end{minipage}\\%
   \hline%
@@ -685,11 +695,11 @@
   \vfill%
   \begin{tabularx}{\textwidth}{| p{5cm} | X |}%
   \hline%
-  \begin{minipage}[c][3.5cm]{5cm}%
+  \begin{minipage}[c][5cm]{5cm}%
     \textsf{Realisation}%
   \end{minipage}%
   &%
-  \begin{minipage}[c][3.5cm]{\textwidth - 5.8cm}%
+  \begin{minipage}[c][5cm]{\textwidth - 5.8cm}%
     \textsf{\@realisation{}}%
   \end{minipage}\\%
   \hline%
@@ -697,11 +707,11 @@
   \vfill%
   \begin{tabularx}{\textwidth}{| p{5cm} | X |}%
   \hline%
-  \begin{minipage}[c][2cm]{5cm}%
+  \begin{minipage}[c][2.5cm]{5cm}%
     \textsf{Results}%
   \end{minipage}%
   &%
-  \begin{minipage}[c][2cm]{\textwidth - 5.8cm}%
+  \begin{minipage}[c][2.5cm]{\textwidth - 5.8cm}%
     \textsf{\@results{}}%
   \end{minipage}\\%
   \hline%

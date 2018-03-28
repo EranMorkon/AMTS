@@ -7,12 +7,12 @@
 
 Seit mehreren Jahren wird in der HTBL-Hollabrunn, ein \gls{ARM} Cortex-M3 \gls{Minimalsystem}, für die Ausbildung unserer Schüler, im Bereich \enquote{embedded Systems} eingesetzt.
 
-Wie schon im Abstract beschrieben geht es bei dem neuen System darum, sich neunen Technologien und Anwenderszenarien zu öffnen beziehungsweise schnelles Prototyping zu ermöglichen. Mit Hilfe des Nextion-Touchscreen-Displays wird ein modernes \gls{MMI} bereitgestellt, um Anwendungen leichter und interaktiv bedienbar zu machen. Das Audio-Interface ermöglicht es, Anwendungen für digitale Signalverarbeitung (z.B. digitale Filter) zu realisieren. Das Arduino-Interface ermöglicht es, verschiedenste Arduino-Shields für den Unterricht einzusetzen. Diese Schnittstellen, sowie die Schnittstellen für WLAN, Bluetooth und Funkmodule ermöglichen es auf schnelle Art und Weise Konzepte für Diplomarbeiten zu evaluieren.
+Wie schon im Abstract beschrieben geht es bei dem neuen System darum, sich neuen Technologien und Anwenderszenarien zu öffnen beziehungsweise schnelles Prototyping (Rapid Protoyping) zu ermöglichen. Mit Hilfe des Nextion-Touchscreen-Displays wird ein modernes \gls{MMI} bereitgestellt, um Anwendungen leichter und interaktiv bedienbar zu machen. Das Audio-Interface ermöglicht es, Anwendungen für digitale Signalverarbeitung (z.B. digitale Filter) zu realisieren. Das Arduino-Interface ermöglicht es, verschiedenste Arduino-Shields für den Unterricht einzusetzen. Diese Schnittstellen, sowie die Schnittstellen für WLAN, Bluetooth und Funkmodule ermöglichen es auf schnelle Art und Weise Konzepte für Diplomarbeiten zu evaluieren.
 
 \subsection{Anwendungsszenarien}
 \label{sec:anwendungsszenarien}
 
-Das gesamte \gls{ARM}-\gls{Minimalsystem} soll dazu beitragen, mit Hilfe einer Vielzahl an Schnittstellen, hardwarenahe Programmierung zu erlernen, sowie das bauen und testen von Prototypen zu erleichtern. Weiters kann aufgrund, des auf der \gls{Basisplatine} vorhandenen Arduino-Sockels eine Kompatibilität zu allen Arduino-Shields erreicht werden, welche nun über das \gls{Core-Modul} angesteuert werden können.
+Das gesamte \gls{ARM}-\gls{Minimalsystem} soll dazu beitragen, mit Hilfe einer Vielzahl an Schnittstellen, hardwarenahe Programmierung zu erlernen, sowie das Bauen und Testen von Prototypen zu erleichtern. Weiters kann aufgrund, des auf der \gls{Basisplatine} vorhandenen Arduino-Sockels eine Kompatibilität zu allen Arduino-Shields erreicht werden, welche nun über das \gls{Core-Modul} angesteuert werden können.
 
 Das Hauptaugenmerk wurde jedoch auf folgende Anwendungen gelegt:
 
@@ -23,9 +23,13 @@ Das Hauptaugenmerk wurde jedoch auf folgende Anwendungen gelegt:
     \item \gls{GUI}
 \end{itemize}
 
+\pageauthor{Mieke}
+\input{Mieke/Theorie}
+
+\pageauthor{Schuh}
 \subsection{Systemaufbau}
 \label{sec:systemaufbau}
 
-Das neue \gls{ARM}-\gls{Minimalsystem} kann prinzipiell in drei voneinander getrennten Platinen unterteilt werden. Diese Module wären die \gls{Basisplatine}, das \gls{Core-Modul} und der \gls{USB-to-UART} Adapter. Jedes dieser Module erfüllt einen bestimmten Zweck, welcher schlussendlich zum Gesamtsystem beträgt.
+Das neue \gls{ARM}-\gls{Minimalsystem} kann prinzipiell in vier voneinander getrennten Platinen unterteilt werden. Diese Module wären die \gls{Basisplatine}, das \gls{Core-Modul}, der \gls{USB-to-UART} Adapter und der Audioadapter. Jedes dieser Module erfüllt einen bestimmten Zweck, welcher schlussendlich zum Gesamtsystem beträgt.
 
 \fig{gesamtsystem}{Gesamtsystem}{Gesamtsystem}{\textwidth}{Allgemein/img/Gesamtsystem}

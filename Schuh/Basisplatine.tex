@@ -323,7 +323,7 @@ Auf der \gls{Basisplatine} wurde auch ein Beschleunigungssensormodul mit dem Bes
 \end{figure}
 
 \subsubsection{IR-Receiver}
-Um die Platine auch mit einer Fernbedienung oder einem Mobiltelefon steuern zu können würde ein IR-Receiver verbaut. Dieser Sensor wurde hardwaremäßig unter dem NEXTION-Display angebracht. Der IR-Receiver arbeitet mit einer Wellenlänge von 850nm bis 1000nm und einer Trägerfrequenz von 38kHz. Das vom IR-Receiver empfangene Signal wird direkt im Receiver demoduliert und anschließend zu der zweireihigen Stiftleiste (\fref{fig:basisplatine-ssel}, X9) weitergeleitet. Um den IR-Receiver verwenden zu können muss lediglich der Pin7 mit dem Pin8, der Stiftleiste (\fref{fig:basisplatine-ssel}, X9), gejumpert werden.
+Um die Platine auch mit einer Fernbedienung oder einem Mobiltelefon steuern zu können würde ein IR-Receiver verbaut. Dieser Sensor wurde hardwaremäßig unter dem NEXTION-Display angebracht. Der IR-Receiver arbeitet mit einer Wellenlänge von 850nm bis 1000nm und einer Trägerfrequenz von 38kHz. Das vom IR-Receiver empfangene Signal wird direkt im Receiver demoduliert und anschließend zur Stiftleiste X9 (\fref{fig:basisplatine-ssel}) weitergeleitet. Um den IR-Receiver verwenden zu können muss lediglich der Pin7 mit dem Pin8, der Stiftleiste (\fref{fig:basisplatine-ssel}, X9), gejumpert werden.
 
 \begin{figure}[htb]
     \centering
@@ -533,7 +533,7 @@ Um mit Messgeräten oder PCs zu kommunizieren unterstützt die \gls{Basisplatine
 \end{figure}
 
 \subsubsection{NE555}
-Der auf der \gls{Basisplatine} verbaute NE555 kann als externer Taktgenerator verwendet werden. Die Periodendauer von diesen, kann mit Hilfe des Verhältnisses der beiden Potentiometer (\fref{fig:basisplatine-ne555}, R13 und R14) verändert werden. Für die Realisierung von großen Zeitkonstanten, kann man durch verbinden der beiden Pins auf der Stiftleiste (\fref{fig:basisplatine-ne555}, X15), mit einem Jumper, einen größeren Kondensator (\fref{fig:basisplatine-ne555}, C13) parallel zum kleineren Kondensator (\fref{fig:basisplatine-ne555}, C12) schalten. Möchte man einen kleineren Widerstand erzielen, kann man das durch einen Jumper auf der Stiftleiste (\fref{fig:basisplatine-ne555}, X14) erzielen. Um den NE555 verwenden zu können muss lediglich der Pin11 mit dem Pin12, der Stiftleiste (\fref{fig:basisplatine-ssel}, X9), mit einem Jumper verbunden werden.
+Der auf der \gls{Basisplatine} verbaute NE555 kann als externer Taktgenerator verwendet werden. Die Periodendauer von diesen, kann mit Hilfe des Verhältnisses der beiden Potentiometer (\fref{fig:basisplatine-ne555}, R13 und R14) verändert werden. Für die Realisierung von großen Zeitkonstanten, kann man durch verbinden der beiden Pins auf der Stiftleiste (\fref{fig:basisplatine-ne555}, X15), mit einem Jumper, einen größeren Kondensator (\fref{fig:basisplatine-ne555}, C13) parallel zum kleineren Kondensator (\fref{fig:basisplatine-ne555}, C12) schalten. Möchte man einen kleineren Widerstand erzielen, kann man das durch einen Jumper auf der Stiftleiste (\fref{fig:basisplatine-ne555}, X14) erzielen. Um den NE555 verwenden zu können muss lediglich der Pin11 mit dem Pin12, der Stiftleiste X9 (\fref{fig:basisplatine-ssel}), mit einem Jumper verbunden werden.
 
 \begin{figure}[htb]
     \centering
