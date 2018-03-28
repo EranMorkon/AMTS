@@ -22,7 +22,6 @@
 \RequirePackage{csquotes}
 \RequirePackage{tabularx}
 \RequirePackage{multirow}
-\RequirePackage{lipsum}
 \RequirePackage{calc}
 \RequirePackage{pdfpages}
 \RequirePackage{float}
@@ -33,6 +32,7 @@
 \RequirePackage{subfig}
 \RequirePackage{SIunits}
 \RequirePackage{longtable}
+\RequirePackage{float}
 
 \RequirePackage[
   left=2.5cm,
@@ -114,7 +114,7 @@
 
 % \figraw{ref}{descshort}{desclong}{content}
 \newcommand*{\figraw}[4]{
-  \begin{figure}[htb]
+  \begin{figure}[H]
       \centering
       #4
       \caption[#2]{#3}
@@ -125,7 +125,7 @@
 
 % \fig{ref}{descshort}{desclong}{width}{path}
 \newcommand*{\fig}[5]{
-  \begin{figure}[htb]
+  \begin{figure}[H]
       \centering
       \includegraphics[width=#4]{#5}
       \caption[#2]{#3}
@@ -135,7 +135,7 @@
 
 % \tabpdf{ref}{descshort}{desclong}{width}{path}
 \newcommand*{\tabpdf}[5]{
-  \begin{table}[htb]
+  \begin{table}[H]
       \centering
       \includegraphics[width=#4]{#5}
       \caption[#2]{#3}
@@ -147,7 +147,7 @@
 \newcommand*{\ltab}[5]{
   {
     \centering
-    \begin{longtable}[htb]{#4} 
+    \begin{longtable}[H]{#4} 
       #5
       \caption[#2]{#3}
       \label{tab:#1}
@@ -157,7 +157,7 @@
 
 % \tab{ref}{descshort}{desclong}{constructor}{content}
 \newcommand*{\tab}[5]{
-  \begin{table}[htb]
+  \begin{table}[H]
     \centering
     \begin{tabular}{#4} 
       #5
