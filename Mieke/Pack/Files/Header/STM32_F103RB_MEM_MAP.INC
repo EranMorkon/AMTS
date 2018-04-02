@@ -1,13 +1,19 @@
 
-; File soll in Verzeichnis "C:\Keil\ARM\INC\ST\STM32F10x" kopiert werden (Installationspfad µVision)
+;******************************************************************************
+; * @file    STM32_F103RB_MEM_MAP.IC
+; * @author  Josef Reisinger
+; * @version V2.0
+; * @date    22-November-2017
+; * @brief   CMSIS Cortex-M3 Device Peripheral Access Layer Include File. 
+; *          This file contains the most important peripheral register's definitions
+;            and memory mapping for STM32F10x Performance line, 
 
 PERIPH_BB_BASE      EQU     0x42000000        
 
-
-PERIPH_BASE     	EQU  	0x40000000 			
+PERIPH_BASE     	EQU  	0x40000000 
+APB1PERIPH_BASE     EQU     PERIPH_BASE			
 APB2PERIPH_BASE 	EQU  	PERIPH_BASE + 0x10000
 AHBPERIPH_BASE  	EQU     PERIPH_BASE + 0x20000
-
 
 GPIOA_BASE			EQU		APB2PERIPH_BASE + 0x0800
 GPIOA_CRL 			EQU 	GPIOA_BASE
@@ -47,6 +53,15 @@ USART1_CR1	 		EQU 	USART1_BASE+0x0C
 USART1_CR2	 		EQU 	USART1_BASE+0x10
 USART1_CR3	 		EQU 	USART1_BASE+0x14
 USART1_GTPR	 		EQU 	USART1_BASE+0x18
+
+USART2_BASE         EQU     APB1PERIPH_BASE + 0x4400
+USART2_SR 			EQU 	USART2_BASE 
+USART2_DR	 		EQU 	USART2_BASE+0x04
+USART2_BRR	 		EQU 	USART2_BASE+0x08
+USART2_CR1	 		EQU 	USART2_BASE+0x0C
+USART2_CR2	 		EQU 	USART2_BASE+0x10
+USART2_CR3	 		EQU 	USART2_BASE+0x14
+USART2_GTPR	 		EQU 	USART2_BASE+0x18
 
 
 RCC_BASE        	EQU     AHBPERIPH_BASE + 0x1000

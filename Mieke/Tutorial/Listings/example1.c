@@ -1,20 +1,27 @@
-#include "stm32f10x.h"
-
-void init_leds_switches(void) {
-    RCC->APB2ENR |= RCC_APB2ENR_IOPBEN;
-    GPIOB->CRH &= 0x00000000;
-    GPIOB->CRH |= 0x00000003;
-}
+#include "stm32f10x.h"                  // Device header
+#include "stm32f10x_gpio.h"             // Keil::Device:StdPeriph Drivers:GPIO
+#include "stm32f10x_rcc.h"              // Keil::Device:StdPeriph Drivers:RCC
 
 int main()
 {
-    int i;
-    init_leds_switches();
-
-    for (;;) {
-        GPIOB->ODR = 0x01FF & ~(GPIOB->ODR & 0x01FF);
-        for (i=0; i < 65535; i++);
-        for (i=0; i < 65535; i++);
-        for (i=0; i < 65535; i++);
-    }
+	uint8_t data;
+	
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);
+	
+	GPIO_InitTypeDef gpio;
+	GPIO_StructInit(&gpio);
+	
+	gpio.GPIO_Mode = GPIO_Mode_Out_PP;
+	gpio.GPIO_Pin = GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_3 | GPIO_Pin_4 | GPIO_Pin_5 | GPIO_Pin_7 | GPIO_Pin_8 | GPIO_Pin_9;
+	GPIO_Init(GPIOC, &gpio);
+	
+	gpio.GPIO_Mode = GPIO_Mode_IPU;
+	gpio.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_3 | GPIO_Pin_5 | GPIO_Pin_6 | GPIO_Pin_7 | GPIO_Pin_8;
+	GPIO_Init(GPIOA, &gpio);
+	
+	for(;;) {
+		data = (GPIO_ReadInputData(GPIOA) & 0x000F) | ((GPIO_ReadInputData(GPIOA) & 0x01E0) >> 1);
+		GPIO_Write(GPIOC, ((data & 0xE0) << 2) | ((data & 0x1F) << 1));
+	}
 }

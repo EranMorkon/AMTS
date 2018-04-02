@@ -45,7 +45,7 @@ Danach muss dieser mit einem Doppelklick gestartet werden. Eventuell zeigt Windo
 
 \fig{tut-install1}{\uVision{} 5: Begrüßungsbildschirm}{Begrüßungsbildschirm des Installers}{0.75\textwidth}{Mieke/Tutorial/Screenshots/install1}
 
-Wenn der Dialog bestätigt wurde, startet der eigentliche Installationsprozess. Im Begrüßungsbildschirm (\fref{fig:tut-install1}) wird nochmals erläutert welche Version der Software zur Zeit installiert wird (in diesem Fall \uVision{} in Version \texttt{5.23}). Die Richtigkeit dieser Angaben wird mit einem Klick auf \texttt{Next} bestätigt.
+Wenn der Dialog bestätigt wurde, startet der eigentliche Installationsprozess. Im Begrüßungsbildschirm (\fref{fig:tut-install1}) wird nochmals erläutert welche Version der Software zur Zeit installiert wird (in diesem Fall \uVision{} in Version \texttt{5.24}). Die Richtigkeit dieser Angaben wird mit einem Klick auf \texttt{Next} bestätigt.
 
 \fig{tut-install2}{\uVision{} 5: Lizenzbedingungen}{Lizenzbedingungen}{0.75\textwidth}{Mieke/Tutorial/Screenshots/install2}
 
@@ -93,7 +93,7 @@ Nachdem die Updates erfolgreich eingespielt wurden sollte sich die gerade noch l
 
 \fig{tut-pack6}{\uVision{} 5: Prozessor des Minimalsystems}{Prozessor des \gls{Minimalsystem}s}{\textwidth}{Mieke/Tutorial/Screenshots/pack6}
 
-Danach muss der passende Prozessor ausgewählt werden (\fref{fig:tut-pack6}). Im Zuge dieser Diplomarbeit wurde der Prozessor für den Schulgebrauch von \texttt{STM32F103RB} zu einem \texttt{STM32F107RB} geändert, dieser bietet mehr Features als der Alte Prozessor. Man kann den richtigen Prozessor entweder über die Liste auswählen, oder einfach das Suchfeld oben links verwenden um direkt den Richtigen angezeigt zu bekommen.
+Danach muss der passende Prozessor ausgewählt werden (\fref{fig:tut-pack6}). Im Zuge dieser Diplomarbeit wurde der Prozessor für den Schulgebrauch von \texttt{STM32F103RB} zu einem \texttt{\gls{cpu}} geändert, dieser bietet mehr Features als der alte Prozessor. Man kann den richtigen Prozessor entweder über die Liste auswählen, oder einfach das Suchfeld oben links verwenden um direkt den Richtigen angezeigt zu bekommen.
 
 \fig{tut-pack7}{\uVision{} 5: Verfügbare Pakete für Prozessor}{Verfügbare Pakete für den Prozessor des \gls{Minimalsystem}s}{0.75\textwidth}{Mieke/Tutorial/Screenshots/pack7}
 
@@ -125,7 +125,7 @@ Mit einem Klick auf den entsprechenden Menüpunkt (\fref{fig:tut-projekt2}) kann
 
 \fig{tut-projekt3}{\uVision{} 5: Prozessorauswahldialog}{Prozessorauswahldialog}{0.75\textwidth}{Mieke/Tutorial/Screenshots/projekt3}
 
-Im nächsten Bildschirm (\fref{fig:tut-projekt3}) wird abgefragt welcher Prozessor verwendet werden soll, in unserem Fall ist dies wieder der \texttt{STM32F107RB}. Man kann den richtigen Prozessor entweder in der Liste heraus suchen, oder den Namen direkt in das Suchfeld eingeben. Auf der rechten Seite wird ein Beschreibungstext mit den Features des gewählten Prozessors angezeigt.
+Im nächsten Bildschirm (\fref{fig:tut-projekt3}) wird abgefragt welcher Prozessor verwendet werden soll, in unserem Fall ist dies wieder der \texttt{\gls{cpu}}. Man kann den richtigen Prozessor entweder in der Liste heraus suchen, oder den Namen direkt in das Suchfeld eingeben. Auf der rechten Seite wird ein Beschreibungstext mit den Features des gewählten Prozessors angezeigt.
 
 \fig{tut-projekt4}{\uVision{} 5: Laufzeitumgebungskonfigurationsfenster}{Laufzeitumgebungskonfigurationsfenster}{0.75\textwidth}{Mieke/Tutorial/Screenshots/projekt4}
 
@@ -137,12 +137,12 @@ Danach wird gefragt welche \gls{CMSIS}-Libraries eingebunden werden sollen (\fre
 
 \fig{tut-projekt5}{\uVision{} 5: Beispielprogramm}{Beispielprogramm}{0.75\textwidth}{Mieke/Tutorial/Screenshots/projekt5}
 
-In \fref{fig:tut-projekt5} ist ein kleines Beispielprogramm zu sehen, welches die LEDs der LED-/Schalterplatine blinken lässt. Links zu sehen ist der Projektbaum. \gls{C}-Files werden über den entsprechenden Menüpunkt (Rechtsklick auf die \texttt{Source Group 1} und dann \texttt{Add Item to Group...}) angelegt und direkt in das Projekt eingebunden. Der passende Dateiname und Typ ist im folgenden Fenster (\fref{fig:tut-projekt5-2}) entsprechend zu wählen. Das \fref{lst:tut-example1} kann einfach in das \gls{C}-File kopiert werden.
+In \fref{fig:tut-projekt5} ist ein kleines Beispielprogramm zu sehen, welches die Schalter der \gls{Basisplatine} einliest und die LEDs dementsprechend leuchten lässt. Links zu sehen ist der Projektbaum. \gls{C}-Files werden über den entsprechenden Menüpunkt (Rechtsklick auf die \texttt{Source Group 1} und dann \texttt{Add Item to Group...}) angelegt und direkt in das Projekt eingebunden. Der passende Dateiname und Typ ist im folgenden Fenster (\fref{fig:tut-projekt5-2}) entsprechend zu wählen. Das \fref{lst:tut-example1} kann einfach in das \gls{C}-File kopiert werden.
 
 \fig{tut-projekt5-2}{\uVision{} 5: Dateierstellungsdialog}{Dateierstellungsdialog}{0.75\textwidth}{Mieke/Tutorial/Screenshots/asm2}
 
 \FloatBarrier
-\lstinputlisting[language={[ANSI]C}, caption=LED Blinklicht, label=lst:tut-example1]{Mieke/Tutorial/Listings/example1.c}
+\lstinputlisting[language={[ANSI]C}, caption=LED/Schalter Test, label=lst:tut-example1]{Mieke/Tutorial/Listings/example1.c}
 
 \fig{tut-projekt5-1}{\uVision{} 5: Schaltfläche zum kompilieren}{Schaltfläche zum kompilieren}{0.3\textwidth}{Mieke/Tutorial/Screenshots/projekt5-1}
 
@@ -150,35 +150,21 @@ Als nächstes muss das geschriebene Programm kompiliert werden, dazu ist einfach
 
 \fig{tut-projekt6}{\uVision{} 5: Optionsschaltfläche}{Optionsschaltfläche}{0.3\textwidth}{Mieke/Tutorial/Screenshots/projekt6}
 
-Bevor nun aber das fertig kompilierte Programm auf das \gls{Minimalsystem} geflasht werden kann, muss der Debugging Adapter\footnote{In unserem Fall ein \gls{Keil} ULINK-ME} angeschlossen (\fref{fig:tut-projekt6-1}) und dessen Software geupdatet werden. Dies kann mittels Klick auf den Zauberstab (\fref{fig:tut-projekt6}) gestartet werden werden.
+Bevor nun aber das fertig kompilierte Programm auf das \gls{Minimalsystem} geflasht werden kann, muss der Debugging Adapter\footnote{In unserem Fall ein ST Link V2} angeschlossen (\fref{fig:tut-projekt6-1}) werden. Dies kann mittels Klick auf den Zauberstab (\fref{fig:tut-projekt6}) kann der richtige Debugger ausgewählt werden.
 
-\fig{tut-projekt6-1}{\uVision{} 5: Aufbau des Minimalsystems}{Aufbau des \gls{Minimalsystem}s}{0.75\textwidth}{Mieke/Tutorial/Pictures/SetUp}
+\fig{tut-projekt6-1}{\uVision{} 5: Aufbau des Minimalsystems}{Aufbau des \gls{Minimalsystem}s}{\textwidth}{Allgemein/img/Gesamtsystem}
 
-\fig{tut-projekt7}{\uVision{} 5: Optionsfenster}{Optionsfenster}{0.75\textwidth}{Mieke/Tutorial/Screenshots/projekt7}
+\fig{tut-projekt7}{\uVision{} 5: Optionsfenster}{Optionsfenster}{0.75\textwidth}{Mieke/Tutorial/Screenshots/debugging12}
 
-Danach geht das in \fref{fig:tut-projekt7} abgebildete Fenster auf. Eventuell steht die Auswahl nicht auf dem Debug Reiter oben, dann ist dies manuell mittels Mausklick durchzuführen. Auf der rechten Seite muss der Radio Button bei \texttt{Use} ausgewählt werden und im Dropdown daneben \texttt{ULINK2/ME Cortex Debugger}. Wenn die Updateaufforderung (\fref{fig:tut-projekt8}) nicht automatisch auftaucht, muss der Button \texttt{Settings} geklickt werden.
-
-\fig{tut-projekt8}{\uVision{} 5: Firmwareupdate}{Firmwareupdate}{0.75\textwidth}{Mieke/Tutorial/Screenshots/projekt8}
-
-\begin{warning}
-  Achtung: Das Firmware Update ist notwendig um den Debugger zusammen mit \uVision{} 5 zu verwenden, allerdings ist dieser dann nicht mehr mit Version 4 kompatibel, hierfür muss die Firmware wieder mittels externem Programm auf die Alte geändert werden.
-\end{warning}
-
-Die Meldung zum Update der Firmware muss mittels Klick auf den Button \texttt{OK} bestätigt werden. Danach muss gewartet werden, bis das Update durchgelaufen ist.
-
-\begin{warning}
-  Achtung: Trennen Sie in dieser Zeit nicht das USB Kabel des Debuggers, da dieser sonst gegebenenfalls irreperabel beschädigt werden könnte!
-\end{warning}
-
-Wenn das Update fertig durchgelaufen ist, und wieder das Optionsfenster (\fref{fig:tut-projekt7}) zu sehen ist, stellen Sie sicher, dass die dort gezeigten Einstellungen übereinstimmen, und klicken Sie dann auf \texttt{OK}.
+Danach geht das in \fref{fig:tut-projekt7} abgebildete Fenster auf. Eventuell steht die Auswahl nicht auf dem Debug Reiter oben, dann ist dies manuell mittels Mausklick durchzuführen. Auf der rechten Seite muss der Radio Button bei \texttt{Use} ausgewählt werden und im Dropdown daneben \texttt{ST-Link Debugger}.
 
 \fig{tut-projekt9}{\uVision{} 5: Debugger Einstellungen}{Debugger Einstellungen}{0.75\textwidth}{Mieke/Tutorial/Screenshots/projekt9}
 
-Im nun auf gegangenen Fenster (\fref{fig:tut-projekt9}) sollte die Checkbox \texttt{Reset and Run} aktiviert werden. Dies ist zwar für den korrekten Betrieb nicht nötig, erleichtert aber das Arbeiten sehr, da nicht nach jedem mal neu flashen der Reset Knopf des Prozessors gedrückt werden muss.
+Danach klickt man auf \texttt{Settings} rechts daneben. Im nun auf gegangenen Fenster (\fref{fig:tut-projekt9}) sollte die Checkbox \texttt{Reset and Run} aktiviert werden. Dies ist zwar für den korrekten Betrieb nicht nötig, erleichtert aber das Arbeiten sehr, da nicht nach jedem mal neu flashen der Reset Knopf des Prozessors gedrückt werden muss.
 
 \fig{tut-projekt10}{\uVision{} 5: Load Button}{Load Button}{0.3\textwidth}{Mieke/Tutorial/Screenshots/projekt10}
 
-Nun kann das kompilierte Programm mittels des Load Buttons (\fref{fig:tut-projekt10}) auf den Zielprozessor geladen werden. Wenn die Einstellungen, welche bei \fref{fig:tut-projekt9} zu sehen sind richtig angewendet wurden, sollte nun die LEDs der LED-/Schalterplatine anfangen zu blinken. Damit ist die \uVision{} \gls{IDE} in der Version 5 fertig eingerichtet und bereit verwendet zu werden!
+Nun kann das kompilierte Programm mittels des Load Buttons (\fref{fig:tut-projekt10}) auf den Zielprozessor geladen werden. Wenn die Einstellungen, welche bei \fref{fig:tut-projekt9} zu sehen sind richtig angewendet wurden, sollte nun die LEDs der \gls{Basisplatine} entsprechend den Schalterpositionen leuchten. Damit ist die \uVision{} \gls{IDE} in der Version 5 fertig eingerichtet und bereit verwendet zu werden!
 
 \subsubsection{Debugging}
 \label{sec:tut-debugging}
@@ -228,46 +214,34 @@ Eine weitere Möglichkeit des Debuggings ist es, das Memory Fenster zu benutzen.
 
 Mit Hilfe des Watches Fenster (\fref{fig:tut-debugging11}) können Variablen im \gls{C} Programm \enquote{beobachtet} werden. Das Fenster zeigt, sofern auf die Variable an der entsprechenden Programmstelle zugegriffen werden kann, immer den aktuellen Wert eben dieser an. Auch hier ist es möglich den Wert in Echtzeit zu ändern, außerdem können einfache Berechnungen durchgeführt werden.
 
-\subsubsubsection[Keil ULINK2/ME Debugger]{\gls{Keil} ULINK2/ME Debugger}
-\label{sec:tut-debugging1}
+% \subsubsection{Assembler-Programmierung}
+% \label{sec:tut-asm}
 
-Der ULINK/ME\footnote{Diese Bezeichnung bezeichnet die alte Firmware, nach dem Upgrade der Firmware für \uVision{} 5 wird dieser Adapter als ULINK2/ME bezeichnet und ist inkompatibel zu \uVision{} 4.} ist der Standard-Debug-Adapter, welcher bis 2017 verwendet wurde und bei den alten \gls{Minimalsystem}en immer noch verwendet wird. Die entsprechende Konfiguration und das nötige Firmware-Upgrade wurden hierfür schon in \fref{sec:tut-firstproject3} erläutert. Hierbei sind besonders \fref{fig:tut-projekt7} und \fref{fig:tut-projekt9} zu beachten.
+% Zu Beginn wird die Programmierung vom Cortex-M3 mittels Assembler unterrichtet, dementsprechend befasst sich auch dieses Tutorial zuerst mir der Assembler-Programmierung. Hierzu wird ein Beispielprogramm verwendet und erläutert wie die \gls{IDE} eingestellt werden muss, und was alles zu tun ist um dieses Programm erfolgreich zu assemblieren und auszuprobieren.
 
-\subsubsubsection{ST-Link Debugger}
-\label{sec:tut-debugging2}
+% Als erstes muss ein neues Projekt angelegt werden wie in \fref{sec:tut-firstproject3} erklärt. Wichtig hierbei ist es die richtigen \gls{CMSIS}-Packs zu wählen, da das Ziel ein Assembler-Projekt ist, ist hierbei das HTL Assembler-Pack (\fref{fig:tut-asm1}) zu wählen.
 
-Das neue \gls{Minimalsystem} ist dafür vorgesehen mit einem ST-Link Debugger im \gls{SWD}-Modus verwendet zu werden. Wenn das \gls{Core-Modul} mit der \gls{Basisplatine} vebunden ist, kann allerdings auch der ULINK2/ME \gls{Debugging}-Adapter verwendet werden. Der ST-Link braucht im Gegensatz zu einem auf \gls{JTAG} basierenden Debugger weniger Pins und somit weniger Platz auf dem Zielsystem. Die \gls{IDE} muss lediglich auf diesen neuen Debugger umgestellt werden, siehe dazu auch das Debug-Fenster, wo der ST-Link Debugger ausgewählt ist (\fref{fig:tut-debugging12}). Nähere Infos dazu, wie man zu diesem Fenster kommt kann in \fref{sec:tut-firstproject3} gefunden werden. Die Verwendung des aktuellen ST-Link (Version 2) \gls{Debugging}-Adapters ist in \uVision{} 4 nicht mehr möglich.
+% \fig{tut-asm1}{\uVision{} 5: Paketwahldialog mit HTL Pack}{Paketwahldialog mit HTL Pack}{0.75\textwidth}{Mieke/Tutorial/Screenshots/asm1}
 
-\fig{tut-debugging12}{\uVision{} 5: Debug Fenster (ST-Link ausgewählt)}{Debug Fenster (ST-Link ausgewählt)}{0.75\textwidth}{Mieke/Tutorial/Screenshots/debugging12}
+% Ist dies erledigt, kann eine neue Assembler Source-Datei erstellt werden, dazu klickt man mit der rechten Maustaste auf die \texttt{Source Group 1} und wählt im Kontextmenü \texttt{Add New Item to Group...}, im sich nun öffnenden Fenster (\fref{fig:tut-asm2}) wählt man nun \texttt{Asm File} und vergibt einen passenden Namen (zum Beispiel \texttt{main.s}).
 
-\subsubsection{Assembler-Programmierung}
-\label{sec:tut-asm}
+% \fig{tut-asm2}{\uVision{} 5: Dateierstellungsdialog}{Dateierstellungsdialog}{0.75\textwidth}{Mieke/Tutorial/Screenshots/asm2}
 
-Zu Beginn wird die Programmierung vom Cortex-M3 mittels Assembler unterrichtet, dementsprechend befasst sich auch dieses Tutorial zuerst mir der Assembler-Programmierung. Hierzu wird ein Beispielprogramm verwendet und erläutert wie die \gls{IDE} eingestellt werden muss, und was alles zu tun ist um dieses Programm erfolgreich zu assemblieren und auszuprobieren.
+% Durch einen Kick auf \texttt{Add} wird die Datei hinzugefügt und kann anschließend bearbeitet werden. In diesem Beispiel wird das erste Beispielprogramm (eine blinkende LED auf der LED-/Schalterplatine) programmiert. Hierzu ist der Source Code aus \fref{lst:tut-asm} zu verwenden. In der zweiten Zeile wird die HTBL Memory Map inkludiert, welche durch das \gls{CMSIS}-Pack zur Verfügung gestellt wird.
 
-Als erstes muss ein neues Projekt angelegt werden wie in \fref{sec:tut-firstproject3} erklärt. Wichtig hierbei ist es die richtigen \gls{CMSIS}-Packs zu wählen, da das Ziel ein Assembler-Projekt ist, ist hierbei das HTL Assembler-Pack (\fref{fig:tut-asm1}) zu wählen.
+% \lstinputlisting[language={[ARM]Assembler}, caption=LED Blinklicht, label=lst:tut-asm]{Mieke/Tutorial/Listings/asm.s}
 
-\fig{tut-asm1}{\uVision{} 5: Paketwahldialog mit HTL Pack}{Paketwahldialog mit HTL Pack}{0.75\textwidth}{Mieke/Tutorial/Screenshots/asm1}
+% Danach kann das Programm assembliert und anschließend auf den Cortex geladen werden. Dieses vorgehen ist näher in \fref{sec:tut-firstproject3} beschrieben. Nun sollte, nach einem Reset des Microcontrollers, die erste LED von rechts (PB8) auf der LED-/Schalterplatine blinken. Nähere Informationen zum Debugging können in \fref{sec:tut-debugging} gefunden werden.
 
-Ist dies erledigt, kann eine neue Assembler Source-Datei erstellt werden, dazu klickt man mit der rechten Maustaste auf die \texttt{Source Group 1} und wählt im Kontextmenü \texttt{Add New Item to Group...}, im sich nun öffnenden Fenster (\fref{fig:tut-asm2}) wählt man nun \texttt{Asm File} und vergibt einen passenden Namen (zum Beispiel \texttt{main.s}).
+% \subsubsection{\gls{C}-Programmierung}
+% \label{sec:tut-c}
 
-\fig{tut-asm2}{\uVision{} 5: Dateierstellungsdialog}{Dateierstellungsdialog}{0.75\textwidth}{Mieke/Tutorial/Screenshots/asm2}
+% Nach dem Einstieg mit Assembler, wird auch die Programmierung mit der Sprache \gls{C} unterrichtet, die Projekterstellung für diese Sprache weicht nicht sonderlich von der für Assembler (\fref{sec:tut-asm}) und dem vorgehen im Allgemeinen (\fref{sec:tut-firstproject3}) ab. Allerdings ist auch hier zu beachten das richtige \gls{CMSIS} Pack der HTL zu verwenden. Dies ist im Anfang noch nicht so wichtig, da die ersten Programme ohne die \gls{STDLib} auskommen, allerdings ist diese in den späteren Programmen unbedingt nötig. Um die Library einzufügen, ist diese im Pack Manager (\fref{fig:tut-c1}) auszuwählen.
 
-Durch einen Kick auf \texttt{Add} wird die Datei hinzugefügt und kann anschließend bearbeitet werden. In diesem Beispiel wird das erste Beispielprogramm (eine blinkende LED auf der LED-/Schalterplatine) programmiert. Hierzu ist der Source Code aus \fref{lst:tut-asm} zu verwenden. In der zweiten Zeile wird die HTBL Memory Map inkludiert, welche durch das \gls{CMSIS}-Pack zur Verfügung gestellt wird.
+% \fig{tut-c1}{\uVision{} 5: Paketwahldialog mit HTL STDLib Pack}{Paketwahldialog mit \gls{STDLib} Pack}{0.75\textwidth}{Mieke/Tutorial/Screenshots/c1}
 
-\lstinputlisting[language={[ARM]Assembler}, caption=LED Blinklicht, label=lst:tut-asm]{Mieke/Tutorial/Listings/asm.s}
+% Als erstes Demoprogramm ist hier ein Lauflicht, welches in \fref{lst:tut-c} zu sehen ist, zu realisieren.
 
-Danach kann das Programm assembliert und anschließend auf den Cortex geladen werden. Dieses vorgehen ist näher in \fref{sec:tut-firstproject3} beschrieben. Nun sollte, nach einem Reset des Microcontrollers, die erste LED von rechts (PB8) auf der LED-/Schalterplatine blinken. Nähere Informationen zum Debugging können in \fref{sec:tut-debugging} gefunden werden.
+% \lstinputlisting[language={[ANSI]C}, caption=LED Lauflicht, label=lst:tut-c]{Mieke/Tutorial/Listings/c.c}
 
-\subsubsection{\gls{C}-Programmierung}
-\label{sec:tut-c}
-
-Nach dem Einstieg mit Assembler, wird auch die Programmierung mit der Sprache \gls{C} unterrichtet, die Projekterstellung für diese Sprache weicht nicht sonderlich von der für Assembler (\fref{sec:tut-asm}) und dem vorgehen im Allgemeinen (\fref{sec:tut-firstproject3}) ab. Allerdings ist auch hier zu beachten das richtige \gls{CMSIS} Pack der HTL zu verwenden. Dies ist im Anfang noch nicht so wichtig, da die ersten Programme ohne die \gls{STDLib} auskommen, allerdings ist diese in den späteren Programmen unbedingt nötig. Um die Library einzufügen, ist diese im Pack Manager (\fref{fig:tut-c1}) auszuwählen.
-
-\fig{tut-c1}{\uVision{} 5: Paketwahldialog mit HTL STDLib Pack}{Paketwahldialog mit \gls{STDLib} Pack}{0.75\textwidth}{Mieke/Tutorial/Screenshots/c1}
-
-Als erstes Demoprogramm ist hier ein Lauflicht, welches in \fref{lst:tut-c} zu sehen ist, zu realisieren.
-
-\lstinputlisting[language={[ANSI]C}, caption=LED Lauflicht, label=lst:tut-c]{Mieke/Tutorial/Listings/c.c}
-
-Auch hier verhält sich das Debugging so wie in \fref{sec:tut-debugging} beschrieben.
+% Auch hier verhält sich das Debugging so wie in \fref{sec:tut-debugging} beschrieben.

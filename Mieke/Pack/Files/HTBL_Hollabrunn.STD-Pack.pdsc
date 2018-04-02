@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <package schemaVersion="1.4" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
-    <vendor>HTBL Hollabrunn</vendor>
+    <vendor>HTL Hollabrunn</vendor>
     <name>STD-Pack</name>
     <description>HTL Hollabrunn library and include pack</description>
     <url></url>
@@ -8,35 +8,40 @@
 
     <releases>
         <release version="1.0.0" date="2017-07-16">
-            Initial version
+            Initial version -- Mieke
+        </release>
+        <release version="2.0.0" date="2017-07-20">
+            Major version push -- REJ
+        </release>
+        <release version="2.1.0" date="2018-04-02">
+            Removing Start Up code as it is no longer needed, due to code which exists within the CMSIS packs -- Mieke
         </release>
     </releases>
 
     <keywords>
-        <keyword>HTBL Hollabrunn</keyword>
+        <keyword>HTL Hollabrunn</keyword>
         <keyword>STD Library</keyword>
         <keyword>Serbus Library</keyword>
     </keywords>
 
     <components>
-        <component Cclass="HTBL Hollabrunn" Cgroup="Libraries" Csub="STDLib" Cversion="1.0.0">
-            <description>Standard library for the HTBL</description>
+        <component Cclass="HTL Hollabrunn" Cgroup="Libraries" Csub="STDLib" Cversion="2.0.0">
+            <description>Standard library for the HTL</description>
             <files>
                 <file category="header" name="Header/armv10_std.h"/>
                 <file category="library" name="Library/ARMV10_STD.lib"/>
             </files>
         </component>
-        <component Cclass="HTBL Hollabrunn" Cgroup="Libraries" Csub="SerbusLib" Cversion="1.0.0" condition="STDLib">
-            <description>Serial bus library for the HTBL</description>
+        <component Cclass="HTL Hollabrunn" Cgroup="Libraries" Csub="SerbusLib" Cversion="1.0.0" condition="STDLib">
+            <description>Serial bus library for the HTL</description>
             <files>
                 <file category="header" name="Header/armv10_serbus.h"/>
                 <file category="library" name="Library/armv10_serbus.lib"/>
             </files>
         </component>
-        <component Cclass="HTBL Hollabrunn" Cgroup="Assembler" Csub="Includes" Cversion="1.0.0">
-            <description>Assembler includes for the HTBL</description>
+        <component Cclass="HTL Hollabrunn" Cgroup="Assembler" Csub="Includes" Cversion="2.0.0">
+            <description>Assembler includes for the HTL</description>
             <files>
-                <file category="header" name="Header/STD_STM32_F103RB_ASM.INC"/>
                 <file category="header" name="Header/STM32_F103RB_MEM_MAP.INC"/>
             </files>
         </component>
@@ -45,7 +50,7 @@
     <conditions>
         <condition id="STDLib">
             <description>Standard library</description>
-            <require Cclass="HTBL Hollabrunn" Cgroup="Libraries" Csub="STDLib" />
+            <require Cclass="HTL Hollabrunn" Cgroup="Libraries" Csub="STDLib" />
         </condition>
     </conditions>
 </package>

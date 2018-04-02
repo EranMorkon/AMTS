@@ -2,8 +2,14 @@
 \label{sec:software}
 Im Zuge dieser Diplomarbeit entstanden zwei größere Softwareprojekte für das \gls{ARM} Cortex-M3 \gls{Minimalsystem}.
 
-\subsection{Tag der offenen Tür}
+\subsection{ODDDragon}
 Für die Tage der offenen Tür der HTBL Hollabrunn im Jahr 2017/18 entstand ein Testprogramm, welches die neuen Features des Minimalsystems demonstrieren sollte. Hierzu wurde ein einfaches \gls{GUI} für das NEXTION-Display programmiert, welche die X, Y und Z Werte der Beschleunigung vom über SPI angesteuerten Gyroskop ausliest, und in Form eines Graphen anzeigt. Des weiteren wurde eine -- nicht 100\% funktinierenden -- Funktion zum Speichern des Graphen (auf dem verbauten EEPROM) programmiert.
+
+\fig{oddd-bsb}{Tag der offenen Tür: Blockschaltbild}{Tag der offenen Tür: Blockschaltbild}{0.75\textwidth}{Mieke/SW/ODD/ODDDragon}
+
+\fig{oddd-gui1}{Tag der offenen Tür: GUI Hauptansicht}{Tag der offenen Tür: GUI Hauptansicht}{0.75\textwidth}{Mieke/SW/ODD/MainDisplay}
+\fig{oddd-gui2}{Tag der offenen Tür: GUI Einstellungen}{Tag der offenen Tür: GUI Einstellungen}{0.75\textwidth}{Mieke/SW/ODD/SettingsDisplay}
+\fig{oddd-gui3}{Tag der offenen Tür: GUI BMA Daten}{Tag der offenen Tür: GUI BMA Daten}{0.75\textwidth}{Mieke/SW/ODD/GyroDisplay}
 
 \subsubsection{main.c}
 Das Hauptprogramm in \texttt{main.c} initsialisiert alle Ports sowie den SysTick Interrupt. Die einzelnen Komponenten wurden für die Übersichtlichkeit in extra Files ausgelagert. Im Hauptprogramm ist außerdem der Main-Loop, welcher die Werte vom BMA einliest und am Display ausgibt. Der Main-Loop fragt auch Displayeingaben ab und reagiert auf diese (Start/Stopp, Speichern und Laden).
@@ -52,8 +58,10 @@ Dieses Headerfile enthält alle Deklarationen, welche für die Bluetooth-Signal�
 Dieses C-File enthält die Implementation der Bluetooth Funktionen des Demoprogramms.
 \lstinputlisting[language={[ANSI]C}, caption=Tag der offenen Tür: Bluetooth Implementation, label=lst:sw-odd-bluetoothc]{Mieke/SW/ODD/bluetooth.c}
 
-\subsection{Testprogramm}
-Um die im Unterricht hergestellten Einheiten des \gls{Minimalsystem}s testen zu können, musste ein Testpgrogramm geschrieben werden, welches alle verwendeten Peripherieeinheiten ansteuern kann. Dabei war es nicht das Ziel eine bestimmte Funktion zu erreichen, sondenr zu testen, ob die Busse komplett durchverbunden sind, oder ob sich irgendwo auf der Leiterkarte kalte Lötstellen oder andere Fehler befinden. Dementsprechend testen diese Tests nur ob generell eine Kommunikation mit einer Peripherieeinheit möglich ist, und nicht ob diese auch korrekt funktioniert.
+\subsection{Testprogramm Minimalsystem}
+Um die im Unterricht hergestellten Einheiten des \gls{Minimalsystem}s testen zu können, musste ein Testpgrogramm geschrieben werden, welches alle verwendeten Peripherieeinheiten ansteuern kann. Dabei war es nicht das Ziel eine bestimmte Funktion zu erreichen, sondern zu testen, ob die Busse komplett durchverbunden sind, oder ob sich irgendwo auf der Leiterkarte kalte Lötstellen oder andere Fehler befinden. Dementsprechend testen diese Tests nur ob generell eine Kommunikation mit einer Peripherieeinheit möglich ist, und nicht ob diese auch korrekt funktioniert.
+
+\fig{mt-bsb}{Tests: Blockschaltbild}{Tests: Blockschaltbild}{0.75\textwidth}{Mieke/SW/MT/MT}
 
 \subsubsection{main.h}
 Einige globale Definitionen.
