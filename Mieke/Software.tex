@@ -84,3 +84,28 @@ Der Piezo Test gibt einen ton auf eben diesem aus.
 \subsubsection{display.c}
 Um das Display zu testen, wird mehrmals der Screen gelöscht und in einer anderen Farbe gezeichnet. Dieser Befehl sollte auch ohne extra Test-Programm, unabhänging von dem zur Zeit geflashten Programm, auf dem Display funktionieren.
 \lstinputlisting[language={[ANSI]C}, caption=Tests: Display Implementation, label=lst:sw-mt-displayc]{Mieke/SW/MT/display.c}
+
+\subsection{Ethernet}
+Ein Ziel dieser Diplomarbeit war es eine Library für das Arduino Ethernet Shield (Version 1.0) zu entwickeln, dies ist bis dato nicht 100\%ig gelungen, da die SPI Peripherie des \gls{cpu} Probleme bereitet und in manchen Situationen das \gls{LSb} ignoriert. Zum Beispiel, wenn der Ethernet Controller den Status \texttt{0x13} sendet, beinhaltet das Datenregister nur \texttt{0x12}, das \gls{LSb} ist also immer \texttt{0}. Das derzeitige Hauptaugenmerk liegt beim \gls{Debugging} dieses Fehlers. Eine mögliche Lösung wäre das SPI Interface selbst zu implementieren, und nicht die vorhandene Peripherieeinheit zu verwenden. Der nun folgende Programmcode ist deshalb keine Library, sondern ein eigenständiges Test-Programm, welches noch nicht 100\% funktioniert.
+
+\subsubsection{main.c}
+Das Hauptpgrogramm initsialisiert das Ethernet Modul und setzt die entsprechenden IP- und MAC-Adressen, danach wird ein TCP Server auf Port 80 gestartet, und übermittelte Pakete über UART ausgegeben.
+\lstinputlisting[language={[ANSI]C}, caption=Ethernet: Hauptpgrogramm, label=lst:sw-eth-mainc]{Mieke/SW/ETH/main.c}
+
+\subsubsection{socket.c}
+In \texttt{socket.c} wird eine Socket API, welche der POSIX Socket API ähnlich ist, zur Verfügung gestellt. Das Headerfile \texttt{socket.h} enthält hierbei nur die Funktionsdeklarationen. Anders als bei der POSIX Socket API, muss hier jeder Socket manuell eine ID \textbf{vor} dem Erstellen erhalten. Diese ID muss zwischen 1 und 4 liegen, und repräsentiert die 4 Sockets (Register und Speicher), welche am Ethernet-Controller vorhanden sind.
+
+Der Code wurde größtenteils von der entsprechenden Arduino Library \cite{arduino:ethernet} übernommen und auf C adaptiert.
+\lstinputlisting[language={[ANSI]C}, caption=Ethernet: Socket API, label=lst:sw-eth-socketc]{Mieke/SW/ETH/socket.c}
+
+\subsubsection{w5100.h}
+Der Ethernet Controller selbst ist ein W5100 \cite{arduino:ethernetchip}. Dieses Headerfile enthält sämtliche Funktionsdeklarationen für diesen Controller, aber auch structs und enums welche die verschiedenen Register und Memory Bereiche spezifizieren.
+
+Der Code wurde größtenteils von der entsprechenden Arduino Library \cite{arduino:ethernet} übernommen und auf C adaptiert.
+\lstinputlisting[language={[ANSI]C}, caption=Ethernet: W5100 Header, label=lst:sw-eth-w5100h]{Mieke/SW/ETH/w5100.h}
+
+\subsubsection{w5100.c}
+Der Ethernet Controller selbst ist ein W5100 \cite{arduino:ethernetchip}. Diese Implementation enthält sämtliche Funktionen für diesen Controller.
+
+Der Code wurde größtenteils von der entsprechenden Arduino Library \cite{arduino:ethernet} übernommen und auf C adaptiert.
+\lstinputlisting[language={[ANSI]C}, caption=Ethernet: W5100 Implementation, label=lst:sw-eth-w5100c]{Mieke/SW/ETH/w5100.c}
