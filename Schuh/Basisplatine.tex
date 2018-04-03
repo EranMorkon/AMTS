@@ -48,9 +48,9 @@ Die \gls{Basisplatine} verfügt über mehrere in \fref{tab:basisplatine-schnitts
 
 \fig{basisplatine-plan}{Übersichtsplan der Basisplatine}{Übersichtsplan der \gls{Basisplatine}}{\textwidth}{Schuh/Pictures/Basisplatine}
 
-\subsection{Portbelegungsplan}
+\subsection{Portbelegung}
 \label{sec:basisplatine-portbelegung}
-\tabpdf{basisplatine-portbelegung}{Portbelegungsplan der Basisplatine}{Portbelegungsplan der \gls{Basisplatine}}{0.45\textwidth}{Schuh/Pictures/Basis-Portbelegung}
+\tabpdf{basisplatine-portbelegung}{Portbelegungsplan der Basisplatine}{Portbelegungsplan der \gls{Basisplatine}}{\textwidth}{Schuh/Pictures/Basis-Portbelegung}
 
 \subsubsection{ST-Link V2}
 \label{sec:basisplatine-stlink}
@@ -340,6 +340,8 @@ Auf der \gls{Basisplatine} wurde ebenso eine RGB-LED \cite{basis:rgbled} verbaut
 \subsubsection{Arduino-Shield-Header}
 Um Hardware des Arduino-Mikrocontrollersystems nutzten zu können, ohne selbst großen Aufwand in die Entwicklung entsprechender Module investieren zu müssen, wurde ein Arduino-Shield-Header auf der \gls{Basisplatine} vorgesehen. Dieser ermöglicht es durch die Portkompatibilität mit einem Arduino, dessen Shields zu verwenden oder selbst Shields entwickeln zu können. Möchte man nun ein Arduino-Shield verwenden muss dieses lediglich in die vorgesehene Buchsenleiste X33 (\fref{fig:basisplatine-arduino}) gesteckt werden. Da jedes Arduino-Shield die Möglichkeit besitzt eine Referenzspannung für diverse ADCs zu vergeben wurde das Potentiometer R31 vorgesehen, um diesen Spannungspegel variabel zu gestallten. Darüber hinaus gibt es noch die Möglichkeit bei speziellen Shields zu definieren mit welcher Betriebsspannung die darüberliegenden versorgt werden sollen. Dazu wurde die Stiftleiste X27 verbaut, um festzulegen ob die darüberliegenden Shields mit \unit{+5}{\volt} oder \unit{+3,3}{\volt} versorgt werden. Sollte kein Jumper gesetzt werden wird automatisch auf die \unit{+5}{\volt} Spannungsversorgung zurückgegriffen.
 
+\tabpdf{arduino-pinninh}{Pinning Arduino Header}{Pinning Arduino Header}{\textwidth}{Schuh/Pictures/PinArduino}
+
 \begin{figure}[H]
     \centering
     \subfloat[Schematic\label{fig:basisplatine-arduino-schem}]{\includegraphics[width=.5\linewidth]{Schuh/Pictures/Basis-arduino}}\qquad
@@ -528,38 +530,38 @@ Der Kondensatorwert C entspricht bei nicht gejumperter Stiftleiste X15 (\fref{fi
 \label{sec:basisplatine-schaltung}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.85\textwidth]{Schuh/Pictures/Basis-Schaltung1}
+    \includegraphics[width=1.25\textwidth,angle=90]{Schuh/Pictures/Basis-Schaltung1}
     \caption[Gesamtschaltung der Basisplatine]{Gesamtschaltung der \gls{Basisplatine}}
     \label{fig:basisplatine-schaltung}
 \end{figure}
 \begin{figure}[H]\ContinuedFloat
     \centering
-    \includegraphics[width=0.85\textwidth]{Schuh/Pictures/Basis-Schaltung2}
+    \includegraphics[width=1.25\textwidth,angle=90]{Schuh/Pictures/Basis-Schaltung2}
     \caption[Gesamtschaltung der Basisplatine]{Gesamtschaltung der \gls{Basisplatine}}
 \end{figure}
 \begin{figure}[H]\ContinuedFloat
     \centering
-    \includegraphics[width=0.85\textwidth]{Schuh/Pictures/Basis-Schaltung3}
+    \includegraphics[width=1.25\textwidth,angle=90]{Schuh/Pictures/Basis-Schaltung3}
     \caption[Gesamtschaltung der Basisplatine]{Gesamtschaltung der \gls{Basisplatine}}
 \end{figure}
 \begin{figure}[H]\ContinuedFloat
     \centering
-    \includegraphics[width=0.85\textwidth]{Schuh/Pictures/Basis-Schaltung4}
+    \includegraphics[width=1.25\textwidth,angle=90]{Schuh/Pictures/Basis-Schaltung4}
     \caption[Gesamtschaltung der Basisplatine]{Gesamtschaltung der \gls{Basisplatine}}
 \end{figure}
 \begin{figure}[H]\ContinuedFloat
     \centering
-    \includegraphics[width=0.85\textwidth]{Schuh/Pictures/Basis-Schaltung5}
+    \includegraphics[width=1.25\textwidth,angle=90]{Schuh/Pictures/Basis-Schaltung5}
     \caption[Gesamtschaltung der Basisplatine]{Gesamtschaltung der \gls{Basisplatine}}
 \end{figure}
 \begin{figure}[H]\ContinuedFloat
     \centering
-    \includegraphics[width=0.85\textwidth]{Schuh/Pictures/Basis-Schaltung6}
+    \includegraphics[width=1.25\textwidth,angle=90]{Schuh/Pictures/Basis-Schaltung6}
     \caption[Gesamtschaltung der Basisplatine]{Gesamtschaltung der \gls{Basisplatine}}
 \end{figure}
 \begin{figure}[H]\ContinuedFloat
     \centering
-    \includegraphics[width=0.85\textwidth]{Schuh/Pictures/Basis-Schaltung7}
+    \includegraphics[width=1.25\textwidth,angle=90]{Schuh/Pictures/Basis-Schaltung7}
     \caption[Gesamtschaltung der Basisplatine]{Gesamtschaltung der \gls{Basisplatine}}
 \end{figure}
 
