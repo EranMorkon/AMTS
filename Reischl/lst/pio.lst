@@ -1,0 +1,55 @@
+1                     ;******************************************************************************
+2                     ;*  Z80 Assemblerprogramm                                                     *
+3                     ;*  Josef Reisinger                                                           *
+4                     ;*  josef.reisinger@htl-hl.ac.at                                              *
+5                     ;*  26/04/2015                                                                *
+6                     ;******************************************************************************
+7
+8
+9                     ; ---------------------------- PIO 82C55 I/O ---------------------------------
+10 0080                PIO_A:    EQU       $80               ; (INPUT)  
+11 0081                PIO_B:    EQU       $81               ; (OUTPUT) OUT TO LEDS
+12 0082                PIO_C:    EQU       $82               ; (INPUT)  IN from DIP SWITCHES
+13 0083                PIO_CON:  EQU       $83               ; CONTROL BYTE PIO 82C55
+14
+15                     ; --------------------------- CTC Z80 Timer Counter --------------------------
+16 0000                CTC0      EQU       $00               ; Channel 0
+17 0001                CTC1      EQU       $01               ; Channel 1
+18 0002                CTC2      EQU       $02               ; Channel 2
+19 0003                CTC3      EQU       $03               ; Channel 3
+20
+21                     ; -------------------------- SIO (USART) ----------------------------------------
+22 0040                SIO_A_D:  EQU       $40               ; Channel A Data Register  
+23 0041                SIO_B_D:  EQU       $41               ; Channel B Data Register
+24 0042                SIO_A_C:  EQU       $42               ; Channel A Control Register
+25 0043                SIO_B_C:  EQU       $43               ; Channel B Control Register
+26
+27
+28                     ;-------------------------- CONSTANTS ----------------------------------------
+29 FFFF                RAMTOP:   EQU       $FFFF             ; 32Kb RAM   8000H-FFFFH
+30
+31
+32                     ;******************************************************************************
+33                     ;*                   START AFTER RESET,                                       *
+34                     ;*                   Function....: ready system and restart                   *
+35                     ;******************************************************************************
+36 0000                          ORG       $0000
+37 0000 F3                       DI                          ; Disable interrupt
+38 0001 31 FF FF                 LD        SP,RAMTOP         ; Set stack pointer to top off ram
+39 0004 3E 99                    LD        A,$99             ; PA0-PA7=IN (DIP SWITCHES), PB0-PB7=OUT (LEDS), PC0-PC7=IN, Mode 0 Selektion 
+40 0006 D3 83                    OUT       (PIO_CON),A
+41 0008 DB 83                    IN        A,(PIO_CON)
+42 000A DB 80          AGAIN:    IN        A,(PIO_A)         ; Read actual status of Switches (PA0-PA7)
+43 000C D3 81                    OUT       (PIO_B),A         ; Output Status to LEDs (PB0-PB7)
+44 000E C3 0A 00                 JP        AGAIN             ; Endless
+45
+46
+47
+
+Symbol table:
+
+AGAIN     000A  CTC0      0000  CTC1      0001  CTC2      0002  
+CTC3      0003  PIO_A     0080  PIO_B     0081  PIO_C     0082  
+PIO_CON   0083  RAMTOP    FFFF  SIO_A_C   0042  SIO_A_D   0040  
+SIO_B_C   0043  SIO_B_D   0041  
+14 symbols

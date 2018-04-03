@@ -1,0 +1,109 @@
+1                     ;******************************************************************************
+2                     ;*  Z80 Assembler program                                                     *
+3                     ;*  Josef Reisinger                                                           *
+4                     ;*  josef.reisinger@htl-hl.ac.at                                              *
+5                     ;*  26/04/2015                                                                *
+6                     ;******************************************************************************
+7
+8                     ; ---------------------------- PIO 82C55 I/O ---------------------------------
+9 0080                PIO_A:    EQU       $80               ; (INPUT)  
+10 0081                PIO_B:    EQU       $81               ; (OUTPUT) OUT TO LEDS
+11 0082                PIO_C:    EQU       $82               ; (INPUT)  IN from DIP SWITCHES
+12 0083                PIO_CON:  EQU       $83               ; CONTROL BYTE PIO 82C55
+13
+14                     ; --------------------------- CTC Z80 Timer Counter --------------------------
+15 0000                CTC0      EQU       $00               ; Channel 0
+16 0001                CTC1      EQU       $01               ; Channel 1
+17 0002                CTC2      EQU       $02               ; Channel 2
+18 0003                CTC3      EQU       $03               ; Channel 3
+19
+20                     ; -------------------------- SIO (USART) ----------------------------------------
+21 0040                SIO_A_D:  EQU       $40               ; Channel A Data Register  
+22 0041                SIO_B_D:  EQU       $41               ; Channel B Data Register
+23 0042                SIO_A_C:  EQU       $42               ; Channel A Control Register
+24 0043                SIO_B_C:  EQU       $43               ; Channel B Control Register
+25
+26
+27                     ;-------------------------- CONSTANTS ----------------------------------------
+28 FFFF                RAMTOP:   EQU       $FFFF             ; 32Kb RAM   8000H-FFFFH
+29 8000                COUNTER:  EQU       $8000             ; RAM Counter
+30
+31
+32                     ;******************************************************************************
+33                     ;*                   RESET HANDLER                                            *
+34                     ;*                   Function: Initialize system and start Main Program       *
+35                     ;******************************************************************************
+36 0000                          ORG       $0000
+37 0000 F3                       DI                          ; Disable interrupt
+38 0001 31 FF FF                 LD        SP,RAMTOP         ; Set stack pointer 
+39 0004 C3 00 01                 JP        MAIN              ; jump to Main program
+40
+41
+42                     ;*******************************************************************
+43                     ;*                    MAIN PROGRAM                                 *
+44                     ;*******************************************************************
+45 0100                          ORG       $0100
+46 0100 21 00 80       MAIN:     LD        HL,COUNTER        ; Reset RAM Counter
+47 0103 3E 00                    LD        A,$00
+48 0105 77                       LD        (HL),A
+49
+50 			; ------------------ Initialize PIO ----------------
+51 0106 3E 99                    LD        A,$99             ; Initialize 8255: PA0-PA7=IN (DIP SWITCHES), PB0-PB7=OUT (LEDS),
+52 0108 D3 83                    OUT       (PIO_CON),A       ; PC0-PC7=IN, Mode 0 Selection    
+53
+54 			;------------------ Configure CTC -----------------------
+55 010A 3E A5                    LD        A,$A5             ; Configure CTC Channel 0: Interrupt, Timer Mode, Prescaler = 256, 
+56 010C D3 00                    OUT       (CTC0),A          ; trigger on positive edge, next word = time constant, Channel continuous result operation
+57 010E 3E FF                    LD        A,$FF             ; Write Time constant 255*256*552ns= 36,03ms
+58 0110 D3 00                    OUT       (CTC0),A
+59 0112 3E A8                    LD        A,$A8             ; Loading Interrupt Vector register
+60 0114 D3 00                    OUT       (CTC0),A          ; trigger on positive edge, next word = time constant, Channel continuous result operation
+61
+62			;---------------------- Configure Interrupt -----------------
+63 0116 3E 01                    LD        A,$01             ; Loading Interrupt Register
+64 0118 ED 47                    LD        I,A
+65 011A ED 5E                    IM        2                 ; Interrupt Mode 2  
+66 011C FB                       EI                          ; Enable Interrupt   
+67
+68 			;--------------------- Main Program --------------------------
+69 011D C3 1D 01       AGAIN:    JP        AGAIN             ; Endless
+70
+71
+72
+73                     ;******************************************************************************
+74                     ;*                   INTERRUPT SERVICE ROUTINE                                *
+75                     ;*                   CTC Channel 0                                            *
+76                     ;******************************************************************************
+77 01A8                          ORG       $01A8
+78 01A8 AA 01                    DEFW      _INT_CTC
+79 01AA F5             _INT_CTC: PUSH      AF
+80 01AB E5                       PUSH      HL
+81 01AC 21 00 80                 LD        HL,COUNTER
+82 01AF 7E                       LD        A,(HL)            ; Read Counter
+83 01B0 3C                       INC       A                 ; Increment Counter
+84 01B1 FE 07                    CP        $07               ; 252,21ms reached?
+85 01B3 C2 BD 01                 JP        NZ,_END_INT
+86 01B6 3E 00                    LD        A,$00             ; Reset Counter
+87 01B8 DB 81                    IN        A,(PIO_B)         ; Toggle LED's with 2Hz
+88 01BA 2F                       CPL
+89 01BB D3 81                    OUT       (PIO_B),A         ; 
+90 01BD 77             _END_INT: LD        (HL),A            ; Store Counter
+91 01BE E1                       POP       HL
+92 01BF F1                       POP       AF
+93 01C0 FB                       EI                          ; Entry Point of Interrupt Service Routine
+94 01C1 ED 4D                    RETI
+95
+96
+97
+98
+99
+100
+
+Symbol table:
+
+AGAIN      011D  COUNTER    8000  CTC0       0000  CTC1       0001  
+CTC2       0002  CTC3       0003  MAIN       0100  PIO_A      0080  
+PIO_B      0081  PIO_C      0082  PIO_CON    0083  RAMTOP     FFFF  
+SIO_A_C    0042  SIO_A_D    0040  SIO_B_C    0043  SIO_B_D    0041  
+_END_INT   01BD  _INT_CTC   01AA  
+18 symbols.

@@ -1,0 +1,80 @@
+1                     ;******************************************************************************
+2                     ;*  Z80 Assembler program                                                     *
+3                     ;*  Josef Reisinger                                                           *
+4                     ;*  josef.reisinger@htl-hl.ac.at                                              *
+5                     ;*  10/07/2017                                                                *
+6                     ;******************************************************************************
+7
+8                     ; ---------------------------- PIO 82C55 I/O ---------------------------------
+9 0080                PIO_A:    EQU       $80               ; (INPUT)  
+10 0081                PIO_B:    EQU       $81               ; (OUTPUT) OUT TO LEDS
+11 0082                PIO_C:    EQU       $82               ; (INPUT)  IN from DIP SWITCHES
+12 0083                PIO_CON:  EQU       $83               ; CONTROL BYTE PIO 82C55
+13
+14                     ; --------------------------- CTC Z80 Timer Counter --------------------------
+15 0000                CTC0      EQU       $00               ; Channel 0
+16 0001                CTC1      EQU       $01               ; Channel 1
+17 0002                CTC2      EQU       $02               ; Channel 2
+18 0003                CTC3      EQU       $03               ; Channel 3
+19
+20                     ; -------------------------- SIO (USART) ----------------------------------------
+21 0040                SIO_A_D:  EQU       $40               ; Channel A Data Register  
+22 0041                SIO_B_D:  EQU       $41               ; Channel B Data Register
+23 0042                SIO_A_C:  EQU       $42               ; Channel A Control Register
+24 0043                SIO_B_C:  EQU       $43               ; Channel B Control Register
+25
+26
+27                     ;-------------------------- CONSTANTS ----------------------------------------
+28 FFFF                RAMTOP:   EQU       $FFFF             ; 32Kb RAM   8000H-FFFFH
+29 8000                COUNTER:  EQU       $8000             ; RAM Counter
+30
+31                     ;******************************************************************************
+32                     ;*                   RESET HANDLER                                            *
+33                     ;*                   Function: Initalize system and start Main Programm       *
+34                     ;******************************************************************************
+35 0000                          ORG       $0000
+36 0000 F3                       DI                          ; Disable interrupt
+37 0001 31 FF FF                 LD        SP,RAMTOP         ; Set stack pointer 
+38 0004 C3 00 01                 JP        MAIN              ; jump to Main program
+39
+40
+41                     ;*******************************************************************
+42                     ;*                    MAIN PROGRAM                                 *
+43                     ;*******************************************************************
+44 0100                          ORG       $100
+45 0100 3E 99          MAIN:     LD        A,$99	; Initialize 8255: PA0-PA7=IN (DIP SWITCHES), PB0-PB7=OUT (LEDS),
+46 0102 D3 83                    OUT       (PIO_CON),A       ; PC0-PC7=IN, Mode 0 Selection 
+47 0104 3E 01                    LD        A,$01             ; Initialize RAM Counter
+48 0106 21 00 80                 LD        HL,COUNTER        ; Load RAM Counter Address
+49 0109 77                       LD        (HL),A            ; Store Counter in RAM cell
+50 010A 7E             AGAIN:    LD        A,(HL)            ; Load RAM Counter
+51 010B D3 81                    OUT       (PIO_B),A         ; Output RAM Counter to LEDs (PB0-PB7)
+52 010D 34                       INC       (HL)              : Increment RAM Counter
+53 010E CD 14 01                 CALL      _WAIT
+54 0111 C3 0A 01                 JP        AGAIN             ; Endless
+55
+56
+57
+58                     ;*******************************************************************
+59                     ;*                     Warteschleife 0,5s                          *
+60                     ;*******************************************************************
+61 0114 16 FF          _WAIT:    LD        D,$FF             ; 
+62 0116 1E FF          _OUTER:   LD        E,$FF             ; 
+63 0118 1D             _INNER:   DEC       E
+64 0119 C2 18 01                 JP        NZ,_INNER
+65 011C 15                       DEC       D
+66 011D C2 16 01                 JP        NZ,_OUTER
+67 0120 C9                       RET
+68
+69
+70
+71
+72
+
+Symbol table:
+AGAIN     010A  COUNTER   8000  CTC0      0000  CTC1      0001  
+CTC2      0002  CTC3      0003  MAIN      0100  PIO_A     0080  
+PIO_B     0081  PIO_C     0082  PIO_CON   0083  RAMTOP    FFFF  
+SIO_A_C   0042  SIO_A_D   0040  SIO_B_C   0043  SIO_B_D   0041  
+_INNER    0118  _OUTER    0116  _WAIT     0114  
+19 symbols.

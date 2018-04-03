@@ -1,0 +1,202 @@
+1                     ;******************************************************************************
+2                     ;*  Z80 Assembler program                                                     *
+3                     ;*  Josef Reisinger                                                           *
+4                     ;*  josef.reisinger@htl-hl.ac.at                                              *
+5                     ;*  10/07/2017                                                                *
+6                     ;******************************************************************************
+7
+8
+9                     ; ---------------------------- PIO 82C55 I/O ---------------------------------
+10 0080                PIO_A:    EQU       $80               ; (INPUT)  
+11 0081                PIO_B:    EQU       $81               ; (OUTPUT) OUT TO LEDS
+12 0082                PIO_C:    EQU       $82               ; (INPUT)  IN from DIP SWITCHES
+13 0083                PIO_CON:  EQU       $83               ; CONTROL BYTE PIO 82C55
+14
+15
+16                     ; --------------------------- CTC Z80 Timer Counter --------------------------
+17 0000                CTC0      EQU       $00               ; Channel 0
+18 0001                CTC1      EQU       $01               ; Channel 1
+19 0002                CTC2      EQU       $02               ; Channel 2
+20 0003                CTC3      EQU       $03               ; Channel 3
+21
+22                     ; -------------------------- SIO (USART) ----------------------------------------
+23 0040                SIO_A_D:  EQU       $40               ; Channel A Data Register  
+24 0041                SIO_B_D:  EQU       $41               ; Channel B Data Register
+25 0042                SIO_A_C:  EQU       $42               ; Channel A Control Register
+26 0043                SIO_B_C:  EQU       $43               ; Channel B Control Register
+27
+28
+29                     ;-------------------------- CONSTANTS ----------------------------------------
+30 FFFF                RAMTOP:   EQU       $FFFF             ; 32Kb RAM   8000H-FFFFH
+31 000D                CR:       EQU       $0D
+32 000A                LF:       EQU       $0A
+33 0020                SPACE:    EQU       $20
+34
+35                     ;******************************************************************************
+36                     ;*                   RESET HANDLER                                            *
+37                     ;*                   Function: Start Main Program                             *
+38                     ;******************************************************************************
+39 0000                          ORG       $0000
+40 0000 C3 00 01                 JP        MAIN              ; jump to Main program
+41
+42
+43                     ;******************************************************************************
+44                     ;*                   NMI HANDLER                                              *
+45                     ;*                   Handles  NMI Interrupt Request                           *
+46                     ;******************************************************************************
+47 0066                          ORG       $0066
+48 0066 21 A1 01                 LD        HL,NMI_TEXT       ; Send NMI to V24
+49 0069 CD 80 01                 CALL      SIO_PUT_STRING
+50 006C ED 45                    RETN
+51
+52                     ;******************************************************************************
+53                     ;*                          MAIN PROGRAM                                      *
+54                     ;******************************************************************************
+55 0100                          ORG       $100
+56 0100 F3             MAIN:     DI                          ; Disable interrupt
+57 0101 31 FF FF                 LD        SP,RAMTOP         ; Set stack pointer 
+58 0104 CD 1F 01                 CALL      PIO_INIT          ; Init PIO (8255)
+59 0107 CD 24 01                 CALL      CTC_INIT          ; Initialize CTC Channl1 for 9600 Baud (SIO Channel A)
+60 010A CD 2D 01                 CALL      SIO_INIT          ; Animalize SIO for character based transfer (9600,n,8,1)
+61 010D 21 91 01                 LD        HL,START_TEXT     ; Send Welcome Text to V24
+62 0110 CD 80 01                 CALL      SIO_PUT_STRING
+63 0113 CD 63 01       _AGAIN:   CALL      SIO_GET_CHAR      ; Wait for Character on V24
+64 0116 7B                       LD        A,E               ; Output Error to LED's
+65 0117 D3 81                    OUT       (PIO_B),A
+66 0119 CD 56 01                 CALL      SIO_PUT_CHAR      ; Echo Character to V24
+67 011C C3 13 01                 JP        _AGAIN
+68 011F                                                      ; 
+69
+70                     ;******************************************************************************
+71                     ;*                          Initialize PIO (8255)                             *
+72                     ;******************************************************************************
+73 011F 3E 99          PIO_INIT: LD        A,$99             ; Init PIO 8255 Control Word:
+74 0121                                                      ; PA0-PA7=IN (DIP SWITCHES)
+75 0121                                                      ; PB0-PB7=OUT (LEDS),
+76 0121 D3 83                    OUT       (PIO_CON),A       ; PC0-PC7=IN, Mode 0 Selection 
+77 0123 C9                       RET
+78
+79                     ;******************************************************************************
+80                     ;*                 Initialize CTC Channel 1 (SIO Channel A Clock)             *
+81                     ;******************************************************************************
+82 0124 3E 05          CTC_INIT: LD        A,$05             ; Init Timer Counter - Channel 1    
+83 0126 D3 01                    OUT       (CTC1),A          ; for Baudrate 9600 (No Interrupt, Timer Mode, PSC=16,
+84 0128                                                      ; trigger on positive edge
+85 0128 3E 0C                    LD        A,$0C             ; Write Time constant 12*16*552ns= 105,98s     
+86 012A D3 01                    OUT       (CTC1),A
+87 012C C9                       RET
+88
+89
+90                     ;******************************************************************************
+91                     ;*               Initialize SIO Channel A for character based transfer        *
+92                     ;******************************************************************************
+93 012D 3E 30          SIO_INIT: LD        A,$30             ; Write to WR0 Register --> Error Reset
+94 012F D3 42                    OUT       (SIO_A_C),A
+95 0131 3E 18                    LD        A,$18             ; Write to WR0 Register --> Channel Reset
+96 0133 D3 42                    OUT       (SIO_A_C),A
+97 0135 3E 04                    LD        A,$04             ; Select WR4 Register   
+98 0137 D3 42                    OUT       (SIO_A_C),A
+99 0139 3E 04                    LD        A,$04             ; CLK*1, 1STOP Bit, No Parity   
+100 013B D3 42                    OUT       (SIO_A_C),A
+101 013D 3E 03                    LD        A,$03             ; Select WR3 Register   
+102 013F D3 42                    OUT       (SIO_A_C),A
+103 0141 3E C1                    LD        A,$C1             ; RX enable,8 Data Bits
+104 0143 D3 42                    OUT       (SIO_A_C),A
+105 0145 3E 05                    LD        A,$05             ; Select WR5 Register   
+106 0147 D3 42                    OUT       (SIO_A_C),A
+107 0149 3E 68                    LD        A,$68             ; TX enable,8 Data Bits, DTR inactive, RTS inactive,Break off
+108 014B D3 42                    OUT       (SIO_A_C),A
+109 014D 3E 01                    LD        A,$1              ; Select WR1 Register   
+110 014F D3 42                    OUT       (SIO_A_C),A
+111 0151 3E 00                    LD        A,$0              ; No Interrupts for Rx and Tx Characters 
+112 0153 D3 42                    OUT       (SIO_A_C),A
+113 0155 C9                       RET
+114
+115
+116
+117                     ;******************************************************************************
+118                     ;*          Send one Character Via SIO Channel A(Polling Mode)                *
+119                     ;*          D- Register: Character to send (ASCII Code)                       *
+120                     ;******************************************************************************
+121 0156 F5             SIO_PUT_CHAR: PUSH  AF
+122 0157 DB 42          _TX_READY: IN       A,(SIO_A_C)       ; Read RRO Register
+123 0159 CB 57                    BIT       2,A               ; TX Buffer empty ?
+124 015B CA 57 01                 JP        Z,_TX_READY       ; No --> Wait
+125 015E 7A                       LD        A,D               ; load character in A
+126 015F D3 40                    OUT       (SIO_A_D),A       ; Send character (Transfer Buffer)
+127 0161 F1                       POP       AF
+128 0162 C9                       RET
+129
+130
+131                     ;******************************************************************************
+132                     ;*          Receive one Character Via SIO Channel A(Polling Mode)             *
+133                     ;*          D- Register: Character received (ASCII Code)               	       *
+134                     ;*          E-Register:  Error Code                         *
+135                     ;******************************************************************************
+136 0163 F5             SIO_GET_CHAR: PUSH  AF
+137 0164 DB 42          _RX_READY: IN       A,(SIO_A_C)       ; Read RRO Register
+138 0166 CB 47                    BIT       0,A               ; RX Character Available ?
+139 0168 CA 64 01                 JP        Z,_RX_READY       ; No --> Wait
+140 016B DB 40                    IN        A,(SIO_A_D)       ; Store character
+141 016D 57                       LD        D,A
+142 016E 3E 01                    LD        A,$01             ; Select WR1 Register
+143 0170 D3 42                    OUT       (SIO_A_C),A
+144 0172 DB 42                    IN        A,(SIO_A_C)       ; Read Error Register
+145 0174 5F                       LD        E,A               ; store Error Status
+146 0175 E6 70                    AND       $70               ; only D6(CRC Framing Error),D5(Rx Overrun Error) und D4 (Parity Error)
+147 0177 CA 7E 01                 JP        Z,_RX_EXIT        ; return if no error    
+148 017A 3E 30                    LD        A,$30             ; reset Error
+149 017C D3 42                    OUT       (SIO_A_C),A
+150 017E F1             _RX_EXIT: POP       AF
+151 017F C9                       RET
+152
+153
+154                     ;******************************************************************************
+155                     ;*                     SEND STRING to V24 via SIO                             *
+156                     ;*                     HL: contains start address of string                   *
+157                     ;******************************************************************************
+158 0180 F5             SIO_PUT_STRING: PUSH AF
+159 0181 7E             _NEXT_CHAR: LD      A,(HL)            ; get character
+160 0182 FE 00                    CP        $00               ; END of String ?
+161 0184 CA 8F 01                 JP        Z,_TEXT_END
+162 0187 57                       LD        D,A
+163 0188 CD 56 01                 CALL      SIO_PUT_CHAR      ; send character
+164 018B 23                       INC       HL                ; next character
+165 018C C3 81 01                 JP        _NEXT_CHAR
+166 018F F1             _TEXT_END: POP      AF
+167 0190 C9                       RET
+168
+169
+170                     ;******************************************************************************
+171                     ;*                   TEXT DEFINITIONS                                         *
+172                     ;******************************************************************************
+173 0191 0D 0A 5A 38    START_TEXT: DEFB    CR,LF,'Z','8','0',SPACE,'D','E','M','O',SPACE,'V','1','.','0',$00
+    0195 30 20 44 45
+    0199 4D 4F 20 56
+    019D 31 2E 30 00
+174 01A1 0D 0A 4E 4D    NMI_TEXT: DEFB      CR,LF,'N','M','I',$00
+    01A5 49 00
+175
+176
+177
+178
+179
+180
+181
+182
+183
+
+Symbol table:
+
+CR               000D  CTC0             0000  CTC1             0001  
+CTC2             0002  CTC3             0003  CTC_INIT         0124  
+LF               000A  MAIN             0100  NMI_TEXT         01A1  
+PIO_A            0080  PIO_B            0081  PIO_C            0082  
+PIO_CON          0083  PIO_INIT         011F  RAMTOP           FFFF  
+SIO_A_C          0042  SIO_A_D          0040  SIO_B_C          0043  
+SIO_B_D          0041  SIO_GET_CHAR     0163  SIO_INIT         012D  
+SIO_PUT_CHAR     0156  SIO_PUT_STRING   0180  SPACE            0020  
+START_TEXT       0191  _AGAIN           0113  _NEXT_CHAR       0181  
+_RX_EXIT         017E  _RX_READY        0164  _TEXT_END        018F  
+_TX_READY        0157  
+31 symbols.
