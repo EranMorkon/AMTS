@@ -6,6 +6,7 @@
 #include "io.h"
 #include "stdio.h"
 
+// Display states/buttons
 typedef enum uint8_t {
 	DISP_STATE_NONE = 0x00,
 	DISP_STATE_PAUSE,
