@@ -157,7 +157,7 @@ Am VB-Anschluss des 50-poligen Headers (\fref{fig:coremodul-spannung}) kann eine
 \subsubsection{3,3 V Fixspannungsregler}
 Zur Generierung der für den Prozessor erforderlichen Betriebsspannung wurde ein \unit{3,3}{\volt}-Linearregler U2 (\fref{fig:coremodul-fix}) verwendet, welcher die Eingangsspannung von \unit{+5}{\volt} auf \unit{+3,3}{\volt} herabsetzt. Bei Verwendung eines Linearreglers ist zu beachten, dass dieser die Spannungsdifferenz zwischen Ausgangsspannung und Eingangsspannung in Wärme umwandelt. Daher sollten keine temperaturempfindlichen Bauteile in dessen Nähe platziert werden. Zur Überprüfung, ob das Modul mit der Betriebsspannung von \unit{+5}{\volt} versorgt wird, wurde die LED V5 (\fref{fig:coremodul-fix}) zur optischen Kontrolle eingebaut. Wenn das Modul mit Spannung versorgt wird, leuchtet diese. Zur Überprüfung ob der Prozessor mit seiner Betriebsspannung von \unit{3,3}{\volt} versorgt wird, wurde die LED V6 (\fref{fig:coremodul-fix}) zur optischen Kontrolle eingebaut. Wenn der Prozessor mit Spannung versorgt wird, leuchtet sie. Um den Stromverbrauch des \gls{Core-Modul}s im Low-Power Modus weiter zu senken, können die LEDs mit Hilfe von Jumpern außer Betrieb gesetzt werden.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \subfloat[Schematic\label{fig:coremodul-fix-schem}]{\includegraphics[width=.75\linewidth]{Schuh/Pictures/schaltung-fix}}\qquad
     \subfloat[Hardware\label{fig:coremodul-fix-hard}]{\includegraphics[width=.4\linewidth]{Schuh/Pictures/core-fix}}\qquad
@@ -165,7 +165,7 @@ Zur Generierung der für den Prozessor erforderlichen Betriebsspannung wurde ein
     \label{fig:coremodul-fix}
 \end{figure}
 
-
+\newpage
 \subsubsection{Prozessor}
 In \fref{fig:coremodul-prozessor} ist die Pinbelegung des verwendeten Prozessors U1 dargestellt.
 
@@ -195,7 +195,7 @@ Das \gls{Core-Modul} besitzt standardmäßig zwei verschiedene Taktquellen. Dies
 \subsubsection{Taster}
 Auf dem \gls{Core-Modul} wurde ein Kurzhubtaster S1 (\fref{fig:coremodul-taster}) vorgesehen, dessen Funktion nach belieben ausprogrammiert werden kann.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \subfloat[Schematic\label{fig:coremodul-taster-schem}]{\includegraphics[width=.25\linewidth]{Schuh/Pictures/schaltung-taster}}\qquad
     \subfloat[Hardware\label{fig:coremodul-taster-hard}]{\includegraphics[width=.25\linewidth]{Schuh/Pictures/core-taster}}\qquad
@@ -206,7 +206,7 @@ Auf dem \gls{Core-Modul} wurde ein Kurzhubtaster S1 (\fref{fig:coremodul-taster}
 \subsubsection{LED}
 Auf dem \gls{Core-Modul} wurde eine LED V2 (\fref{fig:coremodul-led}) vorgesehen, deren Funktion nach belieben ausprogrammiert werden kann.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \subfloat[Schematic\label{fig:coremodul-led-schem}]{\includegraphics[width=.4\linewidth]{Schuh/Pictures/schaltung-led}}\qquad
     \subfloat[Hardware\label{fig:coremodul-led-hard}]{\includegraphics[width=.25\linewidth]{Schuh/Pictures/core-led}}\qquad
@@ -217,13 +217,14 @@ Auf dem \gls{Core-Modul} wurde eine LED V2 (\fref{fig:coremodul-led}) vorgesehen
 \subsubsection{Masseschleife}
 Um das Messen mit einem Oszilloskop oder anderen Messgeräten zu vereinfachen wurde eine Masseschleife X6 (\fref{fig:coremodul-masse}) auf dem \gls{Core-Modul} vorgesehen.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \subfloat[Schematic\label{fig:coremodul-masse-schem}]{\includegraphics[width=.25\linewidth]{Schuh/Pictures/schaltung-masse}}\qquad
     \subfloat[Hardware\label{fig:coremodul-masse-hard}]{\includegraphics[width=.25\linewidth]{Schuh/Pictures/core-masse}}\qquad
     \caption[Masseschleife des Core-Moduls]{Masseschleife des \gls{Core-Modul}s}
     \label{fig:coremodul-masse}
 \end{figure}
+\vfill
 
 \subsection{Gesamtschaltung}
 \label{sec:coremodul-schaltung}
