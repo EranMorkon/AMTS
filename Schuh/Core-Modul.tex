@@ -41,7 +41,7 @@ Im Gegensatz zum bisher verwendeten STM32F103RB verfügt der \gls{cpu} über zwe
 \fig{coremodul-cpubsb}{Blockschaltbild des Prozessors}{Blockschaltbild des Prozessors \cite{stm:stm32f107rc}}{\textwidth}{Schuh/Pictures/BSB}
 
 \subsubsection{Pinning}
-\fig{coremodul-cpupinning}{Pinning des Prozessors}{Pinning des Prozessors \cite{stm:stm32f107rc}}{\textwidth}{Schuh/Pictures/Pinning}
+\figtop{coremodul-cpupinning}{Pinning des Prozessors}{Pinning des Prozessors \cite{stm:stm32f107rc}}{\textwidth}{Schuh/Pictures/Pinning}
 
 \subsubsection{Abmessungen}
 \fig{coremodul-cpumeasure}{Abmessungen des Prozessors}{Abmessungen des Prozessors \cite{stm:stm32f107rc}}{0.8\textwidth}{Schuh/Pictures/MeasureGraphic}
@@ -143,6 +143,7 @@ Der Kurzhubtaster S2 (\fref{fig:coremodul-reset}) dient zum Reset des \gls{Core-
     \label{fig:coremodul-reset}
 \end{figure}
 
+\newpage
 \subsubsection{5 V Spannungsversorgung}
 Die \unit{+5}{\volt} Spannungsversorgung für das \gls{Core-Modul} kann auf zwei verschiedenen Wegen bezogen werden. Entweder man verwendet den ST-Link V2 Mini als \unit{5}{\volt} Spannungsversorgung X1 (\fref{fig:coremodul-swd}), wie bereits in \fref{sec:coremodul-stlink} beschrieben, oder man speist die \unit{+5}{\volt} Versorgung über den \unit{5}{\volt}-Pin des 50-poligen Headers des \gls{Core-Modul}s X2 (\fref{fig:coremodul-spannung}) ein.
 
@@ -170,8 +171,8 @@ In \fref{fig:coremodul-prozessor} ist die Pinbelegung des verwendeten Prozessors
 
 \begin{figure}[H]
     \centering
-    \subfloat[Schematic\label{fig:coremodul-prozessor-schem}]{\includegraphics[width=.75\linewidth]{Schuh/Pictures/schaltung-prozessor}}\qquad
-    \subfloat[Hardware\label{fig:coremodul-prozessor-hard}]{\includegraphics[width=.4\linewidth]{Schuh/Pictures/core-prozessor}}\qquad
+    \subfloat[Schematic\label{fig:coremodul-prozessor-schem}]{\includegraphics[width=.4\linewidth]{Schuh/Pictures/schaltung-prozessor}}\qquad
+    \subfloat[Hardware\label{fig:coremodul-prozessor-hard}]{\includegraphics[width=.3\linewidth]{Schuh/Pictures/core-prozessor}}\qquad
     \caption[Prozessor des Core-Moduls]{Prozessor des \gls{Core-Modul}s}
     \label{fig:coremodul-prozessor}
 \end{figure}

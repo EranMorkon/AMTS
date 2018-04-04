@@ -144,8 +144,8 @@ Die ESD Protection F1 (\fref{fig:basisplatine-usb}) stellt sicher, dass die Span
 
 \begin{figure}[H]
     \centering
-    \subfloat[Schematic\label{fig:basisplatine-usb-schem}]{\includegraphics[width=\linewidth]{Schuh/Pictures/Basis2-usb}}\qquad
-    \subfloat[Hardware\label{fig:basisplatine-usb-hard}]{\includegraphics[width=\linewidth]{Schuh/Pictures/basis-usb}}\qquad
+    \subfloat[Schematic\label{fig:basisplatine-usb-schem}]{\includegraphics[width=.6\linewidth]{Schuh/Pictures/Basis2-usb}}\qquad
+    \subfloat[Hardware\label{fig:basisplatine-usb-hard}]{\includegraphics[width=.6\linewidth]{Schuh/Pictures/basis-usb}}\qquad
     \caption[USB Buchsen der Basisplatine]{USB Buchsen der \gls{Basisplatine}}
     \label{fig:basisplatine-usb}
 \end{figure}
@@ -166,8 +166,8 @@ Um USB-Geräte zu betreiben, welche selbst keine eigene Spannungsversorgung besi
 
 \begin{figure}[H]
     \centering
-    \subfloat[Schematic\label{fig:basisplatine-power-schem}]{\includegraphics[width=\linewidth]{Schuh/Pictures/Basis2-power}}\qquad
-    \subfloat[Hardware\label{fig:basisplatine-power-hard}]{\includegraphics[width=\linewidth]{Schuh/Pictures/basis-power}}\qquad
+    \subfloat[Schematic\label{fig:basisplatine-power-schem}]{\includegraphics[width=.5\linewidth]{Schuh/Pictures/Basis2-power}}\qquad
+    \subfloat[Hardware\label{fig:basisplatine-power-hard}]{\includegraphics[width=.5\linewidth]{Schuh/Pictures/basis-power}}\qquad
     \caption[USB Powerswitch der Basisplatine]{USB Powerswitch der \gls{Basisplatine}}
     \label{fig:basisplatine-power}
 \end{figure}
@@ -256,7 +256,7 @@ Auf der \gls{Basisplatine} wurde ein Piezo-Summer B4 (\fref{fig:basisplatine-pie
 \end{figure}
 
 \subsubsection{Potentiometer}
-Es wurden zwei Potentiometer R9 und R4 hardwaremäßig auf der \gls{Basisplatine} vorgesehen. Diese sind direkt mit einem \gls{ADC}-Eingang des Prozessors verbunden. Der Unterschied zwischen den Potentiometern R9 und R4 besteht darin, dass das Potentiometer R4 über einen Jumper auf der Stiftleiste X40 (\fref{fig:basisplatine-poti2-schem}) aktiviert werden muss und dieses an einem anderen Port-Pin angeschlossen ist. Dieser Aufbau wurde deswegen gewählt da damit, damit an den \gls{ADC}-Eingang auch optional ein anderes Signal angelegt werden kann. 
+Es wurden zwei Potentiometer R9 und R4 hardwaremäßig auf der \gls{Basisplatine} vorgesehen. Diese sind direkt mit einem \gls{ADC}-Eingang des Prozessors verbunden. Der Unterschied zwischen den Potentiometern R9 und R4 besteht darin, dass das Potentiometer R4 über einen Jumper auf der Stiftleiste X40 (\fref{fig:basisplatine-poti2-schem}) aktiviert werden muss und dieses an einem anderen Port-Pin angeschlossen ist. Dieser Aufbau wurde deswegen gewählt da damit, damit an den \gls{ADC}-Eingang auch optional ein anderes Signal angelegt werden kann.
 
 \begin{figure}[H]
     \centering
@@ -301,7 +301,7 @@ Um die Platine auch mit einer Fernbedienung oder einem Mobiltelefon steuern zu k
 \end{figure}
 
 \subsubsection{Temperatursensor}
-Um die Umgebungstemperatur feststellen zu können wurde auf der Basisplatine der Temperaturfühler DS18B20 verbaut, welcher mit Hilfe des 1-Wire Protokolls angesprochen werden kann. Die maximale Mesfehler dieses Temperatursensors beträgt ±0,5°C laut Datenblattangabe. Um den Temperaturfühler verwenden zu können muss lediglich der Pin9 mit dem Pin10, der Stiftleiste X9 (\fref{fig:basisplatine-ssel}), gejumpert werden. 
+Um die Umgebungstemperatur feststellen zu können wurde auf der Basisplatine der Temperaturfühler DS18B20 verbaut, welcher mit Hilfe des 1-Wire Protokolls angesprochen werden kann. Die maximale Mesfehler dieses Temperatursensors beträgt ±0,5°C laut Datenblattangabe. Um den Temperaturfühler verwenden zu können muss lediglich der Pin9 mit dem Pin10, der Stiftleiste X9 (\fref{fig:basisplatine-ssel}), gejumpert werden.
 
 \begin{figure}[H]
     \centering

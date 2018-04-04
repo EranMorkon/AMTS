@@ -10,7 +10,7 @@
 \else
    \ifXeTeX
      \RequirePackage{fontspec}
-   \else 
+   \else
      \RequirePackage{luatextra}
    \fi
    \defaultfontfeatures{Ligatures=TeX}
@@ -133,6 +133,17 @@
   \end{figure}
 }
 
+% \figtop{ref}{descshort}{desclong}{width}{path}
+\newcommand*{\figtop}[5]{
+  \begin{figure}[h!]
+      \centering
+      \includegraphics[width=#4]{#5}
+      \caption[#2]{#3}
+      \label{fig:#1}
+  \end{figure}
+  \vfill
+}
+
 % \tabpdf{ref}{descshort}{desclong}{width}{path}
 \newcommand*{\tabpdf}[5]{
   \begin{table}[H]
@@ -147,7 +158,7 @@
 \newcommand*{\ltab}[5]{
   {
     \centering
-    \begin{longtable}[H]{#4} 
+    \begin{longtable}[H]{#4}
       #5
       \caption[#2]{#3}
       \label{tab:#1}
@@ -159,7 +170,7 @@
 \newcommand*{\tab}[5]{
   \begin{table}[H]
     \centering
-    \begin{tabular}{#4} 
+    \begin{tabular}{#4}
       #5
     \end{tabular}
     \caption[#2]{#3}
