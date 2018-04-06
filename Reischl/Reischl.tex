@@ -112,7 +112,7 @@ Anmerkung: Da alle ein- und Ausgänge des Datenbusses invertiert sind, handelt e
 
 \subsubsubsection{Blockschaltbild und Funktionsbeschreibung}
 \fig{z80-pio-bsb}{Z80 PIO Blockschaltbild}{8255 PIO Blockschaltbild \cite{z80:pio}}{\textwidth}{Reischl/img/z80-pio-bsb}
-Der 82C55 ist ein von Intel entwickelter Interface-Baustein, welcher als paralleler I/O Port fungiert, deshalb die Bezeichnung PIO. Als solcher bildet er die Schnittstelle zwischen Ein- oder Ausgabeeinheit und Datenbus. Der PIO besitzt 3 Ports zu je 8 Portleitungen, wodurch insgesamt 24 Ein-/Ausgänge eingesetzt werden können. Jeder der 3 Ports besitzt ein Portregister, die jeweils über eine eigene Adresse verfügen. 
+Der 82C55 ist ein von Intel entwickelter Interface-Baustein, welcher als paralleler I/O Port fungiert, deshalb die Bezeichnung PIO. Als solcher bildet er die Schnittstelle zwischen Ein- oder Ausgabeeinheit und Datenbus. Der PIO besitzt 3 Ports zu je 8 Portleitungen, wodurch insgesamt 24 Ein-/Ausgänge eingesetzt werden können. Jeder der 3 Ports besitzt ein Portregister, die jeweils über eine eigene Adresse verfügen.
 Alle 3 Ports können einzeln konfiguriert werden, als Eingang oder als Ausgang. Die Konfiguration der einzelnen Ports erfolgt über das Control Register des PIO, welches ebenfalls über eine eigene Adresse verfügt.
 \subsubsubsection{Konfiguration des PIO}
 Der Port B des Parallel Input/Output Controllers soll als Output für die Ausgabe über LED konfiguriert werden, Port A als Input für das Einlesen der Schalterstellungen des DIL-Schalters. Die Konfiguration erfolgt durch Senden der Konfiguration an die Adresse des Steuerregisters.
@@ -310,7 +310,7 @@ Anmerkung: Die Interrupt-Priorisierung arbeitet mit nicht invertierter, also hig
 \subsubsection{Spannungsversorgung}
 Im Vergleich zu den Vorgängerversionen wurde die Spannungsversorgung stark modifiziert. Beim Z80 Minimalsystem V4.5 wurde eine Leiterbahnbreite von unter 25 Mil = 0,64mm für die Versorgungsleitungen vorgesehen, welche bei der Verwendung alter TTL-Komponenten, wo der Stromverbrauch abhängig vom angewendeten Programm 400 bis zu 440 mA beträgt, zu einem Spannungsabfall von 0,6V zwischen Linearregler und 5V Pin der CPU führten. Es konnte das in den Datenblättern der Z80-spezifischen Komponenten vorgegebenen Minimum von 4,75V nicht erreicht werden. Der gemessene Spannungswert an den herausgeführten Pins der CPU ergab eine Spannungsdifferenz von minimal 4,35V zwischen VCC und GND. Bei der aktuellen Version 4.9 sind die Leiterbahnen für 5V und Ground mit mindestens 50 mil Breite ausgeführt, ebenso ist anstelle der Schottky-Diode, welche als zusätzlicher Verpolungsschutz dient, eine Parallelschaltung zweier Schottky-Dioden zur Minimierung der Spannung an der Diode in Verwendung. Als Ergebnis dieser Überdimensionierung erhält man eine Versorgungsspannung von mindestens 4,75V an den Versorgungspins der CPU, auch dann, wenn TTL- anstatt CMOS- oder NMOS-Technologie eingesetzt wird.
 
-Neben sehr vielen kleineren Änderungen sollte auch der Wechsel von Micro USB auf USB Typ B erwähnt werden. Durch diese Änderung wird die mechanische Stabilität des Steckers wesentliche verbessert und dadurch Störfälle minimiert. 
+Neben sehr vielen kleineren Änderungen sollte auch der Wechsel von Micro USB auf USB Typ B erwähnt werden. Durch diese Änderung wird die mechanische Stabilität des Steckers wesentliche verbessert und dadurch Störfälle minimiert.
 
 \subsubsection{Reset}
 Der Reset wurde ursprünglich ohne die Verwendung eines RC-Gliedes zur Stabilisierung des Signals beschaltet, was sehr viele kurze Störimpulse durch das Prellen des Schalters und dadurch einen unvollständigen Reset zur Folge hatte. Nunmehr ergibt ich durch den Kondensator C9 parallel zum Reset-Taster ein für den Ladevorgang eines Kondesators typischer Spannungsverlauf, der einer Exponentialfunktion entspricht und frei von Störimpulsen ist. Mithilfe des Schmitt-Triggers wird eine diskrete Schaltschwelle geschaffen und die Flankensteilheit des Impulses erhöht, sodass dieser für digitale Eingänge nutzbar wird.
@@ -345,18 +345,6 @@ Die Programmierung des EPROMS wird mit einem Programmiergerät vorgenommen. Dies
 
 \subsubsection{Z80 Assembler}
 Grundsätzlich kann die Übersetzung des Assemblercodes in Intel HEX-Code von Hand erfolgen. Bei größeren Programmen empfiehlt es sich, einen Assembler zu verwenden, wie etwa das Crossware Embedded Development Studio, welcher sowohl als Assembler als auch als Simulator verwendet werden kann. Da dieser Assembler standardmäßig für die Anwendung mit dem MPF 1B konfiguriert ist, muss die Startadresse auf 0000 statt 1800 geändert werden ebenso wie die Größe des Speichers und die Auswahl des EPROMS als Programmspeichermedium. Bei der Übersetzung des Programms liefert der Assembler ein HEX-File, welches für die Programmierung des EPROMS mit der dafür vorgesehenen Software MiniPro Programmer geeignet ist. Genaue Informationen zu Installation und Anwendung liegen der Software in englischer Sprache bei.
-
-\subsection{Kostenrechnung}
-\label{sec:z80-kostenrechnung}
-Kosten für die Fertigung von 5 PCBs bei PCBWay inklusive Frachtkosten:
-60 \$ = 48,60 €
-
-Fertigungskosten für ein Minimalsystem (alle Preise Stand März 2018):
-\begin{itemize}
-    \item PCB: 9,72 €
-    \item Bauteile: 75,50 €
-    \item Summe: 85,22 €
-\end{itemize}
 
 \subsection{Software und Analyse}
 \label{sec:z80-software}
@@ -672,7 +660,7 @@ Marker B: Um die Daten aus dem Akku adressieren zu können, muss aus dem EPROM d
 
 Marker C: Die Ausgabe der Daten und somit die Konfiguration des Interrupt Vector Registers erfolgt.
 
-Somit ist die Konfiguration abgeschlossen. 
+Somit ist die Konfiguration abgeschlossen.
 
 \subsubsection{Programm CTC\_Counter}
 \subsubsubsection{Source Code}
